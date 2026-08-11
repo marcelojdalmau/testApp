@@ -1,0 +1,101 @@
+<div class="search-container">
+  <h1 class="page-title">Buscar Profesionales</h1>
+  <p class="page-subtitle">Encontrá deportistas, entrenadores y profesionales de la salud</p>
+
+  <!-- Filters -->
+  <div class="filters-section">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Buscar</mat-label>
+      <input matInput [(ngModel)]="searchQuery" placeholder="Nombre, especialidad, ubicación..." (keyup.enter)="applyFilters()">
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+
+    <div class="filters-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Disciplina</mat-label>
+        <mat-select [(ngModel)]="selectedDiscipline" (selectionChange)="applyFilters()">
+          @for (d of disciplines; track d.value) {
+            <mat-option [value]="d.value">{{ d.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Rol</mat-label>
+        <mat-select [(ngModel)]="selectedRole" (selectionChange)="applyFilters()">
+          @for (r of roles; track r.value) {
+            <mat-option [value]="r.value">{{ r.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ubicación</mat-label>
+        <input matInput [(ngModel)]="selectedLocation" placeholder="Ciudad o provincia" (keyup.enter)="applyFilters()">
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" (click)="applyFilters()">
+        <mat-icon>search</mat-icon>
+        Buscar
+      </button>
+
+      <button mat-stroked-button (click)="clearFilters()">
+        <mat-icon>clear</mat-icon>
+        Limpiar
+      </button>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="results-info">
+    <span>{{ filteredCards().length }} resultados</span>
+  </div>
+
+  <div class="cards-grid">
+    @for (card of filteredCards(); track card.id) {
+      <a class="profile-card" [routerLink]="getProfileRoute(card)">
+        <div class="card-header">
+          <img class="card-avatar" [src]="card.avatar" [alt]="card.fullName">
+          <div class="card-rating">
+            <mat-icon>star</mat-icon>
+            <span>{{ card.rating }}</span>
+            <span class="review-count">({{ card.reviewCount }})</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>{{ card.fullName }}</h3>
+          <p class="card-headline">{{ card.headline }}</p>
+          <p class="card-location">
+            <mat-icon>location_on</mat-icon>
+            {{ card.location }}
+          </p>
+          @if (card.priceRange) {
+            <p class="card-price">
+              <mat-icon>payments</mat-icon>
+              {{ card.priceRange }}
+            </p>
+          }
+        </div>
+        <div class="card-tags">
+          @for (tag of card.tags; track tag) {
+            <span class="tag">{{ tag }}</span>
+          }
+        </div>
+        <div class="card-footer">
+          <button mat-stroked-button color="primary" class="contact-btn">
+            <mat-icon>{{ getRoleIcon(card.role) }}</mat-icon>
+            Contactar
+          </button>
+        </div>
+      </a>
+    }
+  </div>
+
+  @if (filteredCards().length === 0) {
+    <div class="empty-state">
+      <mat-icon>search_off</mat-icon>
+      <p>No se encontraron resultados con esos filtros.</p>
+      <button mat-stroked-button (click)="clearFilters()">Limpiar filtros</button>
+    </div>
+  }
+</div>

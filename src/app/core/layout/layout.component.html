@@ -61,7 +61,7 @@
 <!-- Bottom Navigation (Mobile) -->
 @if (isMobile()) {
   <nav class="bottom-nav">
-    @for (item of navItems; track item.route) {
+    @for (item of bottomNavItems; track item.route) {
       <a
         class="bottom-nav-item"
         [routerLink]="item.route"

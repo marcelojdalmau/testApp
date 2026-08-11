@@ -18,8 +18,16 @@ export const routes: Routes = [
         loadComponent: () => import('./features/feed/feed.component').then(m => m.FeedComponent),
       },
       {
+        path: 'search',
+        loadComponent: () => import('./features/search/search.component').then(m => m.SearchComponent),
+      },
+      {
         path: 'marketplace',
         loadComponent: () => import('./features/marketplace/marketplace.component').then(m => m.MarketplaceComponent),
+      },
+      {
+        path: 'convocatorias',
+        loadComponent: () => import('./features/convocatorias/convocatorias.component').then(m => m.ConvocatoriasComponent),
       },
       {
         path: 'management',

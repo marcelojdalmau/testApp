@@ -1,0 +1,54 @@
+<div class="convocatorias-container">
+  <h1 class="page-title">Convocatorias</h1>
+  <p class="page-subtitle">Oportunidades de empleo, pruebas de jugadores y sponsors</p>
+
+  <div class="convocatorias-list">
+    @for (conv of convocatorias(); track conv.id) {
+      <mat-card class="convocatoria-card">
+        <div class="conv-header">
+          <div class="conv-icon" [style.background-color]="getConvocatoriaColor(conv.type)">
+            <mat-icon>{{ getConvocatoriaIcon(conv.type) }}</mat-icon>
+          </div>
+          <div class="conv-info">
+            <h3>{{ conv.title }}</h3>
+            <p class="conv-publisher">
+              {{ conv.publisherName }} · {{ conv.location }}
+            </p>
+          </div>
+          <mat-chip class="conv-type">{{ getTypeLabel(conv.type) }}</mat-chip>
+        </div>
+
+        <p class="conv-description">{{ conv.description }}</p>
+
+        @if (conv.requirements && conv.requirements.length > 0) {
+          <div class="conv-requirements">
+            <strong>Requisitos:</strong>
+            <ul>
+              @for (req of conv.requirements; track req) {
+                <li>{{ req }}</li>
+              }
+            </ul>
+          </div>
+        }
+
+        <div class="conv-footer">
+          @if (conv.budget) {
+            <span class="conv-budget">
+              <mat-icon>payments</mat-icon>
+              {{ conv.budget }}
+            </span>
+          }
+          <span class="conv-date">Publicado: {{ conv.createdAt | date:'dd/MM/yyyy' }}</span>
+          <button mat-flat-button color="primary" class="conv-action">Postularse</button>
+        </div>
+      </mat-card>
+    }
+  </div>
+
+  @if (convocatorias().length === 0) {
+    <div class="empty-state">
+      <mat-icon>work_off</mat-icon>
+      <p>No hay convocatorias abiertas en este momento.</p>
+    </div>
+  }
+</div>

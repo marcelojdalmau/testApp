@@ -56,11 +56,22 @@ export class LayoutComponent {
   /** Sidebar collapsed state (desktop only) */
   sidebarCollapsed = signal(false);
 
-  /** Navigation items */
+  /** Navigation items (full - sidebar) */
   navItems: NavItem[] = [
     { label: 'Inicio', icon: 'home', route: '/feed' },
-    { label: 'Buscar', icon: 'search', route: '/marketplace' },
+    { label: 'Buscar', icon: 'person_search', route: '/search' },
+    { label: 'Tienda', icon: 'storefront', route: '/marketplace' },
+    { label: 'Convocatorias', icon: 'work', route: '/convocatorias' },
     { label: 'Gestión', icon: 'dashboard', route: '/management' },
+    { label: 'Mensajes', icon: 'chat', route: '/communication' },
+    { label: 'Perfil', icon: 'person', route: '/profile' },
+  ];
+
+  /** Bottom nav items (mobile - limited space) */
+  bottomNavItems: NavItem[] = [
+    { label: 'Inicio', icon: 'home', route: '/feed' },
+    { label: 'Buscar', icon: 'person_search', route: '/search' },
+    { label: 'Tienda', icon: 'storefront', route: '/marketplace' },
     { label: 'Mensajes', icon: 'chat', route: '/communication' },
     { label: 'Perfil', icon: 'person', route: '/profile' },
   ];
