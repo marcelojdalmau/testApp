@@ -106,6 +106,27 @@ html.dark-theme {
 // Global Styles
 // ============================================================
 
+// Fix Material overlay panels (menus, selects, dialogs) background
+.cdk-overlay-pane {
+  .mat-mdc-menu-panel,
+  .mat-mdc-select-panel,
+  .mat-mdc-autocomplete-panel {
+    background-color: var(--sh-surface) !important;
+  }
+}
+
+.mat-mdc-menu-panel {
+  background-color: var(--sh-surface) !important;
+}
+
+.mat-mdc-select-panel {
+  background-color: var(--sh-surface) !important;
+}
+
+.mat-mdc-option {
+  color: var(--sh-on-surface) !important;
+}
+
 * {
   box-sizing: border-box;
 }
