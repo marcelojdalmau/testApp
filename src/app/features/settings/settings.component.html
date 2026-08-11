@@ -1,0 +1,219 @@
+<div class="settings-container">
+  <h1 class="page-title">Configuración</h1>
+
+  <mat-tab-group class="settings-tabs">
+    <!-- Membresías -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>card_membership</mat-icon>
+        <span class="tab-label-text">Membresías</span>
+      </ng-template>
+      <div class="tab-content">
+        <h2 class="section-title">Elegí tu plan</h2>
+        <p class="section-desc">Accedé a más funciones según tus necesidades.</p>
+
+        <div class="plans-grid">
+          @for (plan of plans; track plan.id) {
+            <div class="plan-card" [class.highlighted]="plan.highlighted" [class.selected]="selectedPlan() === plan.id">
+              @if (plan.highlighted) {
+                <div class="plan-badge">Popular</div>
+              }
+              <mat-icon class="plan-icon">{{ plan.icon }}</mat-icon>
+              <h3>{{ plan.name }}</h3>
+              <div class="plan-price">
+                <span class="price">{{ plan.price }}</span>
+                <span class="period">{{ plan.period }}</span>
+              </div>
+              <ul class="plan-features">
+                @for (feature of plan.features; track feature) {
+                  <li>
+                    <mat-icon>check</mat-icon>
+                    {{ feature }}
+                  </li>
+                }
+              </ul>
+              <button
+                mat-flat-button
+                [color]="plan.highlighted ? 'primary' : ''"
+                [class.selected-btn]="selectedPlan() === plan.id"
+                (click)="selectPlan(plan.id)"
+              >
+                {{ selectedPlan() === plan.id ? 'Plan actual' : 'Elegir plan' }}
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- Pagos -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>payments</mat-icon>
+        <span class="tab-label-text">Pagos</span>
+      </ng-template>
+      <div class="tab-content">
+        <h2 class="section-title">Métodos de pago</h2>
+
+        <mat-card class="payment-card">
+          <div class="payment-method">
+            <mat-icon>credit_card</mat-icon>
+            <div class="payment-info">
+              <span class="payment-label">Visa terminada en 4242</span>
+              <span class="payment-detail">Vence 12/26</span>
+            </div>
+            <mat-chip>Principal</mat-chip>
+          </div>
+        </mat-card>
+
+        <button mat-stroked-button class="add-payment">
+          <mat-icon>add</mat-icon>
+          Agregar método de pago
+        </button>
+
+        <mat-divider></mat-divider>
+
+        <h2 class="section-title">Historial de pagos</h2>
+        <div class="payment-history">
+          <div class="history-row">
+            <div class="history-info">
+              <span class="history-desc">Plan Profesional - Agosto 2024</span>
+              <span class="history-date">01/08/2024</span>
+            </div>
+            <span class="history-amount">$4.999</span>
+            <mat-chip class="paid">Pagado</mat-chip>
+          </div>
+          <div class="history-row">
+            <div class="history-info">
+              <span class="history-desc">Plan Profesional - Julio 2024</span>
+              <span class="history-date">01/07/2024</span>
+            </div>
+            <span class="history-amount">$4.999</span>
+            <mat-chip class="paid">Pagado</mat-chip>
+          </div>
+          <div class="history-row">
+            <div class="history-info">
+              <span class="history-desc">Consulta Dra. Martina Pérez</span>
+              <span class="history-date">15/07/2024</span>
+            </div>
+            <span class="history-amount">$12.000</span>
+            <mat-chip class="paid">Pagado</mat-chip>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- Privacidad -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>lock</mat-icon>
+        <span class="tab-label-text">Privacidad</span>
+      </ng-template>
+      <div class="tab-content">
+        <h2 class="section-title">Control de visibilidad</h2>
+        <p class="section-desc">Elegí quién puede ver tu información.</p>
+
+        <div class="privacy-toggles">
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <mat-icon>medical_services</mat-icon>
+              <div>
+                <span class="toggle-label">Fichas médicas</span>
+                <span class="toggle-desc">Permitir que profesionales vean tu historial médico</span>
+              </div>
+            </div>
+            <mat-slide-toggle [checked]="showMedicalData()" (change)="showMedicalData.set($event.checked)"></mat-slide-toggle>
+          </div>
+
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <mat-icon>person</mat-icon>
+              <div>
+                <span class="toggle-label">Datos personales</span>
+                <span class="toggle-desc">Mostrar edad, peso y altura en tu perfil</span>
+              </div>
+            </div>
+            <mat-slide-toggle [checked]="showPersonalInfo()" (change)="showPersonalInfo.set($event.checked)"></mat-slide-toggle>
+          </div>
+
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <mat-icon>videocam</mat-icon>
+              <div>
+                <span class="toggle-label">Videos y galería</span>
+                <span class="toggle-desc">Permitir que cualquiera vea tus videos</span>
+              </div>
+            </div>
+            <mat-slide-toggle [checked]="showVideos()" (change)="showVideos.set($event.checked)"></mat-slide-toggle>
+          </div>
+
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <mat-icon>location_on</mat-icon>
+              <div>
+                <span class="toggle-label">Ubicación</span>
+                <span class="toggle-desc">Mostrar tu ubicación en búsquedas</span>
+              </div>
+            </div>
+            <mat-slide-toggle [checked]="showLocation()" (change)="showLocation.set($event.checked)"></mat-slide-toggle>
+          </div>
+
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <mat-icon>chat</mat-icon>
+              <div>
+                <span class="toggle-label">Mensajes directos</span>
+                <span class="toggle-desc">Permitir que cualquiera te envíe mensajes</span>
+              </div>
+            </div>
+            <mat-slide-toggle [checked]="allowMessages()" (change)="allowMessages.set($event.checked)"></mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- Apariencia -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>palette</mat-icon>
+        <span class="tab-label-text">Apariencia</span>
+      </ng-template>
+      <div class="tab-content">
+        <h2 class="section-title">Tema</h2>
+
+        <div class="theme-section">
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <mat-icon>{{ themeService.isDark() ? 'dark_mode' : 'light_mode' }}</mat-icon>
+              <div>
+                <span class="toggle-label">Modo oscuro</span>
+                <span class="toggle-desc">Cambiar entre tema claro y oscuro</span>
+              </div>
+            </div>
+            <mat-slide-toggle [checked]="themeService.isDark()" (change)="toggleDarkMode()"></mat-slide-toggle>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <h2 class="section-title">Personalizar colores</h2>
+        <p class="section-desc">Elegí una paleta de colores para tu perfil.</p>
+
+        <div class="color-palette-section">
+          <div class="color-options disabled" matTooltip="Próximamente - Esta funcionalidad estará disponible en una futura actualización">
+            <div class="color-swatch" style="background-color: #1a237e;"></div>
+            <div class="color-swatch" style="background-color: #1565c0;"></div>
+            <div class="color-swatch" style="background-color: #2e7d32;"></div>
+            <div class="color-swatch" style="background-color: #e65100;"></div>
+            <div class="color-swatch" style="background-color: #6a1b9a;"></div>
+            <div class="color-swatch" style="background-color: #c62828;"></div>
+          </div>
+          <p class="coming-soon">
+            <mat-icon>schedule</mat-icon>
+            Próximamente — Podrás personalizar los colores de tu perfil.
+          </p>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -1,0 +1,74 @@
+<div class="feed-container">
+  <!-- Welcome Header -->
+  <section class="welcome-section">
+    <div class="welcome-text">
+      <h1>{{ greeting() }}, {{ userName() }}</h1>
+      <p class="role-badge">
+        <mat-icon>verified</mat-icon>
+        {{ getRoleLabel() }}
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats Cards -->
+  <section class="stats-section">
+    @for (stat of stats(); track stat.label) {
+      <div class="stat-card">
+        <mat-icon class="stat-icon">{{ stat.icon }}</mat-icon>
+        <div class="stat-content">
+          <span class="stat-value">{{ stat.value }}</span>
+          <span class="stat-label">{{ stat.label }}</span>
+          @if (stat.trend && stat.trendValue) {
+            <span class="stat-trend" [class]="stat.trend">
+              @if (stat.trend === 'up') {
+                <mat-icon>trending_up</mat-icon>
+              } @else if (stat.trend === 'down') {
+                <mat-icon>trending_down</mat-icon>
+              }
+              {{ stat.trendValue }}
+            </span>
+          }
+        </div>
+      </div>
+    }
+  </section>
+
+  <!-- Quick Actions -->
+  <section class="actions-section">
+    <h2 class="section-title">Acciones rápidas</h2>
+    <div class="actions-grid">
+      @for (action of quickActions(); track action.label) {
+        <a class="action-card" [routerLink]="action.route">
+          <mat-icon>{{ action.icon }}</mat-icon>
+          <span>{{ action.label }}</span>
+        </a>
+      }
+    </div>
+  </section>
+
+  <!-- Feed Items -->
+  <section class="feed-section">
+    <h2 class="section-title">Actividad reciente</h2>
+    <div class="feed-list">
+      @for (item of feedItems(); track item.id) {
+        <mat-card class="feed-card">
+          <div class="feed-card-content">
+            <div class="feed-card-icon" [class]="item.type">
+              <mat-icon>{{ item.icon }}</mat-icon>
+            </div>
+            <div class="feed-card-body">
+              <h3 class="feed-card-title">{{ item.title }}</h3>
+              <p class="feed-card-desc">{{ item.description }}</p>
+              <span class="feed-card-time">{{ item.timestamp | date:'dd/MM - HH:mm' }}</span>
+            </div>
+            @if (item.actionLabel && item.actionRoute) {
+              <a mat-button color="primary" [routerLink]="item.actionRoute" class="feed-card-action">
+                {{ item.actionLabel }}
+              </a>
+            }
+          </div>
+        </mat-card>
+      }
+    </div>
+  </section>
+</div>

@@ -1,0 +1,162 @@
+@if (professional(); as pro) {
+  <div class="profile-container">
+    <!-- Header Card -->
+    <mat-card class="profile-header-card">
+      <div class="profile-header">
+        <img class="avatar" [src]="pro.avatar" [alt]="pro.fullName">
+        <div class="profile-info">
+          <h1>{{ pro.fullName }}</h1>
+          <p class="profile-role">
+            <mat-icon>{{ isHealthPro() ? 'medical_services' : 'sports' }}</mat-icon>
+            @if (healthPro; as hp) {
+              {{ getSpecialtyLabel(hp.specialtyType) }}
+            }
+            @if (coach; as c) {
+              {{ getCoachTypeLabel(c.coachType) }}
+            }
+          </p>
+          <p class="profile-location">
+            <mat-icon>location_on</mat-icon>
+            {{ pro.location }}
+          </p>
+          @if (healthPro; as hp) {
+            @if (hp.priceRange) {
+              <p class="profile-price">
+                <mat-icon>payments</mat-icon>
+                {{ hp.priceRange }}
+              </p>
+            }
+          }
+        </div>
+        <div class="profile-actions">
+          <button mat-flat-button color="primary">
+            <mat-icon>event</mat-icon>
+            Agendar
+          </button>
+          <button mat-stroked-button>
+            <mat-icon>chat</mat-icon>
+            Mensaje
+          </button>
+        </div>
+      </div>
+      @if (pro.bio) {
+        <p class="bio">{{ pro.bio }}</p>
+      }
+    </mat-card>
+
+    <!-- Content Tabs -->
+    <mat-tab-group class="profile-tabs">
+      <!-- Servicios / Info -->
+      <mat-tab label="Servicios">
+        <div class="tab-content">
+          @if (healthPro; as hp) {
+            <h3>Servicios ofrecidos</h3>
+            <div class="services-grid">
+              @for (service of hp.servicesOffered; track service) {
+                <div class="service-chip">
+                  <mat-icon>check_circle</mat-icon>
+                  {{ service }}
+                </div>
+              }
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <h3>Certificaciones</h3>
+            <div class="certifications-list">
+              @for (cert of hp.certifications; track cert) {
+                <div class="cert-item">
+                  <mat-icon>verified</mat-icon>
+                  {{ cert }}
+                </div>
+              }
+            </div>
+          }
+
+          @if (coach; as c) {
+            <h3>Información profesional</h3>
+            <div class="info-grid">
+              @if (c.currentTeam) {
+                <div class="info-item">
+                  <mat-icon>stadium</mat-icon>
+                  <div>
+                    <span class="info-label">Equipo actual</span>
+                    <span class="info-value">{{ c.currentTeam }}</span>
+                  </div>
+                </div>
+              }
+              @if (c.experience) {
+                <div class="info-item">
+                  <mat-icon>timeline</mat-icon>
+                  <div>
+                    <span class="info-label">Experiencia</span>
+                    <span class="info-value">{{ c.experience }}</span>
+                  </div>
+                </div>
+              }
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <h3>Certificaciones</h3>
+            <div class="certifications-list">
+              @for (cert of c.certifications; track cert) {
+                <div class="cert-item">
+                  <mat-icon>verified</mat-icon>
+                  {{ cert }}
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </mat-tab>
+
+      <!-- Valoraciones -->
+      <mat-tab label="Valoraciones">
+        <div class="tab-content">
+          <div class="reviews-header">
+            <div class="rating-big">
+              <span class="rating-value">4.8</span>
+              <div class="stars">
+                @for (star of [1,2,3,4,5]; track star) {
+                  <mat-icon [class.filled]="star <= 4">{{ star <= 4 ? 'star' : 'star_half' }}</mat-icon>
+                }
+              </div>
+              <span class="rating-count">47 valoraciones</span>
+            </div>
+          </div>
+
+          <mat-divider></mat-divider>
+
+          <!-- Sample reviews -->
+          <div class="reviews-list">
+            <div class="review-item">
+              <div class="review-header">
+                <strong>Lucas Martínez</strong>
+                <div class="stars small">
+                  @for (star of [1,2,3,4,5]; track star) {
+                    <mat-icon class="filled">star</mat-icon>
+                  }
+                </div>
+              </div>
+              <p>"Excelente profesional. El plan nutricional me cambió el rendimiento en cancha."</p>
+              <span class="review-date">Agosto 2024</span>
+            </div>
+            <div class="review-item">
+              <div class="review-header">
+                <strong>Nicolás Fernández</strong>
+                <div class="stars small">
+                  @for (star of [1,2,3,4,5]; track star) {
+                    <mat-icon [class.filled]="star <= 4">{{ star <= 4 ? 'star' : 'star_border' }}</mat-icon>
+                  }
+                </div>
+              </div>
+              <p>"Muy buena atención y seguimiento. Recomiendo totalmente."</p>
+              <span class="review-date">Julio 2024</span>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+}

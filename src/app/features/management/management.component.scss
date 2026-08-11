@@ -1,0 +1,484 @@
+.management-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--sh-on-surface);
+}
+
+.page-subtitle {
+  font-size: 0.9rem;
+  color: var(--sh-on-surface-secondary);
+  margin: 0 0 24px;
+}
+
+.management-tabs {
+  background-color: var(--sh-surface);
+  border-radius: var(--sh-radius-lg);
+}
+
+.tab-label-text {
+  margin-left: 8px;
+}
+
+.tab-content {
+  padding: 24px;
+}
+
+// Recommendation Cards
+.rec-card {
+  padding: 20px;
+  margin-bottom: 16px;
+  border-radius: var(--sh-radius-md);
+}
+
+.rec-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.rec-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    color: #ffffff;
+  }
+}
+
+.rec-info {
+  flex: 1;
+
+  h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--sh-on-surface);
+  }
+
+  .rec-staff {
+    margin: 2px 0 0;
+    font-size: 0.8rem;
+    color: var(--sh-on-surface-secondary);
+  }
+}
+
+.rec-description {
+  font-size: 0.85rem;
+  color: var(--sh-on-surface-secondary);
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.rec-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.rec-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--sh-on-surface);
+  line-height: 1.4;
+
+  mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    color: var(--sh-accent);
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+}
+
+.rec-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rec-date {
+  font-size: 0.75rem;
+  color: var(--sh-on-surface-secondary);
+}
+
+// Players List (Professional view)
+.players-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.player-section {
+  border: 1px solid var(--sh-border);
+  border-radius: var(--sh-radius-md);
+  padding: 16px;
+}
+
+.player-row-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.player-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: var(--sh-surface-variant);
+  border-radius: var(--sh-radius-md);
+  text-decoration: none;
+  color: var(--sh-on-surface);
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 2px 8px var(--sh-shadow);
+  }
+}
+
+.player-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.player-info {
+  flex: 1;
+
+  .player-name {
+    display: block;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .player-detail {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--sh-on-surface-secondary);
+  }
+}
+
+// Plans Overview
+.plans-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+// Player recommendations (professional view)
+.player-recs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.mini-rec-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background-color: var(--sh-surface-variant);
+  border-radius: var(--sh-radius-md);
+}
+
+.mini-rec-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    color: #ffffff;
+  }
+}
+
+.mini-rec-info {
+  flex: 1;
+
+  .mini-rec-title {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--sh-on-surface);
+  }
+
+  .mini-rec-meta {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--sh-on-surface-secondary);
+  }
+}
+
+.no-plans-text {
+  font-size: 0.8rem;
+  color: var(--sh-on-surface-secondary);
+  font-style: italic;
+  margin: 8px 0 12px;
+}
+
+.add-plan-btn {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.section-info {
+  font-size: 0.85rem;
+  color: var(--sh-on-surface-secondary);
+  margin: 0 0 16px;
+}
+
+.plan-summary-card {
+  padding: 16px;
+  border-radius: var(--sh-radius-md);
+}
+
+.plan-summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  mat-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    color: var(--sh-primary);
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 4px 0 0;
+    font-size: 0.8rem;
+    color: var(--sh-on-surface-secondary);
+  }
+}
+
+// Institution view
+.club-section {
+  margin-bottom: 24px;
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--sh-on-surface);
+  }
+}
+
+.divisions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.division-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: var(--sh-surface-variant);
+  border-radius: var(--sh-radius-md);
+  text-decoration: none;
+  color: var(--sh-on-surface);
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 2px 8px var(--sh-shadow);
+    transform: translateX(4px);
+  }
+}
+
+.division-row-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--sh-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: #ffffff;
+  }
+}
+
+.division-row-info {
+  flex: 1;
+
+  .div-name {
+    display: block;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .div-meta {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--sh-on-surface-secondary);
+  }
+}
+
+// Attendance
+.attendance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.attendance-card {
+  padding: 16px;
+  border-radius: var(--sh-radius-md);
+
+  h4 {
+    margin: 0 0 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+}
+
+.attendance-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--sh-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.present {
+  background-color: var(--sh-success) !important;
+  color: #ffffff !important;
+}
+
+// Citations
+.citation-card {
+  padding: 20px;
+  border-radius: var(--sh-radius-md);
+}
+
+.citation-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  mat-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    color: var(--sh-primary);
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 4px 0 0;
+    font-size: 0.8rem;
+    color: var(--sh-on-surface-secondary);
+  }
+}
+
+.citation-list {
+  padding: 16px 0;
+
+  .citation-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+}
+
+.cited-players {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.citation-action {
+  margin-top: 8px;
+}
+
+// Empty state
+.empty-state {
+  text-align: center;
+  padding: 48px 16px;
+  color: var(--sh-on-surface-secondary);
+
+  mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    margin: 0 0 16px;
+    font-size: 0.9rem;
+  }
+
+  &.big {
+    padding: 80px 24px;
+    background-color: var(--sh-surface);
+    border-radius: var(--sh-radius-lg);
+
+    h3 {
+      font-size: 1.3rem;
+      color: var(--sh-on-surface);
+      margin: 0 0 8px;
+    }
+  }
+}
+
+// Mobile
+@media (max-width: 599px) {
+  .tab-label-text {
+    display: none;
+  }
+
+  .attendance-grid {
+    grid-template-columns: 1fr;
+  }
+}

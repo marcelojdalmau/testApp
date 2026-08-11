@@ -1,0 +1,161 @@
+<div class="profile-container">
+  <div class="profile-card">
+    <!-- Header -->
+    <div class="profile-header">
+      <h1>{{ getRoleTitle() }}</h1>
+      <p>Completá tu información para personalizar tu experiencia.</p>
+    </div>
+
+    <!-- Form -->
+    <form (ngSubmit)="submit()" class="profile-form">
+      <!-- Common Fields -->
+      <mat-form-field appearance="outline">
+        <mat-label>Disciplina deportiva</mat-label>
+        <mat-select [(ngModel)]="discipline" name="discipline">
+          @for (d of disciplines; track d.value) {
+            <mat-option [value]="d.value">{{ d.label }}</mat-option>
+          }
+        </mat-select>
+        <mat-icon matPrefix>sports</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ubicación</mat-label>
+        <input matInput [(ngModel)]="location" name="location" placeholder="Ciudad, Provincia">
+        <mat-icon matPrefix>location_on</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Bio / Descripción breve</mat-label>
+        <textarea matInput [(ngModel)]="bio" name="bio" rows="3" placeholder="Contá algo sobre vos..."></textarea>
+      </mat-form-field>
+
+      <!-- Athlete-specific Fields -->
+      @if (role === 'athlete') {
+        <mat-form-field appearance="outline">
+          <mat-label>Nivel</mat-label>
+          <mat-select [(ngModel)]="athleteLevel" name="athleteLevel">
+            <mat-option value="amateur">Amateur</mat-option>
+            <mat-option value="semi-professional">Semi-profesional</mat-option>
+            <mat-option value="professional">Profesional</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Posición / Especialidad</mat-label>
+          <input matInput [(ngModel)]="position" name="position" placeholder="Ej: Mediocampista, Velocista">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Club actual</mat-label>
+          <input matInput [(ngModel)]="currentClub" name="currentClub" placeholder="Ej: Club Atlético Vélez Sarsfield">
+        </mat-form-field>
+      }
+
+      <!-- Health Professional Fields -->
+      @if (role === 'health-professional') {
+        <mat-form-field appearance="outline">
+          <mat-label>Especialidad</mat-label>
+          <mat-select [(ngModel)]="specialtyType" name="specialtyType">
+            <mat-option value="nutritionist">Nutricionista</mat-option>
+            <mat-option value="physical-trainer">Preparador Físico</mat-option>
+            <mat-option value="kinesiologist">Kinesiólogo</mat-option>
+            <mat-option value="sports-doctor">Médico Deportivo</mat-option>
+            <mat-option value="psychologist">Psicólogo Deportivo</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Certificaciones</mat-label>
+          <input matInput [(ngModel)]="certifications" name="certifications" placeholder="ISAK I, Lic. Nutrición (separar con comas)">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Servicios ofrecidos</mat-label>
+          <input matInput [(ngModel)]="servicesOffered" name="servicesOffered" placeholder="Planes nutricionales, Antropometría (separar con comas)">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Rango de precios</mat-label>
+          <input matInput [(ngModel)]="priceRange" name="priceRange" placeholder="Ej: $5.000 - $15.000 por consulta">
+          <mat-icon matPrefix>payments</mat-icon>
+        </mat-form-field>
+      }
+
+      <!-- Coach Fields -->
+      @if (role === 'coach') {
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo de rol</mat-label>
+          <mat-select [(ngModel)]="coachType" name="coachType">
+            <mat-option value="head-coach">Director Técnico</mat-option>
+            <mat-option value="assistant-coach">Asistente Técnico</mat-option>
+            <mat-option value="video-analyst">Videoanalista</mat-option>
+            <mat-option value="goalkeeper-coach">Entrenador de Arqueros</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Equipo actual</mat-label>
+          <input matInput [(ngModel)]="currentTeam" name="currentTeam" placeholder="Ej: Racing Club - Reserva">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Experiencia</mat-label>
+          <input matInput [(ngModel)]="experience" name="experience" placeholder="Ej: 10 años en divisiones inferiores">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Certificaciones</mat-label>
+          <input matInput [(ngModel)]="certifications" name="certifications" placeholder="DT Nacional, UEFA B (separar con comas)">
+        </mat-form-field>
+      }
+
+      <!-- Institution Fields -->
+      @if (role === 'institution') {
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo de institución</mat-label>
+          <mat-select [(ngModel)]="institutionType" name="institutionType">
+            <mat-option value="club">Club</mat-option>
+            <mat-option value="league">Liga</mat-option>
+            <mat-option value="gym">Gimnasio / Box</mat-option>
+            <mat-option value="running-team">Running Team</mat-option>
+            <mat-option value="academy">Academia</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Año de fundación</mat-label>
+          <input matInput type="number" [(ngModel)]="foundedYear" name="foundedYear" placeholder="Ej: 1905">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Instalaciones</mat-label>
+          <input matInput [(ngModel)]="facilities" name="facilities" placeholder="Cancha 11, Gimnasio, Pileta (separar con comas)">
+        </mat-form-field>
+      }
+
+      <!-- Management Fields -->
+      @if (role === 'management') {
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo</mat-label>
+          <mat-select [(ngModel)]="managementType" name="managementType">
+            <mat-option value="agent">Representante / Agente</mat-option>
+            <mat-option value="brand">Marca Deportiva</mat-option>
+            <mat-option value="press">Prensa / Medios</mat-option>
+            <mat-option value="equipment-manager">Utilería / Servicios</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Empresa / Organización</mat-label>
+          <input matInput [(ngModel)]="company" name="company" placeholder="Ej: Nike Argentina, Agencia Deportiva Sur">
+        </mat-form-field>
+      }
+
+      <!-- Submit -->
+      <button mat-flat-button color="primary" type="submit" class="submit-btn">
+        Crear Perfil
+      </button>
+    </form>
+  </div>
+</div>

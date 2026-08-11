@@ -1,0 +1,310 @@
+<div class="management-container">
+  <h1 class="page-title">Mi Centro de Control</h1>
+  <p class="page-subtitle">Gestión de planes, rutinas y planteles</p>
+
+  <!-- ATHLETE VIEW -->
+  @if (userRole() === 'athlete') {
+    <mat-tab-group class="management-tabs">
+      <!-- Nutrición -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>restaurant</mat-icon>
+          <span class="tab-label-text">Nutrición</span>
+        </ng-template>
+        <div class="tab-content">
+          @if (getRecsOfType('diet').length > 0) {
+            @for (rec of getRecsOfType('diet'); track rec.id) {
+              <ng-container *ngTemplateOutlet="recCard; context: { $implicit: rec }"></ng-container>
+            }
+          } @else {
+            <div class="empty-state">
+              <mat-icon>restaurant</mat-icon>
+              <p>No tenés planes nutricionales activos.</p>
+              <button mat-stroked-button routerLink="/marketplace">Buscar nutricionista</button>
+            </div>
+          }
+        </div>
+      </mat-tab>
+
+      <!-- Preparación Física -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>fitness_center</mat-icon>
+          <span class="tab-label-text">Prep. Física</span>
+        </ng-template>
+        <div class="tab-content">
+          @if (getRecsOfType('exercise').length > 0) {
+            @for (rec of getRecsOfType('exercise'); track rec.id) {
+              <ng-container *ngTemplateOutlet="recCard; context: { $implicit: rec }"></ng-container>
+            }
+          } @else {
+            <div class="empty-state">
+              <mat-icon>fitness_center</mat-icon>
+              <p>No tenés rutinas asignadas.</p>
+              <button mat-stroked-button routerLink="/marketplace">Buscar preparador físico</button>
+            </div>
+          }
+        </div>
+      </mat-tab>
+
+      <!-- Rehabilitación -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>healing</mat-icon>
+          <span class="tab-label-text">Rehabilitación</span>
+        </ng-template>
+        <div class="tab-content">
+          @if (getRecsOfType('rehabilitation').length > 0) {
+            @for (rec of getRecsOfType('rehabilitation'); track rec.id) {
+              <ng-container *ngTemplateOutlet="recCard; context: { $implicit: rec }"></ng-container>
+            }
+          } @else {
+            <div class="empty-state">
+              <mat-icon>healing</mat-icon>
+              <p>No tenés planes de rehabilitación activos.</p>
+            </div>
+          }
+        </div>
+      </mat-tab>
+
+      <!-- Táctico -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>sports_soccer</mat-icon>
+          <span class="tab-label-text">Táctico</span>
+        </ng-template>
+        <div class="tab-content">
+          @if (getRecsOfType('tactical').length > 0) {
+            @for (rec of getRecsOfType('tactical'); track rec.id) {
+              <ng-container *ngTemplateOutlet="recCard; context: { $implicit: rec }"></ng-container>
+            }
+          } @else {
+            <div class="empty-state">
+              <mat-icon>sports_soccer</mat-icon>
+              <p>No tenés indicaciones tácticas.</p>
+            </div>
+          }
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  }
+
+  <!-- PROFESSIONAL / COACH VIEW -->
+  @if (userRole() === 'health-professional' || userRole() === 'coach') {
+    <mat-tab-group class="management-tabs">
+      <!-- Mis Deportistas -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>groups</mat-icon>
+          <span class="tab-label-text">Mis Deportistas</span>
+        </ng-template>
+        <div class="tab-content">
+          <div class="players-list">
+            @for (player of managedPlayers(); track player.id) {
+              <div class="player-section">
+                <div class="player-row-header">
+                  <img [src]="player.avatar" [alt]="player.fullName" class="player-avatar">
+                  <div class="player-info">
+                    <span class="player-name">{{ player.fullName }}</span>
+                    <span class="player-detail">{{ player.discipline | titlecase }} · {{ player.location }}</span>
+                  </div>
+                  <a mat-icon-button [routerLink]="['/profile/athlete', player.id]" matTooltip="Ver perfil">
+                    <mat-icon>open_in_new</mat-icon>
+                  </a>
+                </div>
+
+                <!-- Plans I assigned to this player -->
+                @if (getMyRecsForPlayer(player.id).length > 0) {
+                  <div class="player-recs">
+                    @for (rec of getMyRecsForPlayer(player.id); track rec.id) {
+                      <div class="mini-rec-card">
+                        <div class="mini-rec-icon" [style.background-color]="getRecommendationColor(rec.type)">
+                          <mat-icon>{{ getRecommendationIcon(rec.type) }}</mat-icon>
+                        </div>
+                        <div class="mini-rec-info">
+                          <span class="mini-rec-title">{{ rec.title }}</span>
+                          <span class="mini-rec-meta">{{ getTypeLabel(rec.type) }} · {{ rec.status === 'active' ? 'Activo' : rec.status }}</span>
+                        </div>
+                        <button mat-icon-button matTooltip="Editar plan">
+                          <mat-icon>edit</mat-icon>
+                        </button>
+                      </div>
+                    }
+                  </div>
+                } @else {
+                  <p class="no-plans-text">Sin planes asignados por vos.</p>
+                }
+
+                <button mat-stroked-button class="add-plan-btn">
+                  <mat-icon>add</mat-icon>
+                  Agregar plan
+                </button>
+              </div>
+            }
+          </div>
+        </div>
+      </mat-tab>
+
+      <!-- Mis Planes (solo los míos) -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>assignment</mat-icon>
+          <span class="tab-label-text">Mis Planes</span>
+        </ng-template>
+        <div class="tab-content">
+          @if (myRecommendations().length > 0) {
+            <p class="section-info">Planes y recomendaciones que creaste para tus deportistas.</p>
+            @for (rec of myRecommendations(); track rec.id) {
+              <ng-container *ngTemplateOutlet="recCard; context: { $implicit: rec }"></ng-container>
+            }
+          } @else {
+            <div class="empty-state">
+              <mat-icon>assignment</mat-icon>
+              <p>No tenés planes creados todavía.</p>
+              <p class="empty-hint">Seleccioná un deportista y agregale un plan.</p>
+            </div>
+          }
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  }
+
+  <!-- INSTITUTION VIEW -->
+  @if (userRole() === 'institution') {
+    <mat-tab-group class="management-tabs">
+      <!-- Planteles -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>groups</mat-icon>
+          <span class="tab-label-text">Planteles</span>
+        </ng-template>
+        <div class="tab-content">
+          @for (club of clubs(); track club.id) {
+            <div class="club-section">
+              <h3>{{ club.name }}</h3>
+              <div class="divisions-list">
+                @for (div of club.divisions; track div.id) {
+                  <a class="division-row" [routerLink]="['/profile/club', club.id, 'division', div.id]">
+                    <div class="division-row-icon">
+                      <mat-icon>groups</mat-icon>
+                    </div>
+                    <div class="division-row-info">
+                      <span class="div-name">{{ div.name }}</span>
+                      <span class="div-meta">{{ div.playerIds.length }} jugadores · {{ div.staffIds.length }} staff</span>
+                    </div>
+                    <mat-icon>chevron_right</mat-icon>
+                  </a>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </mat-tab>
+
+      <!-- Asistencia -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>fact_check</mat-icon>
+          <span class="tab-label-text">Asistencia</span>
+        </ng-template>
+        <div class="tab-content">
+          <div class="attendance-grid">
+            <mat-card class="attendance-card">
+              <h4>Reserva - Semana 05/08</h4>
+              <div class="attendance-row">
+                <span>Lunes 05/08</span>
+                <mat-chip class="present">18/20</mat-chip>
+              </div>
+              <div class="attendance-row">
+                <span>Miércoles 07/08</span>
+                <mat-chip class="present">20/20</mat-chip>
+              </div>
+              <div class="attendance-row">
+                <span>Viernes 09/08</span>
+                <mat-chip class="present">17/20</mat-chip>
+              </div>
+            </mat-card>
+            <mat-card class="attendance-card">
+              <h4>5ta División - Semana 05/08</h4>
+              <div class="attendance-row">
+                <span>Martes 06/08</span>
+                <mat-chip class="present">22/25</mat-chip>
+              </div>
+              <div class="attendance-row">
+                <span>Jueves 08/08</span>
+                <mat-chip class="present">24/25</mat-chip>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </mat-tab>
+
+      <!-- Citaciones -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>event_note</mat-icon>
+          <span class="tab-label-text">Citaciones</span>
+        </ng-template>
+        <div class="tab-content">
+          <mat-card class="citation-card">
+            <div class="citation-header">
+              <mat-icon>sports_soccer</mat-icon>
+              <div>
+                <h4>Racing vs Independiente - Reserva</h4>
+                <p>Sábado 10/08 - 11:00hs - Estadio Libertadores de América</p>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="citation-list">
+              <p class="citation-label">Citados (20 jugadores):</p>
+              <div class="cited-players">
+                <mat-chip>Lucas Martínez</mat-chip>
+                <mat-chip>Nicolás Fernández</mat-chip>
+                <mat-chip>+18 más</mat-chip>
+              </div>
+            </div>
+            <button mat-flat-button color="primary" class="citation-action">Editar citación</button>
+          </mat-card>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  }
+
+  <!-- MANAGEMENT/BRANDS VIEW -->
+  @if (userRole() === 'management') {
+    <div class="empty-state big">
+      <mat-icon>business_center</mat-icon>
+      <h3>Panel de Gestión</h3>
+      <p>Administrá tu portfolio de atletas, contratos y solicitudes de sponsoreo desde aquí.</p>
+      <button mat-flat-button color="primary" routerLink="/marketplace">Buscar atletas</button>
+    </div>
+  }
+</div>
+
+<!-- Recommendation Card Template -->
+<ng-template #recCard let-rec>
+  <mat-card class="rec-card">
+    <div class="rec-header">
+      <div class="rec-icon" [style.background-color]="getRecommendationColor(rec.type)">
+        <mat-icon>{{ getRecommendationIcon(rec.type) }}</mat-icon>
+      </div>
+      <div class="rec-info">
+        <h4>{{ rec.title }}</h4>
+        <p class="rec-staff">{{ rec.staffName }} · {{ rec.staffRole }}</p>
+      </div>
+      <mat-chip [class]="rec.status">{{ rec.status === 'active' ? 'Activo' : rec.status }}</mat-chip>
+    </div>
+    <p class="rec-description">{{ rec.description }}</p>
+    <div class="rec-details">
+      @for (detail of rec.details; track detail) {
+        <div class="rec-detail-item">
+          <mat-icon>check_circle_outline</mat-icon>
+          <span>{{ detail }}</span>
+        </div>
+      }
+    </div>
+    <div class="rec-footer">
+      <span class="rec-date">{{ rec.createdAt | date:'dd/MM/yyyy' }}</span>
+    </div>
+  </mat-card>
+</ng-template>

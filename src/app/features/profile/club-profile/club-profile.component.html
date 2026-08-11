@@ -1,0 +1,94 @@
+@if (club(); as c) {
+  <div class="profile-container">
+    <!-- Header Card -->
+    <mat-card class="club-header-card">
+      <div class="club-header">
+        <div class="club-logo">
+          <mat-icon>stadium</mat-icon>
+        </div>
+        <div class="club-info">
+          <h1>{{ c.name }}</h1>
+          <p class="club-meta">
+            <mat-icon>sports</mat-icon>
+            {{ getDisciplineLabel(c.discipline) }} · {{ c.colors }}
+          </p>
+          <p class="club-meta">
+            <mat-icon>location_on</mat-icon>
+            {{ c.location }}
+          </p>
+          <p class="club-meta">
+            <mat-icon>calendar_today</mat-icon>
+            Fundado en {{ c.foundedYear }}
+          </p>
+        </div>
+        <div class="club-stats">
+          <div class="club-stat">
+            <span class="stat-value">{{ c.memberCount | number }}</span>
+            <span class="stat-label">Socios</span>
+          </div>
+          <div class="club-stat">
+            <span class="stat-value">{{ c.divisions.length }}</span>
+            <span class="stat-label">Divisiones</span>
+          </div>
+        </div>
+      </div>
+      @if (c.description) {
+        <p class="description">{{ c.description }}</p>
+      }
+    </mat-card>
+
+    <!-- Tabs -->
+    <mat-tab-group class="club-tabs">
+      <!-- Divisiones -->
+      <mat-tab label="Divisiones">
+        <div class="tab-content">
+          <div class="divisions-grid">
+            @for (div of c.divisions; track div.id) {
+              <a class="division-card" [routerLink]="['/profile/club', c.id, 'division', div.id]">
+                <div class="division-icon">
+                  <mat-icon>groups</mat-icon>
+                </div>
+                <div class="division-info">
+                  <h4>{{ div.name }}</h4>
+                  <span class="division-category">{{ div.category }}</span>
+                  <div class="division-counts">
+                    <span><mat-icon>person</mat-icon> {{ div.playerIds.length }} jugadores</span>
+                    <span><mat-icon>badge</mat-icon> {{ div.staffIds.length }} staff</span>
+                  </div>
+                </div>
+                <mat-icon class="arrow">chevron_right</mat-icon>
+              </a>
+            }
+          </div>
+        </div>
+      </mat-tab>
+
+      <!-- Instalaciones -->
+      <mat-tab label="Instalaciones">
+        <div class="tab-content">
+          <div class="facilities-list">
+            @for (facility of c.facilities; track facility) {
+              <div class="facility-item">
+                <mat-icon>place</mat-icon>
+                <span>{{ facility }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      </mat-tab>
+
+      <!-- Convocatorias -->
+      <mat-tab label="Convocatorias">
+        <div class="tab-content">
+          <div class="empty-state">
+            <mat-icon>work</mat-icon>
+            <p>Ver convocatorias abiertas del club en el Marketplace.</p>
+            <a mat-flat-button color="primary" routerLink="/marketplace">
+              Ir al Marketplace
+            </a>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+}

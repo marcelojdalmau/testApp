@@ -1,0 +1,161 @@
+@use '@angular/material' as mat;
+
+// ============================================================
+// SportHub Custom Theme - Deportivo Sobrio
+// ============================================================
+
+// Light Theme
+$sporthub-light-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$violet-palette,
+    tertiary: mat.$green-palette,
+  ),
+  typography: (
+    plain-family: (Roboto, sans-serif),
+    brand-family: (Roboto, sans-serif),
+  ),
+  density: (
+    scale: 0,
+  ),
+));
+
+// Dark Theme
+$sporthub-dark-theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$violet-palette,
+    tertiary: mat.$green-palette,
+  ),
+  typography: (
+    plain-family: (Roboto, sans-serif),
+    brand-family: (Roboto, sans-serif),
+  ),
+  density: (
+    scale: 0,
+  ),
+));
+
+// ============================================================
+// CSS Custom Properties (Design Tokens)
+// ============================================================
+
+:root {
+  // Light mode tokens (default)
+  --sh-primary: #1a237e;
+  --sh-primary-light: #534bae;
+  --sh-accent: #00c853;
+  --sh-accent-light: #5efc82;
+  --sh-background: #fafafa;
+  --sh-surface: #ffffff;
+  --sh-surface-variant: #f0f0f0;
+  --sh-on-surface: #212121;
+  --sh-on-surface-secondary: #616161;
+  --sh-border: #e0e0e0;
+  --sh-shadow: rgba(0, 0, 0, 0.1);
+  --sh-error: #d32f2f;
+  --sh-warning: #ff6d00;
+  --sh-success: #00c853;
+
+  // Layout tokens
+  --sh-sidebar-width: 260px;
+  --sh-sidebar-collapsed-width: 64px;
+  --sh-topbar-height: 64px;
+  --sh-bottomnav-height: 56px;
+
+  // Border radius
+  --sh-radius-sm: 4px;
+  --sh-radius-md: 8px;
+  --sh-radius-lg: 16px;
+  --sh-radius-xl: 24px;
+}
+
+// Dark mode tokens
+.dark-theme {
+  --sh-primary: #5c6bc0;
+  --sh-primary-light: #8e99f3;
+  --sh-accent: #69f0ae;
+  --sh-accent-light: #9fffe0;
+  --sh-background: #121212;
+  --sh-surface: #1e1e1e;
+  --sh-surface-variant: #2c2c2c;
+  --sh-on-surface: #e0e0e0;
+  --sh-on-surface-secondary: #9e9e9e;
+  --sh-border: #333333;
+  --sh-shadow: rgba(0, 0, 0, 0.4);
+  --sh-error: #ef5350;
+  --sh-warning: #ff9100;
+  --sh-success: #69f0ae;
+}
+
+// ============================================================
+// Apply Angular Material Themes
+// ============================================================
+
+html {
+  @include mat.theme($sporthub-light-theme);
+  color-scheme: light;
+}
+
+html.dark-theme {
+  @include mat.theme($sporthub-dark-theme);
+  color-scheme: dark;
+}
+
+// ============================================================
+// Global Styles
+// ============================================================
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  background-color: var(--sh-background);
+  color: var(--sh-on-surface);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// ============================================================
+// Utility Classes
+// ============================================================
+
+.sh-card {
+  background-color: var(--sh-surface);
+  border-radius: var(--sh-radius-md);
+  box-shadow: 0 2px 8px var(--sh-shadow);
+  padding: 16px;
+}
+
+.sh-accent-text {
+  color: var(--sh-accent);
+}
+
+.sh-primary-text {
+  color: var(--sh-primary);
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sh-surface-variant);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sh-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sh-on-surface-secondary);
+}

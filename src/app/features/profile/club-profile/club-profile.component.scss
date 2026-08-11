@@ -1,0 +1,249 @@
+.profile-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.club-header-card {
+  margin-bottom: 24px;
+  padding: 24px;
+  border-radius: var(--sh-radius-lg);
+  background-color: var(--sh-surface);
+}
+
+.club-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.club-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--sh-radius-md);
+  background-color: var(--sh-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  mat-icon {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+    color: #ffffff;
+  }
+}
+
+.club-info {
+  flex: 1;
+  min-width: 200px;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--sh-on-surface);
+  }
+
+  .club-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--sh-on-surface-secondary);
+    margin: 4px 0;
+
+    mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.club-stats {
+  display: flex;
+  gap: 24px;
+}
+
+.club-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: var(--sh-surface-variant);
+  border-radius: var(--sh-radius-md);
+
+  .stat-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--sh-primary);
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    color: var(--sh-on-surface-secondary);
+  }
+}
+
+.description {
+  margin: 16px 0 0;
+  font-size: 0.9rem;
+  color: var(--sh-on-surface-secondary);
+  line-height: 1.5;
+}
+
+// Tabs
+.club-tabs {
+  background-color: var(--sh-surface);
+  border-radius: var(--sh-radius-lg);
+}
+
+.tab-content {
+  padding: 24px;
+}
+
+// Divisions
+.divisions-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.division-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background-color: var(--sh-surface-variant);
+  border-radius: var(--sh-radius-md);
+  text-decoration: none;
+  color: var(--sh-on-surface);
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+
+  &:hover {
+    border-color: var(--sh-primary);
+    box-shadow: 0 2px 8px var(--sh-shadow);
+    transform: translateX(4px);
+  }
+}
+
+.division-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--sh-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  mat-icon {
+    color: #ffffff;
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.division-info {
+  flex: 1;
+
+  h4 {
+    margin: 0 0 2px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .division-category {
+    font-size: 0.8rem;
+    color: var(--sh-on-surface-secondary);
+  }
+
+  .division-counts {
+    display: flex;
+    gap: 16px;
+    margin-top: 6px;
+    font-size: 0.75rem;
+    color: var(--sh-on-surface-secondary);
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      mat-icon {
+        font-size: 14px;
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+}
+
+.arrow {
+  color: var(--sh-on-surface-secondary);
+}
+
+// Facilities
+.facilities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.facility-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: var(--sh-surface-variant);
+  border-radius: var(--sh-radius-md);
+  font-size: 0.9rem;
+
+  mat-icon {
+    color: var(--sh-accent);
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// Empty state
+.empty-state {
+  text-align: center;
+  padding: 48px 16px;
+  color: var(--sh-on-surface-secondary);
+
+  mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    margin: 0 0 16px;
+    font-size: 0.9rem;
+  }
+}
+
+// Mobile
+@media (max-width: 599px) {
+  .club-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .club-info .club-meta {
+    justify-content: center;
+  }
+
+  .club-stats {
+    width: 100%;
+    justify-content: center;
+  }
+}

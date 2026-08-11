@@ -1,0 +1,75 @@
+<!-- Top Bar -->
+<mat-toolbar class="topbar">
+  <!-- Sidebar toggle (desktop) / Menu (mobile) -->
+  @if (!isMobile()) {
+    <button mat-icon-button (click)="toggleSidebar()" matTooltip="Toggle menú">
+      <mat-icon>menu</mat-icon>
+    </button>
+  }
+
+  <span class="brand">
+    <mat-icon class="brand-icon">sports_soccer</mat-icon>
+    @if (!isMobile()) {
+      <span class="brand-text">SportHub</span>
+    }
+  </span>
+
+  <span class="spacer"></span>
+
+  <!-- Demo switcher -->
+  <app-demo-switcher></app-demo-switcher>
+
+  <!-- Theme toggle -->
+  <button mat-icon-button (click)="toggleTheme()" [matTooltip]="themeService.isDark() ? 'Modo claro' : 'Modo oscuro'">
+    <mat-icon>{{ themeService.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+
+  <!-- Settings -->
+  <button mat-icon-button routerLink="/settings" matTooltip="Configuración">
+    <mat-icon>settings</mat-icon>
+  </button>
+</mat-toolbar>
+
+<!-- Main Content Area -->
+<div class="layout-container" [class.mobile]="isMobile()">
+  <!-- Sidebar (Desktop) -->
+  @if (!isMobile()) {
+    <aside class="sidebar" [class.collapsed]="sidebarCollapsed()">
+      <nav>
+        @for (item of navItems; track item.route) {
+          <a
+            class="nav-item"
+            [routerLink]="item.route"
+            routerLinkActive="active"
+          >
+            <mat-icon>{{ item.icon }}</mat-icon>
+            @if (!sidebarCollapsed()) {
+              <span class="nav-label">{{ item.label }}</span>
+            }
+          </a>
+        }
+      </nav>
+    </aside>
+  }
+
+  <!-- Page Content -->
+  <main class="content" [class.with-sidebar]="!isMobile()" [class.sidebar-collapsed]="sidebarCollapsed()" [@routeAnimations]="getRouteAnimationData()">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+<!-- Bottom Navigation (Mobile) -->
+@if (isMobile()) {
+  <nav class="bottom-nav">
+    @for (item of navItems; track item.route) {
+      <a
+        class="bottom-nav-item"
+        [routerLink]="item.route"
+        routerLinkActive="active"
+      >
+        <mat-icon>{{ item.icon }}</mat-icon>
+        <span class="bottom-nav-label">{{ item.label }}</span>
+      </a>
+    }
+  </nav>
+}

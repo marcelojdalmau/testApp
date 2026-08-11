@@ -1,0 +1,134 @@
+@if (athlete(); as ath) {
+  <div class="profile-container">
+    <!-- Header Card -->
+    <mat-card class="profile-header-card">
+      <div class="profile-header">
+        <img class="avatar" [src]="ath.avatar" [alt]="ath.fullName">
+        <div class="profile-info">
+          <h1>{{ ath.fullName }}</h1>
+          <p class="profile-role">
+            <mat-icon>directions_run</mat-icon>
+            {{ ath.position ?? 'Deportista' }} · {{ getLevelLabel(ath.level) }}
+          </p>
+          <p class="profile-location">
+            <mat-icon>location_on</mat-icon>
+            {{ ath.location }}
+          </p>
+          @if (club(); as c) {
+            <a class="club-link" [routerLink]="['/profile/club', c.id]">
+              <mat-icon>stadium</mat-icon>
+              {{ c.name }}
+            </a>
+          }
+        </div>
+        <div class="profile-actions">
+          <button mat-flat-button color="primary">
+            <mat-icon>chat</mat-icon>
+            Contactar
+          </button>
+        </div>
+      </div>
+      @if (ath.bio) {
+        <p class="bio">{{ ath.bio }}</p>
+      }
+    </mat-card>
+
+    <!-- Tabs -->
+    <mat-tab-group class="profile-tabs">
+      <!-- Ficha Técnica -->
+      <mat-tab label="Ficha Técnica">
+        <div class="tab-content">
+          <div class="stats-grid">
+            @if (ath.age) {
+              <div class="stat-item">
+                <span class="stat-value">{{ ath.age }}</span>
+                <span class="stat-label">Edad</span>
+              </div>
+            }
+            @if (ath.height) {
+              <div class="stat-item">
+                <span class="stat-value">{{ ath.height }} cm</span>
+                <span class="stat-label">Altura</span>
+              </div>
+            }
+            @if (ath.weight) {
+              <div class="stat-item">
+                <span class="stat-value">{{ ath.weight }} kg</span>
+                <span class="stat-label">Peso</span>
+              </div>
+            }
+            <div class="stat-item">
+              <span class="stat-value">{{ ath.discipline }}</span>
+              <span class="stat-label">Disciplina</span>
+            </div>
+          </div>
+
+          <mat-divider></mat-divider>
+
+          <h3>Historial</h3>
+          <div class="history-list">
+            @if (ath.currentClub) {
+              <div class="history-item current">
+                <mat-icon>stadium</mat-icon>
+                <div>
+                  <span class="history-club">{{ ath.currentClub }}</span>
+                  <span class="history-detail">Club actual</span>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </mat-tab>
+
+      <!-- Recomendaciones del CT -->
+      <mat-tab label="Mis Planes">
+        <div class="tab-content">
+          @if (recommendations().length > 0) {
+            <div class="recommendations-list">
+              @for (rec of recommendations(); track rec.id) {
+                <mat-card class="recommendation-card">
+                  <div class="rec-header">
+                    <div class="rec-icon" [style.background-color]="getRecommendationColor(rec.type)">
+                      <mat-icon>{{ getRecommendationIcon(rec.type) }}</mat-icon>
+                    </div>
+                    <div class="rec-info">
+                      <h4>{{ rec.title }}</h4>
+                      <p class="rec-staff">{{ rec.staffName }} · {{ rec.staffRole }}</p>
+                    </div>
+                    <mat-chip [class]="rec.status">{{ rec.status === 'active' ? 'Activo' : rec.status }}</mat-chip>
+                  </div>
+                  <p class="rec-description">{{ rec.description }}</p>
+                  <div class="rec-details">
+                    @for (detail of rec.details; track detail) {
+                      <div class="rec-detail-item">
+                        <mat-icon>check_circle_outline</mat-icon>
+                        <span>{{ detail }}</span>
+                      </div>
+                    }
+                  </div>
+                  <span class="rec-date">{{ rec.createdAt | date:'dd/MM/yyyy' }}</span>
+                </mat-card>
+              }
+            </div>
+          } @else {
+            <div class="empty-state">
+              <mat-icon>assignment</mat-icon>
+              <p>No hay planes asignados todavía.</p>
+            </div>
+          }
+        </div>
+      </mat-tab>
+
+      <!-- Galería (placeholder) -->
+      <mat-tab label="Galería">
+        <div class="tab-content">
+          <div class="empty-state">
+            <mat-icon>photo_library</mat-icon>
+            <p>Fotos y videos de entrenamientos y partidos.</p>
+            <p class="empty-hint">Próximamente</p>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+}

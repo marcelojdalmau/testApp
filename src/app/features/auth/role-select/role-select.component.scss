@@ -1,0 +1,119 @@
+.role-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 24px;
+  background-color: var(--sh-background);
+}
+
+.role-content {
+  width: 100%;
+  max-width: 720px;
+}
+
+.role-header {
+  text-align: center;
+  margin-bottom: 32px;
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--sh-on-surface);
+    margin: 0 0 8px;
+  }
+
+  p {
+    color: var(--sh-on-surface-secondary);
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.role-card {
+  background-color: var(--sh-surface);
+  border: 2px solid var(--sh-border);
+  border-radius: var(--sh-radius-lg);
+  padding: 24px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: var(--sh-primary);
+    box-shadow: 0 4px 12px var(--sh-shadow);
+    transform: translateY(-2px);
+  }
+
+  &.selected {
+    border-color: var(--sh-primary);
+    background-color: var(--sh-surface-variant);
+    box-shadow: 0 4px 16px var(--sh-shadow);
+
+    .role-icon {
+      color: var(--sh-primary);
+    }
+  }
+}
+
+.role-icon {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  color: var(--sh-on-surface-secondary);
+  margin-bottom: 12px;
+  transition: color 0.2s ease;
+}
+
+.role-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--sh-on-surface);
+  margin: 0 0 8px;
+}
+
+.role-description {
+  font-size: 0.8rem;
+  color: var(--sh-on-surface-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.continue-btn {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: 48px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 auto;
+}
+
+// Mobile adjustments
+@media (max-width: 599px) {
+  .role-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .role-card {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 16px;
+    padding: 16px;
+
+    .role-icon {
+      margin-bottom: 0;
+      font-size: 32px;
+      width: 32px;
+      height: 32px;
+    }
+  }
+}

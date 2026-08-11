@@ -1,0 +1,281 @@
+.profile-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.profile-header-card {
+  margin-bottom: 24px;
+  padding: 24px;
+  border-radius: var(--sh-radius-lg);
+  background-color: var(--sh-surface);
+}
+
+.profile-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--sh-accent);
+}
+
+.profile-info {
+  flex: 1;
+  min-width: 200px;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--sh-on-surface);
+  }
+
+  .profile-role, .profile-location, .profile-price {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: var(--sh-on-surface-secondary);
+    margin: 4px 0;
+
+    mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .profile-price {
+    color: var(--sh-accent);
+    font-weight: 500;
+  }
+}
+
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-self: center;
+}
+
+.bio {
+  margin: 16px 0 0;
+  font-size: 0.9rem;
+  color: var(--sh-on-surface-secondary);
+  line-height: 1.5;
+}
+
+// Tabs
+.profile-tabs {
+  background-color: var(--sh-surface);
+  border-radius: var(--sh-radius-lg);
+}
+
+.tab-content {
+  padding: 24px;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: var(--sh-on-surface);
+}
+
+mat-divider {
+  margin: 20px 0;
+}
+
+// Services
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.service-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background-color: var(--sh-surface-variant);
+  border-radius: var(--sh-radius-xl);
+  font-size: 0.85rem;
+  color: var(--sh-on-surface);
+
+  mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    color: var(--sh-accent);
+  }
+}
+
+// Certifications
+.certifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cert-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--sh-on-surface);
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: var(--sh-primary);
+  }
+}
+
+// Info grid (for coaches)
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: var(--sh-surface-variant);
+  border-radius: var(--sh-radius-md);
+
+  mat-icon {
+    color: var(--sh-primary);
+  }
+
+  .info-label {
+    font-size: 0.75rem;
+    color: var(--sh-on-surface-secondary);
+    display: block;
+  }
+
+  .info-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--sh-on-surface);
+    display: block;
+  }
+}
+
+// Reviews
+.reviews-header {
+  text-align: center;
+  padding: 16px 0;
+}
+
+.rating-big {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  .rating-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--sh-on-surface);
+  }
+
+  .rating-count {
+    font-size: 0.8rem;
+    color: var(--sh-on-surface-secondary);
+  }
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+
+  mat-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    color: var(--sh-border);
+
+    &.filled {
+      color: #f9a825;
+    }
+  }
+
+  &.small mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.review-item {
+  padding: 12px;
+  background-color: var(--sh-surface-variant);
+  border-radius: var(--sh-radius-md);
+
+  .review-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    strong {
+      font-size: 0.9rem;
+    }
+  }
+
+  p {
+    font-size: 0.85rem;
+    color: var(--sh-on-surface-secondary);
+    margin: 0 0 6px;
+    font-style: italic;
+  }
+
+  .review-date {
+    font-size: 0.7rem;
+    color: var(--sh-on-surface-secondary);
+  }
+}
+
+// Mobile
+@media (max-width: 599px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-info {
+    text-align: center;
+
+    .profile-role, .profile-location, .profile-price {
+      justify-content: center;
+    }
+  }
+
+  .profile-actions {
+    flex-direction: row;
+    width: 100%;
+
+    button {
+      flex: 1;
+    }
+  }
+}

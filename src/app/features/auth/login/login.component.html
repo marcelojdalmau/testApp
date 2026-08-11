@@ -1,0 +1,61 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <!-- Logo -->
+    <div class="auth-header">
+      <mat-icon class="logo-icon">sports_soccer</mat-icon>
+      <h1 class="logo-text">SportHub</h1>
+      <p class="subtitle">Tu ecosistema deportivo integral</p>
+    </div>
+
+    <!-- Login Form -->
+    <form (ngSubmit)="login()" class="auth-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" [(ngModel)]="email" name="email" placeholder="tu@email.com">
+        <mat-icon matPrefix>email</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" [(ngModel)]="password" name="password">
+        <mat-icon matPrefix>lock</mat-icon>
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      @if (errorMessage) {
+        <p class="error-msg">{{ errorMessage }}</p>
+      }
+
+      <button mat-flat-button color="primary" type="submit" class="login-btn">
+        Ingresar
+      </button>
+    </form>
+
+    <!-- Divider -->
+    <div class="divider-container">
+      <mat-divider></mat-divider>
+      <span class="divider-text">o continuar con</span>
+      <mat-divider></mat-divider>
+    </div>
+
+    <!-- Social Login -->
+    <div class="social-buttons">
+      <button mat-stroked-button (click)="socialLogin('google')" class="social-btn">
+        <mat-icon>mail</mat-icon>
+        Google
+      </button>
+      <button mat-stroked-button (click)="socialLogin('facebook')" class="social-btn">
+        <mat-icon>facebook</mat-icon>
+        Facebook
+      </button>
+    </div>
+
+    <!-- Register Link -->
+    <p class="register-link">
+      ¿No tenés cuenta?
+      <a routerLink="/auth/register">Registrate</a>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="division-container">
+  <!-- Breadcrumb -->
+  @if (club(); as c) {
+    <nav class="breadcrumb">
+      <a [routerLink]="['/profile/club', c.id]">{{ c.name }}</a>
+      <mat-icon>chevron_right</mat-icon>
+      <span>{{ division()?.name }}</span>
+    </nav>
+  }
+
+  <!-- Header -->
+  @if (division(); as div) {
+    <mat-card class="division-header">
+      <div class="header-content">
+        <div class="header-icon">
+          <mat-icon>groups</mat-icon>
+        </div>
+        <div class="header-info">
+          <h1>{{ div.name }}</h1>
+          <p>{{ div.category }} · {{ club()?.name }}</p>
+        </div>
+        <div class="header-stats">
+          <mat-chip>{{ players().length }} jugadores</mat-chip>
+          <mat-chip>{{ staff().length }} staff</mat-chip>
+        </div>
+      </div>
+    </mat-card>
+  }
+
+  <!-- Players -->
+  <section class="section">
+    <h2>
+      <mat-icon>directions_run</mat-icon>
+      Jugadores
+    </h2>
+    @if (players().length > 0) {
+      <div class="members-grid">
+        @for (player of players(); track player.id) {
+          <a class="member-card" [routerLink]="getProfileRoute(player)">
+            <img class="member-avatar" [src]="player.avatar" [alt]="player.fullName">
+            <div class="member-info">
+              <span class="member-name">{{ player.fullName }}</span>
+              <span class="member-detail">{{ player.discipline | titlecase }}</span>
+            </div>
+            <mat-icon class="member-arrow">chevron_right</mat-icon>
+          </a>
+        }
+      </div>
+    } @else {
+      <p class="empty-text">No hay jugadores registrados en esta división.</p>
+    }
+  </section>
+
+  <mat-divider></mat-divider>
+
+  <!-- Staff / Cuerpo Técnico -->
+  <section class="section">
+    <h2>
+      <mat-icon>badge</mat-icon>
+      Cuerpo Técnico y Profesionales
+    </h2>
+    @if (staff().length > 0) {
+      <div class="members-grid">
+        @for (member of staff(); track member.id) {
+          <a class="member-card staff" [routerLink]="getProfileRoute(member)">
+            <img class="member-avatar" [src]="member.avatar" [alt]="member.fullName">
+            <div class="member-info">
+              <span class="member-name">{{ member.fullName }}</span>
+              <span class="member-detail">
+                <mat-icon>{{ getRoleIcon(member.role) }}</mat-icon>
+                {{ member.role === 'coach' ? 'Entrenador' : 'Profesional de salud' }}
+              </span>
+            </div>
+            <mat-icon class="member-arrow">chevron_right</mat-icon>
+          </a>
+        }
+      </div>
+    } @else {
+      <p class="empty-text">No hay staff asignado a esta división.</p>
+    }
+  </section>
+</div>

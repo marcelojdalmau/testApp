@@ -1,0 +1,159 @@
+<div class="communication-container">
+  <h1 class="page-title">Comunicación</h1>
+
+  <mat-tab-group class="comm-tabs">
+    <!-- Chat Tab -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>chat</mat-icon>
+        <span class="tab-label-text">Mensajes</span>
+      </ng-template>
+      <div class="chat-layout">
+        <!-- Conversation List -->
+        <div class="conv-list">
+          @if (conversations().length === 0) {
+            <div class="empty-state-inline">
+              <mat-icon>chat_bubble_outline</mat-icon>
+              <p>No tenés conversaciones.</p>
+            </div>
+          }
+          @for (conv of conversations(); track conv.id) {
+            <div
+              class="conv-item"
+              [class.active]="activeConversation()?.id === conv.id"
+              (click)="selectConversation(conv)"
+            >
+              @if (conv.isGroup) {
+                <div class="conv-avatar group">
+                  <mat-icon>groups</mat-icon>
+                </div>
+              } @else {
+                <img class="conv-avatar" [src]="getConversationAvatar(conv)" [alt]="getConversationName(conv)">
+              }
+              <div class="conv-preview">
+                <span class="conv-name">{{ getConversationName(conv) }}</span>
+                <span class="conv-last-msg">{{ conv.lastMessage }}</span>
+              </div>
+              @if (conv.unreadCount > 0) {
+                <span class="unread-badge">{{ conv.unreadCount }}</span>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Chat Area -->
+        <div class="chat-area">
+          @if (activeConversation(); as conv) {
+            <div class="chat-header">
+              <h3>{{ getConversationName(conv) }}</h3>
+              @if (conv.isGroup) {
+                <span class="chat-participants">{{ conv.participants.length }} participantes</span>
+              }
+            </div>
+
+            <div class="messages-area">
+              @for (msg of messages(); track msg.id) {
+                <div class="message-bubble" [class.sent]="msg.senderId === currentUserId" [class.received]="msg.senderId !== currentUserId">
+                  @if (msg.senderId !== currentUserId) {
+                    <span class="msg-sender">{{ msg.senderName }}</span>
+                  }
+                  <p class="msg-content">{{ msg.content }}</p>
+                  <span class="msg-time">{{ msg.timestamp | date:'HH:mm' }}</span>
+                </div>
+              }
+            </div>
+
+            <div class="chat-input">
+              <mat-form-field appearance="outline" class="input-field">
+                <input matInput [(ngModel)]="newMessage" placeholder="Escribí un mensaje..." (keyup.enter)="sendMessage()">
+              </mat-form-field>
+              <button mat-icon-button color="primary" (click)="sendMessage()">
+                <mat-icon>send</mat-icon>
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- Service Requests Tab -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>inbox</mat-icon>
+        <span class="tab-label-text">Solicitudes</span>
+      </ng-template>
+      <div class="tab-content">
+        <div class="requests-list">
+          @for (req of serviceRequests(); track req.id) {
+            <mat-card class="request-card">
+              <div class="request-header">
+                <div class="request-info">
+                  <h4>{{ req.title }}</h4>
+                  <p class="request-parties">
+                    <strong>{{ req.fromUserName }}</strong> → <strong>{{ req.toUserName }}</strong>
+                  </p>
+                </div>
+                <mat-chip [class]="req.status">{{ getStatusLabel(req.status) }}</mat-chip>
+              </div>
+              <p class="request-desc">{{ req.description }}</p>
+              <div class="request-footer">
+                @if (req.amount) {
+                  <span class="request-amount">
+                    <mat-icon>payments</mat-icon>
+                    {{ req.amount }}
+                  </span>
+                }
+                <span class="request-date">{{ req.createdAt | date:'dd/MM/yyyy' }}</span>
+                @if (req.status === 'pending') {
+                  <div class="request-actions">
+                    <button mat-flat-button color="primary" (click)="updateRequestStatus(req, 'accepted')">
+                      Aceptar
+                    </button>
+                    <button mat-stroked-button (click)="updateRequestStatus(req, 'rejected')">
+                      Rechazar
+                    </button>
+                  </div>
+                }
+              </div>
+            </mat-card>
+          }
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- Calendar Tab -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>calendar_today</mat-icon>
+        <span class="tab-label-text">Calendario</span>
+      </ng-template>
+      <div class="tab-content">
+        <div class="calendar-events">
+          @for (event of calendarEvents(); track event.id) {
+            <div class="event-item">
+              <div class="event-date-box">
+                <span class="event-day">{{ event.date | date:'dd' }}</span>
+                <span class="event-month">{{ event.date | date:'MMM' }}</span>
+              </div>
+              <div class="event-icon" [style.background-color]="getEventColor(event.type)">
+                <mat-icon>{{ getEventIcon(event.type) }}</mat-icon>
+              </div>
+              <div class="event-info">
+                <h4>{{ event.title }}</h4>
+                <p class="event-details">
+                  <mat-icon>schedule</mat-icon> {{ event.time }}hs
+                  @if (event.location) {
+                    · <mat-icon>location_on</mat-icon> {{ event.location }}
+                  }
+                </p>
+                @if (event.description) {
+                  <p class="event-desc">{{ event.description }}</p>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

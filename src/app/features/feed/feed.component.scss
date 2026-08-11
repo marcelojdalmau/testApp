@@ -1,0 +1,276 @@
+.feed-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+// Welcome Section
+.welcome-section {
+  margin-bottom: 24px;
+
+  h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--sh-on-surface);
+    margin: 0 0 8px;
+  }
+
+  .role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--sh-primary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 0;
+
+    mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+// Stats Section
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background-color: var(--sh-surface);
+  border-radius: var(--sh-radius-md);
+  padding: 16px;
+  box-shadow: 0 1px 4px var(--sh-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--sh-shadow);
+  }
+}
+
+.stat-icon {
+  color: var(--sh-primary);
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--sh-on-surface);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--sh-on-surface-secondary);
+  line-height: 1.3;
+}
+
+.stat-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin-top: 2px;
+
+  mat-icon {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+  }
+
+  &.up {
+    color: var(--sh-success);
+  }
+
+  &.down {
+    color: var(--sh-error);
+  }
+
+  &.neutral {
+    color: var(--sh-on-surface-secondary);
+  }
+}
+
+// Quick Actions
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--sh-on-surface);
+  margin: 0 0 16px;
+}
+
+.actions-section {
+  margin-bottom: 32px;
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.action-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 12px;
+  background-color: var(--sh-surface);
+  border-radius: var(--sh-radius-md);
+  border: 1px solid var(--sh-border);
+  text-decoration: none;
+  color: var(--sh-on-surface);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  mat-icon {
+    color: var(--sh-accent);
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+  }
+
+  &:hover {
+    border-color: var(--sh-primary);
+    background-color: var(--sh-surface-variant);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--sh-shadow);
+  }
+}
+
+// Feed Section
+.feed-section {
+  margin-bottom: 24px;
+}
+
+.feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feed-card {
+  border-radius: var(--sh-radius-md);
+  background-color: var(--sh-surface);
+
+  .feed-card-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+  }
+}
+
+.feed-card-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    color: #ffffff;
+  }
+
+  &.training {
+    background-color: #1565c0;
+  }
+
+  &.news {
+    background-color: #6a1b9a;
+  }
+
+  &.recommendation {
+    background-color: #2e7d32;
+  }
+
+  &.match {
+    background-color: #e65100;
+  }
+
+  &.achievement {
+    background-color: #f9a825;
+  }
+
+  &.convocatoria {
+    background-color: #00838f;
+  }
+}
+
+.feed-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.feed-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--sh-on-surface);
+  margin: 0 0 4px;
+}
+
+.feed-card-desc {
+  font-size: 0.85rem;
+  color: var(--sh-on-surface-secondary);
+  margin: 0 0 6px;
+  line-height: 1.4;
+}
+
+.feed-card-time {
+  font-size: 0.7rem;
+  color: var(--sh-on-surface-secondary);
+}
+
+.feed-card-action {
+  flex-shrink: 0;
+  align-self: center;
+  font-size: 0.8rem;
+}
+
+// Mobile adjustments
+@media (max-width: 599px) {
+  .stats-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .feed-card-content {
+    flex-wrap: wrap;
+  }
+
+  .feed-card-action {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .welcome-section h1 {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,35 @@
+<div class="role-container">
+  <div class="role-content">
+    <!-- Header -->
+    <div class="role-header">
+      <h1>¿Cuál es tu rol?</h1>
+      <p>Elegí cómo vas a usar SportHub. Esto personaliza tu experiencia.</p>
+    </div>
+
+    <!-- Role Cards -->
+    <div class="role-grid">
+      @for (option of roleOptions; track option.role) {
+        <div
+          class="role-card"
+          [class.selected]="selectedRole === option.role"
+          (click)="selectRole(option)"
+        >
+          <mat-icon class="role-icon">{{ option.icon }}</mat-icon>
+          <h3 class="role-label">{{ option.label }}</h3>
+          <p class="role-description">{{ option.description }}</p>
+        </div>
+      }
+    </div>
+
+    <!-- Continue Button -->
+    <button
+      mat-flat-button
+      color="primary"
+      class="continue-btn"
+      [disabled]="!selectedRole"
+      (click)="continue()"
+    >
+      Continuar
+    </button>
+  </div>
+</div>
