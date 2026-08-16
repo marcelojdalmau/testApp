@@ -1,5 +1,8 @@
 @use '@angular/material' as mat;
 
+// Google Fonts for skins
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Bebas+Neue&family=Teko:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
+
 // ============================================================
 // SportHub Custom Theme - Deportivo Sobrio
 // ============================================================
@@ -68,6 +71,19 @@ $sporthub-dark-theme: mat.define-theme((
   --sh-radius-md: 8px;
   --sh-radius-lg: 16px;
   --sh-radius-xl: 24px;
+
+  // Typography (skin-dependent)
+  --sh-font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  --sh-font-heading: 'Roboto', 'Helvetica Neue', sans-serif;
+  --sh-font-weight-heading: 700;
+  --sh-letter-spacing: normal;
+
+  // Skin-specific extras
+  --sh-topbar-bg: var(--sh-surface);
+  --sh-sidebar-bg: var(--sh-surface);
+  --sh-nav-active-bg: var(--sh-primary);
+  --sh-nav-active-color: #ffffff;
+  --sh-glow: none;
 }
 
 // Dark mode tokens
@@ -86,6 +102,481 @@ $sporthub-dark-theme: mat.define-theme((
   --sh-error: #ef5350;
   --sh-warning: #ff9100;
   --sh-success: #69f0ae;
+  --sh-topbar-bg: var(--sh-surface);
+  --sh-sidebar-bg: var(--sh-surface);
+}
+
+// ============================================================
+// SKIN: Retro Gym (80s/90s old-school gym & DT vibes)
+// Inspired by: Gold's Gym vintage, bodybuilding era, VHS aesthetics
+// ============================================================
+
+.skin-retro {
+  --sh-primary: #d4a017;
+  --sh-primary-light: #f0c040;
+  --sh-accent: #e53935;
+  --sh-accent-light: #ff6f60;
+  --sh-background: #1a1a0e;
+  --sh-surface: #2b2b1a;
+  --sh-surface-variant: #3a3a28;
+  --sh-on-surface: #f5e6c8;
+  --sh-on-surface-secondary: #c9b896;
+  --sh-border: #4a4a35;
+  --sh-shadow: rgba(212, 160, 23, 0.15);
+  --sh-error: #ff5252;
+  --sh-warning: #ffab00;
+  --sh-success: #76ff03;
+
+  --sh-radius-sm: 2px;
+  --sh-radius-md: 4px;
+  --sh-radius-lg: 6px;
+  --sh-radius-xl: 8px;
+
+  --sh-font-family: 'Courier New', 'Lucida Console', monospace;
+  --sh-font-heading: 'Impact', 'Arial Black', sans-serif;
+  --sh-font-weight-heading: 900;
+  --sh-letter-spacing: 1px;
+
+  --sh-topbar-bg: #1a1a0e;
+  --sh-sidebar-bg: #222210;
+  --sh-nav-active-bg: #d4a017;
+  --sh-nav-active-color: #1a1a0e;
+  --sh-glow: 0 0 8px rgba(212, 160, 23, 0.3);
+
+  &.dark-theme {
+    --sh-primary: #f0c040;
+    --sh-primary-light: #ffe082;
+    --sh-accent: #ff6f60;
+    --sh-accent-light: #ff9e80;
+    --sh-background: #0d0d05;
+    --sh-surface: #1a1a0e;
+    --sh-surface-variant: #2b2b1a;
+    --sh-on-surface: #f5e6c8;
+    --sh-on-surface-secondary: #c9b896;
+    --sh-border: #3a3a28;
+    --sh-topbar-bg: #0d0d05;
+    --sh-sidebar-bg: #141408;
+  }
+}
+
+// Retro light mode variant
+.skin-retro:not(.dark-theme) {
+  --sh-background: #fdf6e3;
+  --sh-surface: #fff8dc;
+  --sh-surface-variant: #f5e6c8;
+  --sh-on-surface: #2c1f0a;
+  --sh-on-surface-secondary: #5c4a2a;
+  --sh-border: #d4c4a0;
+  --sh-shadow: rgba(44, 31, 10, 0.12);
+  --sh-topbar-bg: #f5e6c8;
+  --sh-sidebar-bg: #fdf6e3;
+}
+
+// ============================================================
+// SKIN: Sport Pro (Actual/Modern - clean, professional sports)
+// Inspired by: Nike Training Club, modern fitness apps, clean UI
+// ============================================================
+
+.skin-modern {
+  --sh-primary: #1565c0;
+  --sh-primary-light: #42a5f5;
+  --sh-accent: #00e676;
+  --sh-accent-light: #69f0ae;
+  --sh-background: #f8f9fa;
+  --sh-surface: #ffffff;
+  --sh-surface-variant: #eceff1;
+  --sh-on-surface: #1a1a2e;
+  --sh-on-surface-secondary: #546e7a;
+  --sh-border: #dce3e8;
+  --sh-shadow: rgba(21, 101, 192, 0.08);
+  --sh-error: #d32f2f;
+  --sh-warning: #f57c00;
+  --sh-success: #00c853;
+
+  --sh-radius-sm: 6px;
+  --sh-radius-md: 12px;
+  --sh-radius-lg: 20px;
+  --sh-radius-xl: 28px;
+
+  --sh-font-family: 'Inter', 'Roboto', sans-serif;
+  --sh-font-heading: 'Inter', 'Roboto', sans-serif;
+  --sh-font-weight-heading: 800;
+  --sh-letter-spacing: -0.2px;
+
+  --sh-topbar-bg: #ffffff;
+  --sh-sidebar-bg: #f8f9fa;
+  --sh-nav-active-bg: #1565c0;
+  --sh-nav-active-color: #ffffff;
+  --sh-glow: none;
+
+  &.dark-theme {
+    --sh-primary: #42a5f5;
+    --sh-primary-light: #90caf9;
+    --sh-accent: #69f0ae;
+    --sh-accent-light: #b9f6ca;
+    --sh-background: #0f1923;
+    --sh-surface: #1a2733;
+    --sh-surface-variant: #253545;
+    --sh-on-surface: #eceff1;
+    --sh-on-surface-secondary: #90a4ae;
+    --sh-border: #37474f;
+    --sh-shadow: rgba(66, 165, 245, 0.1);
+    --sh-topbar-bg: #1a2733;
+    --sh-sidebar-bg: #0f1923;
+  }
+}
+
+// ============================================================
+// SKIN: Cyber Athlete (Futuristic - neon, high-tech sports)
+// Inspired by: Cyberpunk aesthetics, futuristic training HUDs, esports
+// ============================================================
+
+.skin-futuristic {
+  --sh-primary: #00e5ff;
+  --sh-primary-light: #6effff;
+  --sh-accent: #d500f9;
+  --sh-accent-light: #ff5bff;
+  --sh-background: #0a0a1a;
+  --sh-surface: #12122a;
+  --sh-surface-variant: #1a1a3e;
+  --sh-on-surface: #e0e0ff;
+  --sh-on-surface-secondary: #8888cc;
+  --sh-border: #2a2a5a;
+  --sh-shadow: rgba(0, 229, 255, 0.15);
+  --sh-error: #ff1744;
+  --sh-warning: #ff9100;
+  --sh-success: #00e676;
+
+  --sh-radius-sm: 2px;
+  --sh-radius-md: 4px;
+  --sh-radius-lg: 8px;
+  --sh-radius-xl: 12px;
+
+  --sh-font-family: 'Orbitron', 'Rajdhani', 'Roboto', sans-serif;
+  --sh-font-heading: 'Orbitron', 'Rajdhani', sans-serif;
+  --sh-font-weight-heading: 700;
+  --sh-letter-spacing: 2px;
+
+  --sh-topbar-bg: #0a0a1a;
+  --sh-sidebar-bg: #08081a;
+  --sh-nav-active-bg: transparent;
+  --sh-nav-active-color: #00e5ff;
+  --sh-glow: 0 0 12px rgba(0, 229, 255, 0.4), 0 0 24px rgba(0, 229, 255, 0.1);
+
+  &.dark-theme {
+    --sh-primary: #00e5ff;
+    --sh-primary-light: #6effff;
+    --sh-accent: #e040fb;
+    --sh-accent-light: #ff79ff;
+    --sh-background: #050510;
+    --sh-surface: #0a0a1a;
+    --sh-surface-variant: #12122a;
+    --sh-on-surface: #e0e0ff;
+    --sh-on-surface-secondary: #8888cc;
+    --sh-border: #1a1a4a;
+    --sh-topbar-bg: #050510;
+    --sh-sidebar-bg: #050510;
+  }
+}
+
+// Futuristic light mode variant
+.skin-futuristic:not(.dark-theme) {
+  --sh-background: #eef2ff;
+  --sh-surface: #f8f9ff;
+  --sh-surface-variant: #e3e8ff;
+  --sh-on-surface: #0a0a2e;
+  --sh-on-surface-secondary: #4a4a8a;
+  --sh-border: #c8d0ff;
+  --sh-shadow: rgba(0, 100, 200, 0.1);
+  --sh-topbar-bg: #f0f4ff;
+  --sh-sidebar-bg: #eef2ff;
+  --sh-primary: #0066cc;
+  --sh-primary-light: #3399ff;
+  --sh-accent: #9c27b0;
+  --sh-accent-light: #ce93d8;
+  --sh-nav-active-color: #0066cc;
+}
+
+// ============================================================
+// SKIN: Dark Analytics (Dashboard oscuro, DT moderno, datos)
+// Inspired by: Solis, analytics dashboards, modern coaching tools
+// ============================================================
+
+.skin-dark-analytics {
+  --sh-primary: #6366f1;
+  --sh-primary-light: #818cf8;
+  --sh-accent: #f59e0b;
+  --sh-accent-light: #fbbf24;
+  --sh-background: #0f172a;
+  --sh-surface: #1e293b;
+  --sh-surface-variant: #334155;
+  --sh-on-surface: #e2e8f0;
+  --sh-on-surface-secondary: #94a3b8;
+  --sh-border: #475569;
+  --sh-shadow: rgba(99, 102, 241, 0.1);
+  --sh-error: #ef4444;
+  --sh-warning: #f59e0b;
+  --sh-success: #10b981;
+
+  --sh-radius-sm: 6px;
+  --sh-radius-md: 10px;
+  --sh-radius-lg: 14px;
+  --sh-radius-xl: 20px;
+
+  --sh-font-family: 'Inter', 'Roboto', sans-serif;
+  --sh-font-heading: 'Inter', 'Roboto', sans-serif;
+  --sh-font-weight-heading: 700;
+  --sh-letter-spacing: -0.2px;
+
+  --sh-topbar-bg: #1e293b;
+  --sh-sidebar-bg: #0f172a;
+  --sh-nav-active-bg: rgba(99, 102, 241, 0.15);
+  --sh-nav-active-color: #818cf8;
+  --sh-glow: 0 0 12px rgba(99, 102, 241, 0.15);
+
+  &.dark-theme {
+    --sh-background: #020617;
+    --sh-surface: #0f172a;
+    --sh-surface-variant: #1e293b;
+    --sh-border: #334155;
+    --sh-topbar-bg: #0f172a;
+    --sh-sidebar-bg: #020617;
+  }
+}
+
+.skin-dark-analytics:not(.dark-theme) {
+  --sh-background: #f1f5f9;
+  --sh-surface: #ffffff;
+  --sh-surface-variant: #e2e8f0;
+  --sh-on-surface: #0f172a;
+  --sh-on-surface-secondary: #475569;
+  --sh-border: #cbd5e1;
+  --sh-shadow: rgba(99, 102, 241, 0.08);
+  --sh-topbar-bg: #ffffff;
+  --sh-sidebar-bg: #f8fafc;
+}
+
+// ============================================================
+// SKIN: Coral Training (Fitness boutique, entrenador premium)
+// Inspired by: Fitness Together, personal training studios
+// ============================================================
+
+.skin-coral-training {
+  --sh-primary: #e8614d;
+  --sh-primary-light: #f2877a;
+  --sh-accent: #1b8a8a;
+  --sh-accent-light: #2dbdbd;
+  --sh-background: #fef9f7;
+  --sh-surface: #ffffff;
+  --sh-surface-variant: #fdf0ed;
+  --sh-on-surface: #2d1f1a;
+  --sh-on-surface-secondary: #6b5147;
+  --sh-border: #f0d5cd;
+  --sh-shadow: rgba(232, 97, 77, 0.08);
+  --sh-error: #dc2626;
+  --sh-warning: #ea580c;
+  --sh-success: #059669;
+
+  --sh-radius-sm: 8px;
+  --sh-radius-md: 14px;
+  --sh-radius-lg: 22px;
+  --sh-radius-xl: 32px;
+
+  --sh-font-family: 'Montserrat', 'Roboto', sans-serif;
+  --sh-font-heading: 'Montserrat', 'Roboto', sans-serif;
+  --sh-font-weight-heading: 800;
+  --sh-letter-spacing: -0.3px;
+
+  --sh-topbar-bg: #ffffff;
+  --sh-sidebar-bg: #fef9f7;
+  --sh-nav-active-bg: #e8614d;
+  --sh-nav-active-color: #ffffff;
+  --sh-glow: none;
+
+  &.dark-theme {
+    --sh-primary: #f2877a;
+    --sh-primary-light: #f7ada4;
+    --sh-accent: #2dbdbd;
+    --sh-accent-light: #5fd4d4;
+    --sh-background: #1a0f0d;
+    --sh-surface: #2d1f1a;
+    --sh-surface-variant: #3d2c25;
+    --sh-on-surface: #fdf0ed;
+    --sh-on-surface-secondary: #c4a69d;
+    --sh-border: #4d3830;
+    --sh-shadow: rgba(242, 135, 122, 0.1);
+    --sh-topbar-bg: #2d1f1a;
+    --sh-sidebar-bg: #1a0f0d;
+  }
+}
+
+// ============================================================
+// SKIN: Classic Gym (Minimalista elegante, editorial, B&W)
+// Inspired by: Hyde Park Fitness, elegant editorial sports
+// ============================================================
+
+.skin-classic-gym {
+  --sh-primary: #1a1a1a;
+  --sh-primary-light: #4a4a4a;
+  --sh-accent: #c0392b;
+  --sh-accent-light: #e74c3c;
+  --sh-background: #ffffff;
+  --sh-surface: #ffffff;
+  --sh-surface-variant: #f5f5f5;
+  --sh-on-surface: #1a1a1a;
+  --sh-on-surface-secondary: #6b6b6b;
+  --sh-border: #e0e0e0;
+  --sh-shadow: rgba(0, 0, 0, 0.05);
+  --sh-error: #c0392b;
+  --sh-warning: #d35400;
+  --sh-success: #27ae60;
+
+  --sh-radius-sm: 0px;
+  --sh-radius-md: 2px;
+  --sh-radius-lg: 4px;
+  --sh-radius-xl: 6px;
+
+  --sh-font-family: 'Montserrat', 'Georgia', serif;
+  --sh-font-heading: 'Playfair Display', 'Georgia', serif;
+  --sh-font-weight-heading: 700;
+  --sh-letter-spacing: 0px;
+
+  --sh-topbar-bg: #ffffff;
+  --sh-sidebar-bg: #ffffff;
+  --sh-nav-active-bg: transparent;
+  --sh-nav-active-color: #c0392b;
+  --sh-glow: none;
+
+  &.dark-theme {
+    --sh-primary: #f0f0f0;
+    --sh-primary-light: #d0d0d0;
+    --sh-accent: #e74c3c;
+    --sh-accent-light: #f1948a;
+    --sh-background: #111111;
+    --sh-surface: #1a1a1a;
+    --sh-surface-variant: #2a2a2a;
+    --sh-on-surface: #f0f0f0;
+    --sh-on-surface-secondary: #999999;
+    --sh-border: #333333;
+    --sh-shadow: rgba(0, 0, 0, 0.3);
+    --sh-topbar-bg: #1a1a1a;
+    --sh-sidebar-bg: #111111;
+    --sh-nav-active-color: #e74c3c;
+  }
+}
+
+// ============================================================
+// SKIN: Sports Club (Club deportivo, fixtures, noticias, navy)
+// Inspired by: Soccer websites, football club portals
+// ============================================================
+
+.skin-sports-club {
+  --sh-primary: #1b1464;
+  --sh-primary-light: #3f37c9;
+  --sh-accent: #e63946;
+  --sh-accent-light: #f07070;
+  --sh-background: #f8f9fc;
+  --sh-surface: #ffffff;
+  --sh-surface-variant: #eef0f7;
+  --sh-on-surface: #1b1464;
+  --sh-on-surface-secondary: #5c5a8a;
+  --sh-border: #d4d4e8;
+  --sh-shadow: rgba(27, 20, 100, 0.08);
+  --sh-error: #e63946;
+  --sh-warning: #f4a261;
+  --sh-success: #06d6a0;
+
+  --sh-radius-sm: 4px;
+  --sh-radius-md: 8px;
+  --sh-radius-lg: 12px;
+  --sh-radius-xl: 16px;
+
+  --sh-font-family: 'Oswald', 'Roboto', sans-serif;
+  --sh-font-heading: 'Bebas Neue', 'Oswald', sans-serif;
+  --sh-font-weight-heading: 400;
+  --sh-letter-spacing: 1px;
+
+  --sh-topbar-bg: #1b1464;
+  --sh-sidebar-bg: #1b1464;
+  --sh-nav-active-bg: #e63946;
+  --sh-nav-active-color: #ffffff;
+  --sh-glow: none;
+
+  &.dark-theme {
+    --sh-primary: #6366f1;
+    --sh-primary-light: #818cf8;
+    --sh-accent: #f07070;
+    --sh-accent-light: #fca5a5;
+    --sh-background: #0a0a1f;
+    --sh-surface: #141432;
+    --sh-surface-variant: #1e1e4a;
+    --sh-on-surface: #e0e0ff;
+    --sh-on-surface-secondary: #9898cc;
+    --sh-border: #2e2e60;
+    --sh-shadow: rgba(99, 102, 241, 0.1);
+    --sh-topbar-bg: #0a0a1f;
+    --sh-sidebar-bg: #0a0a1f;
+  }
+}
+
+// ============================================================
+// SKIN: Neon Warrior (Crossfit, guerrero urbano, high intensity)
+// Inspired by: Crossfit boxes, street gyms, intense training
+// ============================================================
+
+.skin-neon-warrior {
+  --sh-primary: #ff3d00;
+  --sh-primary-light: #ff6e40;
+  --sh-accent: #76ff03;
+  --sh-accent-light: #b2ff59;
+  --sh-background: #0a0a0a;
+  --sh-surface: #151515;
+  --sh-surface-variant: #222222;
+  --sh-on-surface: #f5f5f5;
+  --sh-on-surface-secondary: #aaaaaa;
+  --sh-border: #333333;
+  --sh-shadow: rgba(255, 61, 0, 0.12);
+  --sh-error: #ff1744;
+  --sh-warning: #ff9100;
+  --sh-success: #76ff03;
+
+  --sh-radius-sm: 2px;
+  --sh-radius-md: 4px;
+  --sh-radius-lg: 6px;
+  --sh-radius-xl: 8px;
+
+  --sh-font-family: 'Teko', 'Oswald', sans-serif;
+  --sh-font-heading: 'Bebas Neue', 'Teko', sans-serif;
+  --sh-font-weight-heading: 400;
+  --sh-letter-spacing: 1.5px;
+
+  --sh-topbar-bg: #0a0a0a;
+  --sh-sidebar-bg: #0a0a0a;
+  --sh-nav-active-bg: #ff3d00;
+  --sh-nav-active-color: #ffffff;
+  --sh-glow: 0 0 10px rgba(255, 61, 0, 0.3);
+
+  &.dark-theme {
+    --sh-background: #050505;
+    --sh-surface: #0a0a0a;
+    --sh-surface-variant: #151515;
+    --sh-border: #2a2a2a;
+    --sh-topbar-bg: #050505;
+    --sh-sidebar-bg: #050505;
+  }
+}
+
+.skin-neon-warrior:not(.dark-theme) {
+  --sh-background: #f5f5f0;
+  --sh-surface: #ffffff;
+  --sh-surface-variant: #eeeeee;
+  --sh-on-surface: #1a1a1a;
+  --sh-on-surface-secondary: #555555;
+  --sh-border: #dddddd;
+  --sh-shadow: rgba(255, 61, 0, 0.06);
+  --sh-topbar-bg: #1a1a1a;
+  --sh-sidebar-bg: #1a1a1a;
+  --sh-nav-active-color: #ffffff;
 }
 
 // ============================================================
@@ -138,10 +629,11 @@ html, body {
 }
 
 body {
-  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  font-family: var(--sh-font-family);
   background-color: var(--sh-background);
   color: var(--sh-on-surface);
   transition: background-color 0.3s ease, color 0.3s ease;
+  letter-spacing: var(--sh-letter-spacing);
 }
 
 // ============================================================
@@ -179,4 +671,3316 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--sh-on-surface-secondary);
+}
+
+// ============================================================
+// SKIN STRUCTURAL OVERRIDES
+// Each skin completely transforms the visual structure of
+// all UI components: menus, buttons, inputs, tabs, cards, etc.
+// ============================================================
+
+// ============================================================
+// RETRO GYM - 80s/90s bodybuilding era
+// Heavy borders, blocky shapes, bold typography, zero roundness
+// Think: VHS workout tapes, Gold's Gym posters, old-school DT boards
+// ============================================================
+
+.skin-retro {
+  // --- Typography ---
+  h1, h2, h3, h4, h5, h6,
+  .mat-mdc-card-title,
+  .brand-text,
+  .page-title,
+  .section-title {
+    font-family: var(--sh-font-heading) !important;
+    font-weight: var(--sh-font-weight-heading) !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  // --- Toolbar (blocky, heavy bottom border, retro badge look) ---
+  .topbar {
+    border-bottom: 4px solid var(--sh-primary) !important;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2) !important;
+    background-color: var(--sh-topbar-bg) !important;
+
+    .brand-icon {
+      background: var(--sh-primary);
+      color: var(--sh-nav-active-color) !important;
+      border-radius: 0 !important;
+      padding: 4px;
+      font-size: 20px;
+      width: 28px;
+      height: 28px;
+    }
+
+    .brand-text {
+      font-family: var(--sh-font-heading) !important;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+    }
+  }
+
+  // --- Sidebar (flat list, no rounding, dividers between items) ---
+  .sidebar {
+    background-color: var(--sh-sidebar-bg) !important;
+    border-right: 3px solid var(--sh-primary) !important;
+    padding: 8px 0 !important;
+
+    nav {
+      gap: 0 !important;
+    }
+  }
+
+  .nav-item {
+    border-radius: 0 !important;
+    padding: 14px 20px !important;
+    border-bottom: 1px dashed var(--sh-border);
+    font-family: var(--sh-font-family) !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+
+    &:hover {
+      background-color: var(--sh-surface-variant) !important;
+      border-left: 4px solid var(--sh-accent);
+      padding-left: 16px !important;
+    }
+
+    &.active {
+      background-color: var(--sh-nav-active-bg) !important;
+      color: var(--sh-nav-active-color) !important;
+      border-left: 4px solid var(--sh-accent);
+      border-radius: 0 !important;
+      box-shadow: inset 0 0 0 0;
+
+      mat-icon {
+        color: var(--sh-nav-active-color) !important;
+      }
+    }
+  }
+
+  // --- Bottom Nav (mobile - blocky) ---
+  .bottom-nav {
+    border-top: 3px solid var(--sh-primary) !important;
+    box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.2) !important;
+    border-radius: 0 !important;
+  }
+
+  .bottom-nav-item {
+    border-radius: 0 !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+    letter-spacing: 0.5px;
+
+    &.active {
+      color: var(--sh-primary) !important;
+      border-top: 3px solid var(--sh-primary);
+      margin-top: -3px;
+    }
+  }
+
+  // --- Buttons (blocky, no border-radius, heavy shadow) ---
+  .mat-mdc-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-flat-button,
+  .mat-mdc-outlined-button,
+  .mat-mdc-unelevated-button {
+    border-radius: 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    font-weight: 800 !important;
+    font-family: var(--sh-font-family) !important;
+    box-shadow: 3px 3px 0 var(--sh-on-surface) !important;
+    border: 2px solid var(--sh-on-surface) !important;
+    transition: transform 0.1s, box-shadow 0.1s !important;
+
+    &:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--sh-on-surface) !important;
+    }
+
+    &:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--sh-on-surface) !important;
+    }
+  }
+
+  .mat-mdc-stroked-button {
+    border-radius: 0 !important;
+    border: 2px dashed var(--sh-primary) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-weight: 700 !important;
+  }
+
+  .mat-mdc-icon-button {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-border) !important;
+  }
+
+  // --- Cards (hard edges, double border, offset shadow) ---
+  .mat-mdc-card,
+  .sh-card,
+  .stat-card,
+  .feed-card,
+  .product-card,
+  .request-card,
+  .plan-card,
+  .payment-card {
+    border-radius: 0 !important;
+    border: 2px solid var(--sh-on-surface) !important;
+    box-shadow: 5px 5px 0 var(--sh-primary) !important;
+    transition: transform 0.15s, box-shadow 0.15s !important;
+
+    &:hover {
+      transform: translate(-2px, -2px) !important;
+      box-shadow: 7px 7px 0 var(--sh-primary) !important;
+    }
+  }
+
+  .action-card {
+    border-radius: 0 !important;
+    border: 2px solid var(--sh-border) !important;
+    box-shadow: 3px 3px 0 var(--sh-accent) !important;
+
+    &:hover {
+      border-color: var(--sh-primary) !important;
+      box-shadow: 5px 5px 0 var(--sh-accent) !important;
+      transform: translate(-2px, -2px) !important;
+    }
+  }
+
+  // --- Tabs (blocky, underline bold, no curves) ---
+  .mat-mdc-tab-group,
+  .mat-mdc-tab-nav-bar {
+    border-radius: 0 !important;
+    border: 2px solid var(--sh-border) !important;
+    overflow: hidden;
+  }
+
+  .mat-mdc-tab-header {
+    background-color: var(--sh-surface-variant) !important;
+    border-bottom: 3px solid var(--sh-primary) !important;
+  }
+
+  .mat-mdc-tab {
+    border-radius: 0 !important;
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    min-width: 120px !important;
+
+    &.mdc-tab--active {
+      background-color: var(--sh-primary) !important;
+      color: var(--sh-nav-active-color) !important;
+
+      .mdc-tab__text-label {
+        color: var(--sh-nav-active-color) !important;
+      }
+
+      mat-icon {
+        color: var(--sh-nav-active-color) !important;
+      }
+    }
+  }
+
+  .mat-mdc-tab-body-wrapper {
+    border: none !important;
+  }
+
+  .mdc-tab-indicator {
+    display: none !important;
+  }
+
+  // --- Form Fields / Inputs (heavy borders, square, bold) ---
+  .mat-mdc-form-field {
+    .mdc-text-field--outlined {
+      border-radius: 0 !important;
+
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__trailing,
+      .mdc-notched-outline__notch {
+        border-width: 2px !important;
+        border-color: var(--sh-on-surface) !important;
+        border-radius: 0 !important;
+      }
+    }
+
+    .mdc-text-field--focused {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__trailing,
+      .mdc-notched-outline__notch {
+        border-color: var(--sh-primary) !important;
+        border-width: 3px !important;
+      }
+    }
+
+    .mat-mdc-input-element,
+    input.mat-mdc-input-element {
+      font-family: var(--sh-font-family) !important;
+      font-weight: 600 !important;
+    }
+
+    .mat-mdc-floating-label {
+      font-family: var(--sh-font-family) !important;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+  }
+
+  // --- Select dropdown (square, bold) ---
+  .mat-mdc-select-panel {
+    border-radius: 0 !important;
+    border: 2px solid var(--sh-on-surface) !important;
+    box-shadow: 4px 4px 0 var(--sh-primary) !important;
+  }
+
+  .mat-mdc-option {
+    font-family: var(--sh-font-family) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    border-bottom: 1px dashed var(--sh-border) !important;
+
+    &.mdc-list-item--selected {
+      background-color: var(--sh-primary) !important;
+      color: var(--sh-nav-active-color) !important;
+    }
+  }
+
+  // --- Chips (blocky, bold, no roundness) ---
+  .mat-mdc-chip,
+  .mdc-evolution-chip {
+    border-radius: 0 !important;
+    border: 2px solid var(--sh-primary) !important;
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 0.7rem;
+  }
+
+  // --- Slide Toggle (blocky track) ---
+  .mat-mdc-slide-toggle {
+    .mdc-switch__track {
+      border-radius: 2px !important;
+      border: 2px solid var(--sh-on-surface) !important;
+    }
+
+    .mdc-switch__handle {
+      border-radius: 2px !important;
+    }
+  }
+
+  // --- Dividers (dashed, retro feel) ---
+  .mat-divider {
+    border-top-style: dashed !important;
+    border-top-width: 2px !important;
+    border-color: var(--sh-primary) !important;
+  }
+
+  // --- Menu panels (square, heavy border) ---
+  .mat-mdc-menu-panel {
+    border-radius: 0 !important;
+    border: 2px solid var(--sh-on-surface) !important;
+    box-shadow: 4px 4px 0 var(--sh-primary) !important;
+  }
+
+  // --- Scrollbar (blocky) ---
+  ::-webkit-scrollbar-thumb {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-on-surface);
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 0 !important;
+  }
+
+  // --- Badges / Tags (square) ---
+  .badge-discount, .badge-featured, .plan-badge, .unread-badge {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-on-surface);
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .tag {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-border) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  // --- Stat cards (blocky with accent line) ---
+  .stat-card {
+    border-left: 5px solid var(--sh-accent) !important;
+    border-radius: 0 !important;
+
+    .stat-value {
+      font-family: var(--sh-font-heading) !important;
+      font-size: 1.5rem;
+    }
+  }
+
+  // --- Feed card icon (square) ---
+  .feed-card-icon {
+    border-radius: 0 !important;
+    border: 2px solid var(--sh-on-surface);
+  }
+
+  // --- Conversation items (blocky) ---
+  .conv-item {
+    border-radius: 0 !important;
+    border-bottom: 1px dashed var(--sh-border) !important;
+
+    &.active {
+      border-left: 4px solid var(--sh-primary) !important;
+      background-color: var(--sh-surface-variant) !important;
+    }
+  }
+
+  .conv-avatar {
+    border-radius: 0 !important;
+    border: 2px solid var(--sh-border) !important;
+  }
+
+  // --- Messages (square bubbles) ---
+  .message-bubble {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-border) !important;
+
+    &.sent {
+      border-color: var(--sh-primary) !important;
+      box-shadow: 2px 2px 0 var(--sh-primary);
+    }
+  }
+
+  // --- Product image container ---
+  .product-image {
+    border-bottom: 2px solid var(--sh-border) !important;
+  }
+}
+
+
+// ============================================================
+// SPORT PRO - Modern fitness app
+// Rounded pills, glassmorphism hints, smooth animations,
+// floating elements. Think: Nike Training Club, Strava, modern gyms
+// ============================================================
+
+.skin-modern {
+  // --- Typography ---
+  h1, h2, h3, h4, h5, h6,
+  .mat-mdc-card-title,
+  .brand-text,
+  .page-title,
+  .section-title {
+    font-family: var(--sh-font-heading) !important;
+    font-weight: var(--sh-font-weight-heading) !important;
+    letter-spacing: -0.3px;
+  }
+
+  // --- Toolbar (clean, floating feel, pill-shaped actions area) ---
+  .topbar {
+    border-bottom: none !important;
+    box-shadow: 0 4px 20px var(--sh-shadow) !important;
+    background: var(--sh-topbar-bg) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 var(--sh-radius-lg) var(--sh-radius-lg);
+
+    .brand-icon {
+      color: var(--sh-accent) !important;
+      background: linear-gradient(135deg, var(--sh-accent), var(--sh-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .brand-text {
+      background: linear-gradient(135deg, var(--sh-primary), var(--sh-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+    }
+  }
+
+  // --- Sidebar (pill-shaped nav items, with gradient active) ---
+  .sidebar {
+    background-color: var(--sh-sidebar-bg) !important;
+    border-right: none !important;
+    box-shadow: 2px 0 16px var(--sh-shadow);
+    padding: 16px 12px !important;
+
+    nav {
+      gap: 6px !important;
+    }
+  }
+
+  .nav-item {
+    border-radius: var(--sh-radius-xl) !important;
+    padding: 12px 18px !important;
+    font-weight: 600;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+
+    &:hover {
+      background-color: var(--sh-surface-variant) !important;
+      transform: translateX(4px);
+      box-shadow: 0 2px 8px var(--sh-shadow);
+    }
+
+    &.active {
+      background: linear-gradient(135deg, var(--sh-primary), var(--sh-primary-light)) !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
+      transform: scale(1.02);
+
+      mat-icon {
+        color: #ffffff !important;
+      }
+    }
+  }
+
+  // --- Bottom Nav (floating pill on mobile) ---
+  .bottom-nav {
+    border-top: none !important;
+    margin: 0 12px 8px;
+    border-radius: var(--sh-radius-xl) !important;
+    box-shadow: 0 -4px 20px var(--sh-shadow) !important;
+    background: var(--sh-surface) !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .bottom-nav-item {
+    border-radius: var(--sh-radius-lg) !important;
+    padding: 8px 14px !important;
+    transition: all 0.25s ease !important;
+
+    &.active {
+      background: linear-gradient(135deg, var(--sh-primary), var(--sh-primary-light));
+      color: #ffffff !important;
+      border-radius: var(--sh-radius-xl) !important;
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(21, 101, 192, 0.3);
+
+      mat-icon {
+        color: #ffffff !important;
+      }
+    }
+  }
+
+  // --- Buttons (rounded pills, gradient primaries, smooth transitions) ---
+  .mat-mdc-flat-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-unelevated-button {
+    border-radius: var(--sh-radius-xl) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    padding: 0 24px !important;
+    box-shadow: 0 2px 8px var(--sh-shadow) !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+
+    &:hover {
+      box-shadow: 0 4px 16px var(--sh-shadow) !important;
+      transform: translateY(-1px);
+    }
+  }
+
+  .mat-mdc-stroked-button,
+  .mat-mdc-outlined-button {
+    border-radius: var(--sh-radius-xl) !important;
+    border-width: 1.5px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      background-color: var(--sh-surface-variant) !important;
+      transform: translateY(-1px);
+    }
+  }
+
+  .mat-mdc-icon-button {
+    border-radius: 50% !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      background-color: var(--sh-surface-variant) !important;
+      transform: scale(1.1);
+    }
+  }
+
+  // --- Cards (floating, soft shadows, rounded, hover lift) ---
+  .mat-mdc-card,
+  .sh-card,
+  .stat-card,
+  .feed-card,
+  .product-card,
+  .request-card,
+  .plan-card,
+  .payment-card {
+    border-radius: var(--sh-radius-lg) !important;
+    border: 1px solid var(--sh-border) !important;
+    box-shadow: 0 4px 16px var(--sh-shadow) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow: hidden;
+
+    &:hover {
+      box-shadow: 0 8px 32px var(--sh-shadow) !important;
+      transform: translateY(-3px) !important;
+      border-color: var(--sh-primary-light) !important;
+    }
+  }
+
+  .action-card {
+    border-radius: var(--sh-radius-lg) !important;
+    border: 1px solid var(--sh-border) !important;
+    box-shadow: 0 2px 8px var(--sh-shadow) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+
+    &:hover {
+      box-shadow: 0 8px 24px var(--sh-shadow) !important;
+      transform: translateY(-4px) !important;
+      border-color: var(--sh-accent) !important;
+
+      mat-icon {
+        transform: scale(1.2);
+      }
+    }
+
+    mat-icon {
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .plan-card {
+    &.highlighted {
+      border: 2px solid var(--sh-primary) !important;
+      box-shadow: 0 8px 24px rgba(21, 101, 192, 0.15) !important;
+    }
+  }
+
+  // --- Tabs (pill indicator, rounded group, no hard borders) ---
+  .mat-mdc-tab-group,
+  .mat-mdc-tab-nav-bar {
+    border-radius: var(--sh-radius-lg) !important;
+    border: none !important;
+    box-shadow: 0 2px 12px var(--sh-shadow);
+    overflow: hidden;
+  }
+
+  .mat-mdc-tab-header {
+    background-color: var(--sh-surface-variant) !important;
+    padding: 6px !important;
+    border-bottom: none !important;
+    border-radius: var(--sh-radius-lg) var(--sh-radius-lg) 0 0 !important;
+  }
+
+  .mat-mdc-tab {
+    border-radius: var(--sh-radius-lg) !important;
+    font-weight: 600 !important;
+    transition: all 0.25s ease !important;
+    min-width: 100px !important;
+    margin: 0 2px;
+
+    &.mdc-tab--active {
+      background-color: var(--sh-surface) !important;
+      box-shadow: 0 2px 8px var(--sh-shadow);
+
+      .mdc-tab__text-label {
+        color: var(--sh-primary) !important;
+        font-weight: 700 !important;
+      }
+
+      mat-icon {
+        color: var(--sh-primary) !important;
+      }
+    }
+
+    .mdc-tab__text-label {
+      color: var(--sh-on-surface-secondary) !important;
+    }
+  }
+
+  .mdc-tab-indicator {
+    display: none !important;
+  }
+
+  // --- Form Fields / Inputs (rounded, floating labels, subtle focus) ---
+  .mat-mdc-form-field {
+    .mdc-text-field--outlined {
+      border-radius: var(--sh-radius-lg) !important;
+
+      .mdc-notched-outline__leading {
+        border-radius: var(--sh-radius-lg) 0 0 var(--sh-radius-lg) !important;
+        border-width: 1.5px !important;
+      }
+
+      .mdc-notched-outline__trailing {
+        border-radius: 0 var(--sh-radius-lg) var(--sh-radius-lg) 0 !important;
+        border-width: 1.5px !important;
+      }
+
+      .mdc-notched-outline__notch {
+        border-width: 1.5px !important;
+      }
+    }
+
+    .mdc-text-field--focused {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__trailing,
+      .mdc-notched-outline__notch {
+        border-color: var(--sh-primary) !important;
+        border-width: 2px !important;
+      }
+
+      box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.1);
+      border-radius: var(--sh-radius-lg);
+    }
+
+    .mat-mdc-floating-label {
+      font-weight: 500;
+    }
+  }
+
+  // --- Select dropdown (rounded, shadow) ---
+  .mat-mdc-select-panel {
+    border-radius: var(--sh-radius-lg) !important;
+    box-shadow: 0 8px 32px var(--sh-shadow) !important;
+    border: 1px solid var(--sh-border) !important;
+    padding: 6px !important;
+  }
+
+  .mat-mdc-option {
+    border-radius: var(--sh-radius-md) !important;
+    margin: 2px 4px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--sh-surface-variant) !important;
+    }
+
+    &.mdc-list-item--selected {
+      background-color: var(--sh-surface-variant) !important;
+      color: var(--sh-primary) !important;
+      font-weight: 600 !important;
+    }
+  }
+
+  // --- Chips (rounded pills, subtle border) ---
+  .mat-mdc-chip,
+  .mdc-evolution-chip {
+    border-radius: var(--sh-radius-xl) !important;
+    font-weight: 600 !important;
+    border: 1px solid var(--sh-border) !important;
+    transition: all 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 2px 8px var(--sh-shadow);
+      transform: translateY(-1px);
+    }
+  }
+
+  // --- Slide Toggle (rounded, smooth animation) ---
+  .mat-mdc-slide-toggle {
+    .mdc-switch__track {
+      border-radius: var(--sh-radius-xl) !important;
+    }
+
+    .mdc-switch__handle {
+      border-radius: 50% !important;
+    }
+  }
+
+  // --- Dividers (subtle, thin gradient) ---
+  .mat-divider {
+    border-top-width: 1px !important;
+    opacity: 0.5;
+  }
+
+  // --- Menu panels (rounded, floating) ---
+  .mat-mdc-menu-panel {
+    border-radius: var(--sh-radius-lg) !important;
+    box-shadow: 0 8px 32px var(--sh-shadow) !important;
+    border: 1px solid var(--sh-border) !important;
+    padding: 6px !important;
+  }
+
+  .mat-mdc-menu-item {
+    border-radius: var(--sh-radius-md) !important;
+    margin: 2px 4px;
+  }
+
+  // --- Scrollbar (rounded, thin) ---
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: var(--sh-radius-xl) !important;
+    background: var(--sh-primary-light);
+  }
+
+  // --- Badges / Tags (pills) ---
+  .badge-discount, .badge-featured, .plan-badge, .unread-badge {
+    border-radius: var(--sh-radius-xl) !important;
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .tag {
+    border-radius: var(--sh-radius-xl) !important;
+    font-weight: 500;
+    padding: 3px 10px !important;
+  }
+
+  // --- Stat cards (rounded, gradient icon background) ---
+  .stat-card {
+    border-radius: var(--sh-radius-lg) !important;
+
+    .stat-icon {
+      background: linear-gradient(135deg, var(--sh-primary), var(--sh-primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  // --- Feed card icon (circle with soft shadow) ---
+  .feed-card-icon {
+    border-radius: 50% !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  // --- Conversation items (rounded, smooth hover) ---
+  .conv-item {
+    border-radius: var(--sh-radius-md) !important;
+    margin: 4px 0;
+    transition: all 0.2s ease;
+
+    &.active {
+      background: linear-gradient(135deg, var(--sh-surface-variant), var(--sh-surface)) !important;
+      box-shadow: 0 2px 8px var(--sh-shadow);
+      border-left: 3px solid var(--sh-primary) !important;
+    }
+
+    &:hover {
+      background-color: var(--sh-surface-variant) !important;
+      transform: translateX(4px);
+    }
+  }
+
+  .conv-avatar {
+    border-radius: 50% !important;
+    box-shadow: 0 2px 6px var(--sh-shadow);
+  }
+
+  // --- Messages (rounded bubbles, modern chat) ---
+  .message-bubble {
+    border-radius: var(--sh-radius-lg) !important;
+    box-shadow: 0 1px 4px var(--sh-shadow);
+
+    &.sent {
+      border-radius: var(--sh-radius-lg) var(--sh-radius-lg) 4px var(--sh-radius-lg) !important;
+      background: linear-gradient(135deg, var(--sh-primary), var(--sh-primary-light)) !important;
+      color: #ffffff !important;
+    }
+
+    &.received {
+      border-radius: var(--sh-radius-lg) var(--sh-radius-lg) var(--sh-radius-lg) 4px !important;
+    }
+  }
+
+  // --- Product card (smooth hover, rounded image) ---
+  .product-image {
+    border-radius: var(--sh-radius-md) var(--sh-radius-md) 0 0 !important;
+    overflow: hidden;
+
+    img {
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .product-card:hover .product-image img {
+    transform: scale(1.05);
+  }
+}
+
+
+// ============================================================
+// CYBER ATHLETE - Futuristic / HUD / Neon
+// Sharp edges, glowing borders, scanlines, clipped corners,
+// animated neon. Think: Esports HUD, cyberpunk gyms, AI trainers
+// ============================================================
+
+.skin-futuristic {
+  // --- Typography ---
+  h1, h2, h3, h4, h5, h6,
+  .mat-mdc-card-title,
+  .brand-text,
+  .page-title,
+  .section-title {
+    font-family: var(--sh-font-heading) !important;
+    font-weight: var(--sh-font-weight-heading) !important;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 6px var(--sh-primary);
+  }
+
+  // --- Toolbar (HUD-like, neon border, clipped) ---
+  .topbar {
+    border-bottom: 1px solid var(--sh-primary) !important;
+    box-shadow: 0 2px 20px rgba(0, 229, 255, 0.3) !important;
+    background: linear-gradient(180deg, var(--sh-topbar-bg) 0%, rgba(0, 229, 255, 0.02) 100%) !important;
+    clip-path: polygon(0 0, 100% 0, 99% 100%, 1% 100%);
+
+    .brand-icon {
+      color: var(--sh-primary) !important;
+      text-shadow: 0 0 10px var(--sh-primary);
+      animation: neonPulse 2s ease-in-out infinite alternate;
+    }
+
+    .brand-text {
+      color: var(--sh-primary) !important;
+      text-shadow: 0 0 10px var(--sh-primary), 0 0 20px var(--sh-primary);
+      letter-spacing: 4px;
+    }
+  }
+
+  // --- Sidebar (HUD panels, clipped corners, scanning line) ---
+  .sidebar {
+    background: linear-gradient(180deg, var(--sh-sidebar-bg) 0%, rgba(0, 229, 255, 0.03) 100%) !important;
+    border-right: 1px solid var(--sh-primary) !important;
+    box-shadow: inset -1px 0 10px rgba(0, 229, 255, 0.1);
+    padding: 20px 8px !important;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--sh-primary), transparent);
+      animation: scanLine 3s linear infinite;
+    }
+
+    nav {
+      gap: 2px !important;
+    }
+  }
+
+  .nav-item {
+    border-radius: 0 !important;
+    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    padding: 12px 20px 12px 16px !important;
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    font-weight: 500;
+    border: none;
+    transition: all 0.3s ease !important;
+    position: relative;
+
+    &:hover {
+      background: rgba(0, 229, 255, 0.08) !important;
+      color: var(--sh-primary) !important;
+      text-shadow: 0 0 6px var(--sh-primary);
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 10%;
+        right: 10%;
+        height: 1px;
+        background: var(--sh-primary);
+        box-shadow: 0 0 4px var(--sh-primary);
+      }
+    }
+
+    &.active {
+      background: rgba(0, 229, 255, 0.12) !important;
+      color: var(--sh-nav-active-color) !important;
+      border-left: 2px solid var(--sh-primary) !important;
+      box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.08), 0 0 10px rgba(0, 229, 255, 0.1);
+      text-shadow: 0 0 8px var(--sh-primary);
+
+      mat-icon {
+        color: var(--sh-primary) !important;
+        text-shadow: 0 0 8px var(--sh-primary);
+      }
+
+      &::before {
+        content: '>';
+        position: absolute;
+        left: 6px;
+        color: var(--sh-primary);
+        font-size: 0.6rem;
+        animation: blink 1s step-end infinite;
+      }
+    }
+  }
+
+  // --- Bottom Nav (HUD bar, neon top border) ---
+  .bottom-nav {
+    border-top: 1px solid var(--sh-primary) !important;
+    box-shadow: 0 -4px 20px rgba(0, 229, 255, 0.2) !important;
+    background: linear-gradient(0deg, var(--sh-surface) 0%, rgba(0, 229, 255, 0.03) 100%) !important;
+    clip-path: polygon(2% 0, 98% 0, 100% 100%, 0 100%);
+  }
+
+  .bottom-nav-item {
+    border-radius: 0 !important;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    transition: all 0.2s ease !important;
+
+    &.active {
+      color: var(--sh-primary) !important;
+      text-shadow: 0 0 8px var(--sh-primary);
+
+      mat-icon {
+        color: var(--sh-primary) !important;
+        filter: drop-shadow(0 0 4px var(--sh-primary));
+      }
+    }
+  }
+
+  // --- Buttons (sharp cut corners, neon border, glow on hover) ---
+  .mat-mdc-flat-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-unelevated-button {
+    border-radius: 0 !important;
+    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-weight: 600 !important;
+    font-size: 0.78rem !important;
+    font-family: var(--sh-font-family) !important;
+    border: 1px solid var(--sh-primary) !important;
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.2) !important;
+    transition: all 0.3s ease !important;
+
+    &:hover {
+      box-shadow: 0 0 16px rgba(0, 229, 255, 0.4), inset 0 0 8px rgba(0, 229, 255, 0.1) !important;
+      text-shadow: 0 0 4px var(--sh-primary);
+    }
+  }
+
+  .mat-mdc-stroked-button,
+  .mat-mdc-outlined-button {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-primary) !important;
+    clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-family: var(--sh-font-family) !important;
+    transition: all 0.3s ease !important;
+
+    &:hover {
+      background: rgba(0, 229, 255, 0.05) !important;
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.3) !important;
+    }
+  }
+
+  .mat-mdc-icon-button {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-border) !important;
+    clip-path: polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      border-color: var(--sh-primary) !important;
+      box-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
+
+      mat-icon {
+        color: var(--sh-primary) !important;
+        filter: drop-shadow(0 0 4px var(--sh-primary));
+      }
+    }
+  }
+
+  // --- Cards (HUD panels, corner accents, neon glow border) ---
+  .mat-mdc-card,
+  .sh-card,
+  .stat-card,
+  .feed-card,
+  .product-card,
+  .request-card,
+  .plan-card,
+  .payment-card {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-primary) !important;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.1) !important;
+    position: relative;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+    transition: all 0.3s ease !important;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--sh-primary), var(--sh-accent), var(--sh-primary), transparent);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--sh-accent), var(--sh-primary), var(--sh-accent), transparent);
+    }
+
+    &:hover {
+      box-shadow: 0 0 24px rgba(0, 229, 255, 0.25), inset 0 0 12px rgba(0, 229, 255, 0.03) !important;
+      border-color: var(--sh-accent) !important;
+    }
+  }
+
+  .action-card {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-border) !important;
+    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    transition: all 0.3s ease !important;
+
+    &:hover {
+      border-color: var(--sh-primary) !important;
+      box-shadow: 0 0 16px rgba(0, 229, 255, 0.3) !important;
+
+      mat-icon {
+        color: var(--sh-primary) !important;
+        filter: drop-shadow(0 0 6px var(--sh-primary));
+      }
+    }
+  }
+
+  .plan-card.highlighted {
+    border-color: var(--sh-accent) !important;
+    box-shadow: 0 0 20px rgba(213, 0, 249, 0.2) !important;
+  }
+
+  // --- Tabs (HUD segments, neon indicator, angular) ---
+  .mat-mdc-tab-group,
+  .mat-mdc-tab-nav-bar {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-border) !important;
+    overflow: visible;
+    position: relative;
+  }
+
+  .mat-mdc-tab-header {
+    background: linear-gradient(180deg, rgba(0, 229, 255, 0.05) 0%, transparent 100%) !important;
+    border-bottom: 1px solid var(--sh-primary) !important;
+  }
+
+  .mat-mdc-tab {
+    border-radius: 0 !important;
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-weight: 500 !important;
+    font-size: 0.72rem !important;
+    min-width: 110px !important;
+    transition: all 0.3s ease !important;
+    position: relative;
+
+    &.mdc-tab--active {
+      background: rgba(0, 229, 255, 0.08) !important;
+      text-shadow: 0 0 6px var(--sh-primary);
+
+      .mdc-tab__text-label {
+        color: var(--sh-primary) !important;
+      }
+
+      mat-icon {
+        color: var(--sh-primary) !important;
+        filter: drop-shadow(0 0 4px var(--sh-primary));
+      }
+    }
+
+    .mdc-tab__text-label {
+      color: var(--sh-on-surface-secondary) !important;
+    }
+  }
+
+  .mdc-tab-indicator__content--underline {
+    border-color: var(--sh-primary) !important;
+    border-width: 2px !important;
+    box-shadow: 0 2px 8px var(--sh-primary);
+  }
+
+  // --- Form Fields / Inputs (neon border, glow focus, angular) ---
+  .mat-mdc-form-field {
+    .mdc-text-field--outlined {
+      border-radius: 0 !important;
+
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__trailing,
+      .mdc-notched-outline__notch {
+        border-width: 1px !important;
+        border-color: var(--sh-border) !important;
+        border-radius: 0 !important;
+      }
+    }
+
+    .mdc-text-field--focused {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__trailing,
+      .mdc-notched-outline__notch {
+        border-color: var(--sh-primary) !important;
+        border-width: 1px !important;
+        box-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
+      }
+    }
+
+    .mat-mdc-input-element,
+    input.mat-mdc-input-element {
+      font-family: var(--sh-font-family) !important;
+      letter-spacing: 1px;
+    }
+
+    .mat-mdc-floating-label {
+      font-family: var(--sh-font-family) !important;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+    }
+  }
+
+  // --- Select dropdown (angular, neon) ---
+  .mat-mdc-select-panel {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-primary) !important;
+    box-shadow: 0 4px 20px rgba(0, 229, 255, 0.2) !important;
+    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+  }
+
+  .mat-mdc-option {
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(0, 229, 255, 0.1) !important;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(0, 229, 255, 0.08) !important;
+      text-shadow: 0 0 4px var(--sh-primary);
+    }
+
+    &.mdc-list-item--selected {
+      background: rgba(0, 229, 255, 0.12) !important;
+      color: var(--sh-primary) !important;
+      text-shadow: 0 0 6px var(--sh-primary);
+    }
+  }
+
+  // --- Chips (angular, neon outline) ---
+  .mat-mdc-chip,
+  .mdc-evolution-chip {
+    border-radius: 0 !important;
+    clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+    border: 1px solid var(--sh-primary) !important;
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.68rem;
+    font-weight: 500;
+    box-shadow: 0 0 6px rgba(0, 229, 255, 0.15);
+  }
+
+  // --- Slide Toggle (angular track, neon glow) ---
+  .mat-mdc-slide-toggle {
+    .mdc-switch__track {
+      border-radius: 2px !important;
+      border: 1px solid var(--sh-primary) !important;
+      box-shadow: 0 0 4px rgba(0, 229, 255, 0.2);
+    }
+
+    .mdc-switch__handle {
+      border-radius: 2px !important;
+    }
+
+    &.mat-mdc-slide-toggle-checked {
+      .mdc-switch__track {
+        box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+      }
+    }
+  }
+
+  // --- Dividers (neon line) ---
+  .mat-divider {
+    border-color: var(--sh-primary) !important;
+    opacity: 0.5;
+    box-shadow: 0 0 4px var(--sh-primary);
+  }
+
+  // --- Menu panels (angular, glowing) ---
+  .mat-mdc-menu-panel {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-primary) !important;
+    box-shadow: 0 4px 20px rgba(0, 229, 255, 0.2) !important;
+    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+  }
+
+  .mat-mdc-menu-item {
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+
+    &:hover {
+      background: rgba(0, 229, 255, 0.08) !important;
+    }
+  }
+
+  // --- Scrollbar (thin, neon) ---
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--sh-primary) !important;
+    border-radius: 0 !important;
+    box-shadow: 0 0 4px var(--sh-primary);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 229, 255, 0.03) !important;
+  }
+
+  // --- Badges / Tags (angular, glowing) ---
+  .badge-discount, .badge-featured, .plan-badge, .unread-badge {
+    border-radius: 0 !important;
+    clip-path: polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
+    font-family: var(--sh-font-family) !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
+  }
+
+  .tag {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-border) !important;
+    font-family: var(--sh-font-family) !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+  }
+
+  // --- Stat cards (HUD-style with top line animation) ---
+  .stat-card {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--sh-primary), transparent);
+      animation: scanHorizontal 4s linear infinite;
+    }
+
+    .stat-value {
+      font-family: var(--sh-font-heading) !important;
+      color: var(--sh-primary) !important;
+      text-shadow: 0 0 6px var(--sh-primary);
+    }
+
+    .stat-icon {
+      color: var(--sh-accent) !important;
+      filter: drop-shadow(0 0 4px var(--sh-accent));
+    }
+  }
+
+  // --- Feed card icon (hexagon-like) ---
+  .feed-card-icon {
+    border-radius: 0 !important;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  // --- Conversation items (HUD lines) ---
+  .conv-item {
+    border-radius: 0 !important;
+    border-bottom: 1px solid rgba(0, 229, 255, 0.1) !important;
+    transition: all 0.3s ease;
+
+    &.active {
+      background: rgba(0, 229, 255, 0.08) !important;
+      border-left: 2px solid var(--sh-primary) !important;
+      box-shadow: inset 0 0 10px rgba(0, 229, 255, 0.05);
+    }
+
+    &:hover {
+      background: rgba(0, 229, 255, 0.04) !important;
+    }
+  }
+
+  .conv-avatar {
+    border-radius: 0 !important;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    border: 1px solid var(--sh-primary) !important;
+  }
+
+  // --- Messages (angular bubbles, neon accents) ---
+  .message-bubble {
+    border-radius: 0 !important;
+    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    border: 1px solid var(--sh-border) !important;
+
+    &.sent {
+      border-color: var(--sh-primary) !important;
+      box-shadow: 0 0 8px rgba(0, 229, 255, 0.15);
+    }
+
+    &.received {
+      border-color: var(--sh-accent) !important;
+      box-shadow: 0 0 8px rgba(213, 0, 249, 0.1);
+    }
+  }
+
+  // --- Product image (scan effect) ---
+  .product-image {
+    position: relative;
+    border-bottom: 1px solid var(--sh-primary) !important;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, transparent 90%, rgba(0, 229, 255, 0.1) 100%);
+      pointer-events: none;
+    }
+  }
+
+  // --- Scanline overlay (subtle) ---
+  &::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 229, 255, 0.015) 2px,
+      rgba(0, 229, 255, 0.015) 4px
+    );
+  }
+
+  // --- Animations ---
+  @keyframes neonPulse {
+    from { text-shadow: 0 0 6px var(--sh-primary); }
+    to { text-shadow: 0 0 12px var(--sh-primary), 0 0 24px var(--sh-primary); }
+  }
+
+  @keyframes scanLine {
+    from { top: 0; }
+    to { top: 100%; }
+  }
+
+  @keyframes scanHorizontal {
+    from { left: -100%; }
+    to { left: 100%; }
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+}
+
+
+// ============================================================
+// DARK ANALYTICS - Dashboard de análisis deportivo
+// Cards con bordes sutiles redondeados, chips coloridos,
+// tablas implícitas, badges de estado, chat limpio.
+// Think: Panel de DT moderno, Solis, plataforma de coaching
+// ============================================================
+
+.skin-dark-analytics {
+  // --- Typography ---
+  h1, h2, h3, h4, h5, h6,
+  .mat-mdc-card-title,
+  .brand-text,
+  .page-title,
+  .section-title {
+    font-family: var(--sh-font-heading) !important;
+    font-weight: var(--sh-font-weight-heading) !important;
+    letter-spacing: -0.3px;
+  }
+
+  // --- Toolbar (clean dark bar, subtle bottom glow) ---
+  .topbar {
+    background-color: var(--sh-topbar-bg) !important;
+    border-bottom: 1px solid var(--sh-border) !important;
+    box-shadow: 0 1px 8px rgba(99, 102, 241, 0.08) !important;
+
+    .brand-text {
+      color: var(--sh-primary-light) !important;
+      font-weight: 700;
+    }
+
+    .brand-icon {
+      color: var(--sh-accent) !important;
+    }
+  }
+
+  // --- Sidebar (dark, clean, indicators left border) ---
+  .sidebar {
+    background-color: var(--sh-sidebar-bg) !important;
+    border-right: 1px solid var(--sh-border) !important;
+    padding: 16px 10px !important;
+
+    nav {
+      gap: 4px !important;
+    }
+  }
+
+  .nav-item {
+    border-radius: var(--sh-radius-md) !important;
+    padding: 11px 14px !important;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      background-color: var(--sh-surface-variant) !important;
+    }
+
+    &.active {
+      background-color: var(--sh-nav-active-bg) !important;
+      color: var(--sh-nav-active-color) !important;
+      border-left: 3px solid var(--sh-primary) !important;
+      padding-left: 11px !important;
+
+      mat-icon {
+        color: var(--sh-primary-light) !important;
+      }
+    }
+  }
+
+  // --- Bottom Nav ---
+  .bottom-nav {
+    background-color: var(--sh-surface) !important;
+    border-top: 1px solid var(--sh-border) !important;
+    box-shadow: 0 -2px 8px var(--sh-shadow) !important;
+  }
+
+  .bottom-nav-item {
+    border-radius: var(--sh-radius-md) !important;
+
+    &.active {
+      color: var(--sh-primary-light) !important;
+      background: var(--sh-nav-active-bg) !important;
+    }
+  }
+
+  // --- Buttons (subtle, rounded, data-app style) ---
+  .mat-mdc-flat-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-unelevated-button {
+    border-radius: var(--sh-radius-md) !important;
+    font-weight: 600 !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0 !important;
+    box-shadow: none !important;
+    transition: all 0.15s ease !important;
+
+    &:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 2px 6px var(--sh-shadow) !important;
+    }
+  }
+
+  .mat-mdc-stroked-button,
+  .mat-mdc-outlined-button {
+    border-radius: var(--sh-radius-md) !important;
+    border: 1.5px solid var(--sh-border) !important;
+    font-weight: 600 !important;
+
+    &:hover {
+      border-color: var(--sh-primary) !important;
+      background: rgba(99, 102, 241, 0.05) !important;
+    }
+  }
+
+  .mat-mdc-icon-button {
+    border-radius: var(--sh-radius-md) !important;
+    transition: all 0.15s ease !important;
+
+    &:hover {
+      background-color: var(--sh-surface-variant) !important;
+    }
+  }
+
+  // --- Cards (subtle border, rounded, low shadow) ---
+  .mat-mdc-card,
+  .sh-card,
+  .stat-card,
+  .feed-card,
+  .product-card,
+  .request-card,
+  .plan-card,
+  .payment-card {
+    border-radius: var(--sh-radius-lg) !important;
+    border: 1px solid var(--sh-border) !important;
+    box-shadow: 0 1px 3px var(--sh-shadow) !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      border-color: var(--sh-primary) !important;
+      box-shadow: 0 4px 12px var(--sh-shadow) !important;
+    }
+  }
+
+  .action-card {
+    border-radius: var(--sh-radius-md) !important;
+    border: 1px solid var(--sh-border) !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      border-color: var(--sh-accent) !important;
+      background-color: var(--sh-surface-variant) !important;
+    }
+  }
+
+  // --- Tabs (clean, minimal indicator, segmented control feel) ---
+  .mat-mdc-tab-group,
+  .mat-mdc-tab-nav-bar {
+    border-radius: var(--sh-radius-lg) !important;
+    border: 1px solid var(--sh-border) !important;
+    overflow: hidden;
+  }
+
+  .mat-mdc-tab-header {
+    background-color: var(--sh-surface) !important;
+    border-bottom: 1px solid var(--sh-border) !important;
+  }
+
+  .mat-mdc-tab {
+    font-weight: 600 !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0 !important;
+    transition: all 0.2s ease !important;
+
+    &.mdc-tab--active {
+      .mdc-tab__text-label {
+        color: var(--sh-primary-light) !important;
+        font-weight: 700 !important;
+      }
+
+      mat-icon {
+        color: var(--sh-primary-light) !important;
+      }
+    }
+  }
+
+  .mdc-tab-indicator__content--underline {
+    border-color: var(--sh-primary) !important;
+    border-width: 2px !important;
+  }
+
+  // --- Form Fields (clean, subtle border, rounded) ---
+  .mat-mdc-form-field {
+    .mdc-text-field--outlined {
+      border-radius: var(--sh-radius-md) !important;
+
+      .mdc-notched-outline__leading {
+        border-radius: var(--sh-radius-md) 0 0 var(--sh-radius-md) !important;
+      }
+
+      .mdc-notched-outline__trailing {
+        border-radius: 0 var(--sh-radius-md) var(--sh-radius-md) 0 !important;
+      }
+    }
+
+    .mdc-text-field--focused {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__trailing,
+      .mdc-notched-outline__notch {
+        border-color: var(--sh-primary) !important;
+      }
+    }
+  }
+
+  // --- Select (rounded panel) ---
+  .mat-mdc-select-panel {
+    border-radius: var(--sh-radius-md) !important;
+    border: 1px solid var(--sh-border) !important;
+    box-shadow: 0 4px 16px var(--sh-shadow) !important;
+  }
+
+  .mat-mdc-option {
+    border-radius: var(--sh-radius-sm) !important;
+    margin: 2px 4px;
+
+    &.mdc-list-item--selected {
+      background: rgba(99, 102, 241, 0.12) !important;
+      color: var(--sh-primary-light) !important;
+    }
+  }
+
+  // --- Chips (status badges style, colored) ---
+  .mat-mdc-chip,
+  .mdc-evolution-chip {
+    border-radius: var(--sh-radius-md) !important;
+    font-weight: 600 !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  // --- Slide Toggle ---
+  .mat-mdc-slide-toggle {
+    .mdc-switch__track {
+      border-radius: var(--sh-radius-xl) !important;
+    }
+  }
+
+  // --- Menu ---
+  .mat-mdc-menu-panel {
+    border-radius: var(--sh-radius-md) !important;
+    border: 1px solid var(--sh-border) !important;
+    box-shadow: 0 4px 16px var(--sh-shadow) !important;
+  }
+
+  // --- Stat cards (metric emphasis) ---
+  .stat-card {
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--sh-primary-light) !important;
+    }
+
+    .stat-icon {
+      color: var(--sh-accent) !important;
+    }
+  }
+
+  // --- Conversations (clean, minimal) ---
+  .conv-item {
+    border-radius: var(--sh-radius-md) !important;
+    transition: all 0.15s ease;
+
+    &.active {
+      background-color: var(--sh-surface-variant) !important;
+      border-left: 3px solid var(--sh-primary) !important;
+    }
+  }
+
+  .conv-avatar {
+    border-radius: var(--sh-radius-md) !important;
+  }
+
+  // --- Messages (rounded, clean) ---
+  .message-bubble {
+    border-radius: var(--sh-radius-lg) !important;
+
+    &.sent {
+      background-color: var(--sh-primary) !important;
+      color: #ffffff !important;
+      border-radius: var(--sh-radius-lg) var(--sh-radius-lg) var(--sh-radius-sm) var(--sh-radius-lg) !important;
+    }
+
+    &.received {
+      background-color: var(--sh-surface-variant) !important;
+      border-radius: var(--sh-radius-lg) var(--sh-radius-lg) var(--sh-radius-lg) var(--sh-radius-sm) !important;
+    }
+  }
+
+  // --- Divider ---
+  .mat-divider {
+    border-color: var(--sh-border) !important;
+    opacity: 0.6;
+  }
+
+  // --- Unread badge (accent colored) ---
+  .unread-badge {
+    border-radius: var(--sh-radius-xl) !important;
+    background-color: var(--sh-accent) !important;
+    color: #000000 !important;
+    font-weight: 700;
+  }
+
+  // --- Feed card icon ---
+  .feed-card-icon {
+    border-radius: var(--sh-radius-md) !important;
+  }
+}
+
+
+// ============================================================
+// CORAL TRAINING - Fitness boutique premium
+// Botones redondeados coral, cards suaves con sombra cálida,
+// tipografía Montserrat bold, feeling premium y cálido.
+// Think: Fitness Together, boutique studio, personal trainer
+// ============================================================
+
+.skin-coral-training {
+  // --- Typography ---
+  h1, h2, h3, h4, h5, h6,
+  .mat-mdc-card-title,
+  .brand-text,
+  .page-title,
+  .section-title {
+    font-family: var(--sh-font-heading) !important;
+    font-weight: var(--sh-font-weight-heading) !important;
+    letter-spacing: -0.3px;
+  }
+
+  // --- Toolbar (white/cream, coral brand accent) ---
+  .topbar {
+    background-color: var(--sh-topbar-bg) !important;
+    border-bottom: none !important;
+    box-shadow: 0 2px 12px rgba(232, 97, 77, 0.06) !important;
+
+    .brand-text {
+      color: var(--sh-primary) !important;
+      font-weight: 800;
+      font-size: 1.3rem;
+    }
+
+    .brand-icon {
+      color: var(--sh-primary) !important;
+    }
+  }
+
+  // --- Sidebar (warm, soft active states) ---
+  .sidebar {
+    background-color: var(--sh-sidebar-bg) !important;
+    border-right: none !important;
+    box-shadow: 1px 0 8px rgba(232, 97, 77, 0.04);
+    padding: 20px 12px !important;
+
+    nav {
+      gap: 6px !important;
+    }
+  }
+
+  .nav-item {
+    border-radius: var(--sh-radius-xl) !important;
+    padding: 12px 18px !important;
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: all 0.25s ease !important;
+
+    &:hover {
+      background-color: var(--sh-surface-variant) !important;
+      color: var(--sh-primary) !important;
+    }
+
+    &.active {
+      background-color: var(--sh-nav-active-bg) !important;
+      color: var(--sh-nav-active-color) !important;
+      box-shadow: 0 4px 12px rgba(232, 97, 77, 0.25);
+
+      mat-icon {
+        color: var(--sh-nav-active-color) !important;
+      }
+    }
+  }
+
+  // --- Bottom Nav (floating, warm) ---
+  .bottom-nav {
+    border-top: none !important;
+    box-shadow: 0 -4px 16px rgba(232, 97, 77, 0.08) !important;
+    border-radius: var(--sh-radius-xl) var(--sh-radius-xl) 0 0 !important;
+  }
+
+  .bottom-nav-item {
+    border-radius: var(--sh-radius-lg) !important;
+    transition: all 0.2s ease !important;
+
+    &.active {
+      color: var(--sh-primary) !important;
+      background: rgba(232, 97, 77, 0.1) !important;
+
+      mat-icon {
+        color: var(--sh-primary) !important;
+      }
+    }
+  }
+
+  // --- Buttons (rounded pills, coral primary, warm shadows) ---
+  .mat-mdc-flat-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-unelevated-button {
+    border-radius: var(--sh-radius-xl) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.3px !important;
+    padding: 0 28px !important;
+    box-shadow: 0 3px 10px rgba(232, 97, 77, 0.2) !important;
+    transition: all 0.25s ease !important;
+
+    &:hover {
+      box-shadow: 0 6px 18px rgba(232, 97, 77, 0.3) !important;
+      transform: translateY(-1px);
+    }
+  }
+
+  .mat-mdc-stroked-button,
+  .mat-mdc-outlined-button {
+    border-radius: var(--sh-radius-xl) !important;
+    border: 2px solid var(--sh-primary) !important;
+    font-weight: 700 !important;
+    color: var(--sh-primary) !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      background: rgba(232, 97, 77, 0.05) !important;
+      box-shadow: 0 2px 8px rgba(232, 97, 77, 0.15) !important;
+    }
+  }
+
+  .mat-mdc-icon-button {
+    border-radius: 50% !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      background: rgba(232, 97, 77, 0.08) !important;
+      color: var(--sh-primary) !important;
+    }
+  }
+
+  // --- Cards (warm shadow, rounded, soft border) ---
+  .mat-mdc-card,
+  .sh-card,
+  .stat-card,
+  .feed-card,
+  .product-card,
+  .request-card,
+  .plan-card,
+  .payment-card {
+    border-radius: var(--sh-radius-lg) !important;
+    border: none !important;
+    box-shadow: 0 4px 16px rgba(232, 97, 77, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04) !important;
+    transition: all 0.3s ease !important;
+
+    &:hover {
+      box-shadow: 0 8px 28px rgba(232, 97, 77, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+      transform: translateY(-2px) !important;
+    }
+  }
+
+  .action-card {
+    border-radius: var(--sh-radius-lg) !important;
+    border: 2px solid transparent !important;
+    box-shadow: 0 2px 8px rgba(232, 97, 77, 0.06) !important;
+    transition: all 0.3s ease !important;
+
+    &:hover {
+      border-color: var(--sh-primary) !important;
+      box-shadow: 0 6px 18px rgba(232, 97, 77, 0.12) !important;
+      transform: translateY(-3px) !important;
+
+      mat-icon {
+        color: var(--sh-primary) !important;
+        transform: scale(1.15);
+      }
+    }
+
+    mat-icon {
+      transition: all 0.3s ease;
+    }
+  }
+
+  .plan-card.highlighted {
+    border: 2px solid var(--sh-primary) !important;
+    background: linear-gradient(180deg, var(--sh-surface) 0%, rgba(232, 97, 77, 0.03) 100%) !important;
+  }
+
+  // --- Tabs (soft, warm, pill-like active) ---
+  .mat-mdc-tab-group,
+  .mat-mdc-tab-nav-bar {
+    border-radius: var(--sh-radius-lg) !important;
+    border: none !important;
+    box-shadow: 0 2px 10px rgba(232, 97, 77, 0.05);
+    overflow: hidden;
+  }
+
+  .mat-mdc-tab-header {
+    background-color: var(--sh-surface-variant) !important;
+    border-bottom: none !important;
+    padding: 6px 6px !important;
+    border-radius: var(--sh-radius-lg) !important;
+  }
+
+  .mat-mdc-tab {
+    border-radius: var(--sh-radius-lg) !important;
+    font-weight: 600 !important;
+    transition: all 0.25s ease !important;
+    margin: 0 3px;
+
+    &.mdc-tab--active {
+      background-color: var(--sh-surface) !important;
+      box-shadow: 0 2px 6px rgba(232, 97, 77, 0.1);
+
+      .mdc-tab__text-label {
+        color: var(--sh-primary) !important;
+        font-weight: 700 !important;
+      }
+
+      mat-icon {
+        color: var(--sh-primary) !important;
+      }
+    }
+  }
+
+  .mdc-tab-indicator {
+    display: none !important;
+  }
+
+  // --- Form Fields (rounded, warm focus) ---
+  .mat-mdc-form-field {
+    .mdc-text-field--outlined {
+      border-radius: var(--sh-radius-lg) !important;
+
+      .mdc-notched-outline__leading {
+        border-radius: var(--sh-radius-lg) 0 0 var(--sh-radius-lg) !important;
+        border-width: 1.5px !important;
+      }
+
+      .mdc-notched-outline__trailing {
+        border-radius: 0 var(--sh-radius-lg) var(--sh-radius-lg) 0 !important;
+        border-width: 1.5px !important;
+      }
+
+      .mdc-notched-outline__notch {
+        border-width: 1.5px !important;
+      }
+    }
+
+    .mdc-text-field--focused {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__trailing,
+      .mdc-notched-outline__notch {
+        border-color: var(--sh-primary) !important;
+        border-width: 2px !important;
+      }
+    }
+  }
+
+  // --- Select ---
+  .mat-mdc-select-panel {
+    border-radius: var(--sh-radius-lg) !important;
+    box-shadow: 0 8px 24px rgba(232, 97, 77, 0.1) !important;
+    border: none !important;
+  }
+
+  .mat-mdc-option {
+    border-radius: var(--sh-radius-md) !important;
+    margin: 2px 4px;
+
+    &.mdc-list-item--selected {
+      background: rgba(232, 97, 77, 0.1) !important;
+      color: var(--sh-primary) !important;
+      font-weight: 600 !important;
+    }
+  }
+
+  // --- Chips (rounded, warm tones) ---
+  .mat-mdc-chip,
+  .mdc-evolution-chip {
+    border-radius: var(--sh-radius-xl) !important;
+    font-weight: 600 !important;
+  }
+
+  // --- Toggle ---
+  .mat-mdc-slide-toggle .mdc-switch__track {
+    border-radius: var(--sh-radius-xl) !important;
+  }
+
+  // --- Menu ---
+  .mat-mdc-menu-panel {
+    border-radius: var(--sh-radius-lg) !important;
+    border: none !important;
+    box-shadow: 0 8px 24px rgba(232, 97, 77, 0.1) !important;
+  }
+
+  .mat-mdc-menu-item {
+    border-radius: var(--sh-radius-md) !important;
+    margin: 2px 4px;
+  }
+
+  // --- Stat card ---
+  .stat-card {
+    border-radius: var(--sh-radius-lg) !important;
+    border-left: 4px solid var(--sh-primary) !important;
+  }
+
+  // --- Feed icon (rounded square) ---
+  .feed-card-icon {
+    border-radius: var(--sh-radius-md) !important;
+  }
+
+  // --- Conversations ---
+  .conv-item {
+    border-radius: var(--sh-radius-lg) !important;
+    margin: 3px 0;
+    transition: all 0.2s ease;
+
+    &.active {
+      background: rgba(232, 97, 77, 0.08) !important;
+      box-shadow: 0 2px 6px rgba(232, 97, 77, 0.08);
+    }
+  }
+
+  .conv-avatar {
+    border-radius: 50% !important;
+    border: 2px solid var(--sh-surface-variant) !important;
+  }
+
+  // --- Messages (warm bubbles) ---
+  .message-bubble {
+    border-radius: var(--sh-radius-xl) !important;
+
+    &.sent {
+      background: linear-gradient(135deg, var(--sh-primary), var(--sh-primary-light)) !important;
+      color: #ffffff !important;
+      border-radius: var(--sh-radius-xl) var(--sh-radius-xl) var(--sh-radius-sm) var(--sh-radius-xl) !important;
+    }
+
+    &.received {
+      border-radius: var(--sh-radius-xl) var(--sh-radius-xl) var(--sh-radius-xl) var(--sh-radius-sm) !important;
+    }
+  }
+
+  // --- Scrollbar (thin, coral) ---
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--sh-primary-light) !important;
+    border-radius: var(--sh-radius-xl) !important;
+  }
+
+  // --- Badges ---
+  .badge-discount, .badge-featured, .plan-badge, .unread-badge {
+    border-radius: var(--sh-radius-xl) !important;
+    font-weight: 700;
+  }
+}
+
+
+// ============================================================
+// CLASSIC GYM - Editorial minimalista elegante
+// Bordes finos, tipografía serif para títulos, mucho espacio,
+// casi monocromático con un acento rojo discreto, dividers simples.
+// Think: Hyde Park Fitness, revista deportiva, arquitectura visual
+// ============================================================
+
+.skin-classic-gym {
+  // --- Typography ---
+  h1, h2, h3, h4, h5, h6,
+  .mat-mdc-card-title,
+  .brand-text,
+  .page-title,
+  .section-title {
+    font-family: var(--sh-font-heading) !important;
+    font-weight: var(--sh-font-weight-heading) !important;
+    letter-spacing: 0;
+    font-style: normal;
+  }
+
+  .page-title, h1 {
+    font-size: 2rem !important;
+    font-style: italic;
+  }
+
+  // --- Toolbar (minimal, clean line below, serif brand) ---
+  .topbar {
+    background-color: var(--sh-topbar-bg) !important;
+    border-bottom: 1px solid var(--sh-on-surface) !important;
+    box-shadow: none !important;
+
+    .brand-text {
+      font-family: var(--sh-font-heading) !important;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--sh-on-surface) !important;
+    }
+
+    .brand-icon {
+      color: var(--sh-accent) !important;
+    }
+  }
+
+  // --- Sidebar (minimal, text links with dot separator feel) ---
+  .sidebar {
+    background-color: var(--sh-sidebar-bg) !important;
+    border-right: 1px solid var(--sh-border) !important;
+    padding: 24px 16px !important;
+
+    nav {
+      gap: 0 !important;
+    }
+  }
+
+  .nav-item {
+    border-radius: 0 !important;
+    padding: 14px 12px !important;
+    font-family: var(--sh-font-family) !important;
+    font-weight: 500;
+    font-size: 0.88rem;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--sh-border);
+    transition: all 0.15s ease !important;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      color: var(--sh-accent) !important;
+      background: transparent !important;
+      padding-left: 16px !important;
+    }
+
+    &.active {
+      color: var(--sh-nav-active-color) !important;
+      background: transparent !important;
+      font-weight: 700;
+      border-bottom-color: var(--sh-accent);
+      border-bottom-width: 2px;
+
+      mat-icon {
+        color: var(--sh-accent) !important;
+      }
+    }
+  }
+
+  // --- Bottom Nav (minimal line on top) ---
+  .bottom-nav {
+    border-top: 1px solid var(--sh-on-surface) !important;
+    box-shadow: none !important;
+    background: var(--sh-surface) !important;
+  }
+
+  .bottom-nav-item {
+    border-radius: 0 !important;
+
+    &.active {
+      color: var(--sh-accent) !important;
+      font-weight: 700;
+    }
+  }
+
+  // --- Buttons (minimal, thin borders, understated) ---
+  .mat-mdc-flat-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-unelevated-button {
+    border-radius: 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-weight: 600 !important;
+    font-size: 0.78rem !important;
+    font-family: var(--sh-font-family) !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  .mat-mdc-stroked-button,
+  .mat-mdc-outlined-button {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-on-surface) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-weight: 500 !important;
+    font-size: 0.78rem !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      background: var(--sh-on-surface) !important;
+      color: var(--sh-surface) !important;
+    }
+  }
+
+  .mat-mdc-icon-button {
+    border-radius: 0 !important;
+    transition: color 0.2s ease !important;
+
+    &:hover {
+      color: var(--sh-accent) !important;
+      background: transparent !important;
+    }
+  }
+
+  // --- Cards (minimal, thin top border or left accent, barely any shadow) ---
+  .mat-mdc-card,
+  .sh-card,
+  .feed-card,
+  .product-card,
+  .request-card,
+  .payment-card {
+    border-radius: 0 !important;
+    border: none !important;
+    border-top: 1px solid var(--sh-border) !important;
+    box-shadow: none !important;
+    padding-top: 16px;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      border-top-color: var(--sh-accent) !important;
+    }
+  }
+
+  .stat-card {
+    border-radius: 0 !important;
+    border: none !important;
+    border-left: 2px solid var(--sh-accent) !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  .plan-card {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-border) !important;
+    box-shadow: none !important;
+
+    &.highlighted {
+      border-color: var(--sh-accent) !important;
+      border-width: 2px !important;
+    }
+  }
+
+  .action-card {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-border) !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      border-color: var(--sh-accent) !important;
+      background: transparent !important;
+    }
+  }
+
+  // --- Tabs (minimal, underline only, no background) ---
+  .mat-mdc-tab-group,
+  .mat-mdc-tab-nav-bar {
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .mat-mdc-tab-header {
+    background: transparent !important;
+    border-bottom: 1px solid var(--sh-border) !important;
+  }
+
+  .mat-mdc-tab {
+    border-radius: 0 !important;
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    font-weight: 500 !important;
+    font-size: 0.78rem !important;
+
+    &.mdc-tab--active {
+      .mdc-tab__text-label {
+        color: var(--sh-on-surface) !important;
+        font-weight: 700 !important;
+      }
+    }
+
+    .mdc-tab__text-label {
+      color: var(--sh-on-surface-secondary) !important;
+    }
+  }
+
+  .mdc-tab-indicator__content--underline {
+    border-color: var(--sh-accent) !important;
+    border-width: 2px !important;
+  }
+
+  // --- Form Fields (thin, clean, minimal) ---
+  .mat-mdc-form-field {
+    .mdc-text-field--outlined {
+      border-radius: 0 !important;
+
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__trailing,
+      .mdc-notched-outline__notch {
+        border-width: 1px !important;
+        border-color: var(--sh-on-surface) !important;
+        border-radius: 0 !important;
+      }
+    }
+
+    .mdc-text-field--focused {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__trailing,
+      .mdc-notched-outline__notch {
+        border-color: var(--sh-accent) !important;
+      }
+    }
+
+    .mat-mdc-floating-label {
+      font-family: var(--sh-font-family) !important;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  // --- Select ---
+  .mat-mdc-select-panel {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-on-surface) !important;
+    box-shadow: 0 4px 12px var(--sh-shadow) !important;
+  }
+
+  .mat-mdc-option {
+    font-family: var(--sh-font-family) !important;
+    letter-spacing: 0.3px;
+
+    &.mdc-list-item--selected {
+      color: var(--sh-accent) !important;
+      font-weight: 600 !important;
+    }
+  }
+
+  // --- Chips (minimal, thin border) ---
+  .mat-mdc-chip,
+  .mdc-evolution-chip {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-on-surface) !important;
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.68rem;
+    font-weight: 500;
+  }
+
+  // --- Toggle (square track) ---
+  .mat-mdc-slide-toggle .mdc-switch__track {
+    border-radius: 2px !important;
+  }
+
+  // --- Dividers (strong, clean line) ---
+  .mat-divider {
+    border-color: var(--sh-on-surface) !important;
+    border-top-width: 1px !important;
+  }
+
+  // --- Menu ---
+  .mat-mdc-menu-panel {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-on-surface) !important;
+    box-shadow: 0 4px 8px var(--sh-shadow) !important;
+  }
+
+  // --- Scrollbar (thin, invisible almost) ---
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--sh-on-surface-secondary) !important;
+    border-radius: 0 !important;
+  }
+
+  // --- Feed icon (square, outlined) ---
+  .feed-card-icon {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-on-surface) !important;
+    background: transparent !important;
+
+    mat-icon {
+      color: var(--sh-on-surface) !important;
+    }
+  }
+
+  // --- Conversations ---
+  .conv-item {
+    border-radius: 0 !important;
+    border-bottom: 1px solid var(--sh-border) !important;
+
+    &.active {
+      background: transparent !important;
+      border-left: 2px solid var(--sh-accent) !important;
+    }
+  }
+
+  .conv-avatar {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-border) !important;
+  }
+
+  // --- Messages (minimal, no heavy rounding) ---
+  .message-bubble {
+    border-radius: 2px !important;
+    border: 1px solid var(--sh-border) !important;
+
+    &.sent {
+      border-color: var(--sh-on-surface) !important;
+    }
+  }
+
+  // --- Badges ---
+  .badge-discount, .badge-featured, .plan-badge, .unread-badge {
+    border-radius: 0 !important;
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.65rem;
+  }
+
+  .tag {
+    border-radius: 0 !important;
+    border: 1px solid var(--sh-border) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.6rem;
+  }
+
+  // --- Product image (black and white filter) ---
+  .product-image img {
+    filter: grayscale(0.3);
+    transition: filter 0.3s ease;
+  }
+
+  .product-card:hover .product-image img {
+    filter: grayscale(0);
+  }
+}
+
+
+// ============================================================
+// SPORTS CLUB - Portal de club deportivo
+// Navy oscuro en toolbar/sidebar, tipografía Bebas/Oswald bold,
+// cards de fixture, badges rojos, headers centrados uppercase.
+// Think: Club de fútbol, portal de resultados, afiche deportivo
+// ============================================================
+
+.skin-sports-club {
+  // --- Typography ---
+  h1, h2, h3, h4, h5, h6,
+  .mat-mdc-card-title,
+  .brand-text,
+  .page-title,
+  .section-title {
+    font-family: var(--sh-font-heading) !important;
+    font-weight: var(--sh-font-weight-heading) !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .page-title, h1 {
+    font-size: 2.2rem !important;
+    letter-spacing: 3px;
+  }
+
+  // --- Toolbar (navy solid, white text, club feel) ---
+  .topbar {
+    background-color: var(--sh-topbar-bg) !important;
+    border-bottom: 3px solid var(--sh-accent) !important;
+    box-shadow: 0 2px 8px rgba(27, 20, 100, 0.2) !important;
+    color: #ffffff !important;
+
+    .brand-text {
+      color: #ffffff !important;
+      font-family: var(--sh-font-heading) !important;
+      font-size: 1.6rem;
+      letter-spacing: 3px;
+    }
+
+    .brand-icon {
+      color: var(--sh-accent) !important;
+    }
+
+    mat-icon {
+      color: #ffffff !important;
+    }
+
+    button {
+      color: #ffffff !important;
+    }
+  }
+
+  // --- Sidebar (navy dark, white text, bold nav) ---
+  .sidebar {
+    background-color: var(--sh-sidebar-bg) !important;
+    border-right: none !important;
+    padding: 16px 8px !important;
+    color: #ffffff;
+
+    nav {
+      gap: 2px !important;
+    }
+  }
+
+  .nav-item {
+    border-radius: var(--sh-radius-sm) !important;
+    padding: 13px 14px !important;
+    font-family: var(--sh-font-family) !important;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7) !important;
+    transition: all 0.2s ease !important;
+
+    mat-icon {
+      color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08) !important;
+      color: #ffffff !important;
+
+      mat-icon {
+        color: #ffffff !important;
+      }
+    }
+
+    &.active {
+      background-color: var(--sh-nav-active-bg) !important;
+      color: var(--sh-nav-active-color) !important;
+      font-weight: 600;
+
+      mat-icon {
+        color: var(--sh-nav-active-color) !important;
+      }
+    }
+  }
+
+  // --- Bottom Nav (navy) ---
+  .bottom-nav {
+    background-color: var(--sh-topbar-bg) !important;
+    border-top: 2px solid var(--sh-accent) !important;
+    box-shadow: 0 -2px 8px rgba(27, 20, 100, 0.2) !important;
+  }
+
+  .bottom-nav-item {
+    color: rgba(255, 255, 255, 0.7) !important;
+    border-radius: var(--sh-radius-sm) !important;
+
+    mat-icon {
+      color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    &.active {
+      color: #ffffff !important;
+      background: var(--sh-accent) !important;
+
+      mat-icon {
+        color: #ffffff !important;
+      }
+    }
+  }
+
+  // --- Buttons (bold, uppercase, club badge feel) ---
+  .mat-mdc-flat-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-unelevated-button {
+    border-radius: var(--sh-radius-sm) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    font-weight: 600 !important;
+    font-family: var(--sh-font-family) !important;
+    font-size: 0.82rem !important;
+    box-shadow: 0 2px 6px var(--sh-shadow) !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      box-shadow: 0 4px 12px var(--sh-shadow) !important;
+      transform: translateY(-1px);
+    }
+  }
+
+  .mat-mdc-stroked-button,
+  .mat-mdc-outlined-button {
+    border-radius: var(--sh-radius-sm) !important;
+    border: 2px solid var(--sh-primary) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    font-family: var(--sh-font-family) !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      background: var(--sh-primary) !important;
+      color: #ffffff !important;
+    }
+  }
+
+  .mat-mdc-icon-button {
+    border-radius: var(--sh-radius-sm) !important;
+  }
+
+  // --- Cards (bordered, structured, fixture-like) ---
+  .mat-mdc-card,
+  .sh-card,
+  .stat-card,
+  .feed-card,
+  .product-card,
+  .request-card,
+  .plan-card,
+  .payment-card {
+    border-radius: var(--sh-radius-md) !important;
+    border: 1px solid var(--sh-border) !important;
+    box-shadow: 0 2px 8px var(--sh-shadow) !important;
+    overflow: hidden;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      border-color: var(--sh-primary) !important;
+      box-shadow: 0 4px 16px var(--sh-shadow) !important;
+    }
+  }
+
+  .stat-card {
+    border-top: 3px solid var(--sh-primary) !important;
+
+    .stat-value {
+      font-family: var(--sh-font-heading) !important;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+  }
+
+  .action-card {
+    border-radius: var(--sh-radius-sm) !important;
+    border: 1px solid var(--sh-border) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+
+    &:hover {
+      border-color: var(--sh-accent) !important;
+      background: rgba(230, 57, 70, 0.03) !important;
+    }
+  }
+
+  // --- Tabs (structured, bold headers) ---
+  .mat-mdc-tab-group,
+  .mat-mdc-tab-nav-bar {
+    border-radius: var(--sh-radius-md) !important;
+    border: 1px solid var(--sh-border) !important;
+    overflow: hidden;
+  }
+
+  .mat-mdc-tab-header {
+    background: var(--sh-primary) !important;
+    border-bottom: none !important;
+  }
+
+  .mat-mdc-tab {
+    border-radius: 0 !important;
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    font-weight: 500 !important;
+    font-size: 0.78rem !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+
+    .mdc-tab__text-label {
+      color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    mat-icon {
+      color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    &.mdc-tab--active {
+      background: rgba(255, 255, 255, 0.1) !important;
+
+      .mdc-tab__text-label {
+        color: #ffffff !important;
+        font-weight: 700 !important;
+      }
+
+      mat-icon {
+        color: #ffffff !important;
+      }
+    }
+  }
+
+  .mdc-tab-indicator__content--underline {
+    border-color: var(--sh-accent) !important;
+    border-width: 3px !important;
+  }
+
+  // --- Form Fields ---
+  .mat-mdc-form-field {
+    .mdc-text-field--outlined {
+      border-radius: var(--sh-radius-sm) !important;
+
+      .mdc-notched-outline__leading {
+        border-radius: var(--sh-radius-sm) 0 0 var(--sh-radius-sm) !important;
+      }
+
+      .mdc-notched-outline__trailing {
+        border-radius: 0 var(--sh-radius-sm) var(--sh-radius-sm) 0 !important;
+      }
+    }
+
+    .mat-mdc-floating-label {
+      font-family: var(--sh-font-family) !important;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.8rem;
+    }
+  }
+
+  // --- Select ---
+  .mat-mdc-select-panel {
+    border-radius: var(--sh-radius-sm) !important;
+    border: 1px solid var(--sh-border) !important;
+  }
+
+  .mat-mdc-option {
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.85rem;
+  }
+
+  // --- Chips (badge-like, small, red accent) ---
+  .mat-mdc-chip,
+  .mdc-evolution-chip {
+    border-radius: var(--sh-radius-sm) !important;
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 0.7rem;
+  }
+
+  // --- Menu ---
+  .mat-mdc-menu-panel {
+    border-radius: var(--sh-radius-sm) !important;
+    border: 1px solid var(--sh-border) !important;
+  }
+
+  .mat-mdc-menu-item {
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.85rem;
+  }
+
+  // --- Divider ---
+  .mat-divider {
+    border-color: var(--sh-primary) !important;
+    opacity: 0.3;
+  }
+
+  // --- Feed icon ---
+  .feed-card-icon {
+    border-radius: 50% !important;
+    border: 2px solid var(--sh-primary) !important;
+  }
+
+  // --- Conversations ---
+  .conv-item {
+    border-radius: var(--sh-radius-sm) !important;
+    border-bottom: 1px solid var(--sh-border) !important;
+
+    &.active {
+      background: rgba(27, 20, 100, 0.05) !important;
+      border-left: 3px solid var(--sh-accent) !important;
+    }
+  }
+
+  // --- Messages ---
+  .message-bubble {
+    border-radius: var(--sh-radius-md) !important;
+
+    &.sent {
+      background: var(--sh-primary) !important;
+      color: #ffffff !important;
+    }
+  }
+
+  // --- Badges ---
+  .badge-discount, .badge-featured, .plan-badge {
+    border-radius: var(--sh-radius-sm) !important;
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+
+  .unread-badge {
+    border-radius: 50% !important;
+    background: var(--sh-accent) !important;
+    color: #ffffff !important;
+  }
+}
+
+
+// ============================================================
+// NEON WARRIOR - Crossfit / guerrero urbano
+// Negro intenso, acentos en naranja/verde neon, tipografía
+// condensada tall (Teko/Bebas), bordes mínimos, barras de
+// progreso implícitas, energía raw. Think: box de crossfit,
+// street workout, WOD boards, competición atlética
+// ============================================================
+
+.skin-neon-warrior {
+  // --- Typography ---
+  h1, h2, h3, h4, h5, h6,
+  .mat-mdc-card-title,
+  .brand-text,
+  .page-title,
+  .section-title {
+    font-family: var(--sh-font-heading) !important;
+    font-weight: var(--sh-font-weight-heading) !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.8rem;
+  }
+
+  .section-title, h2, h3 {
+    font-size: 1.4rem !important;
+  }
+
+  // --- Toolbar (black, orange accent line, aggressive) ---
+  .topbar {
+    background-color: var(--sh-topbar-bg) !important;
+    border-bottom: 3px solid var(--sh-primary) !important;
+    box-shadow: 0 3px 12px rgba(255, 61, 0, 0.15) !important;
+    color: #ffffff !important;
+
+    .brand-text {
+      color: var(--sh-primary) !important;
+      font-family: var(--sh-font-heading) !important;
+      font-size: 1.8rem;
+      letter-spacing: 4px;
+    }
+
+    .brand-icon {
+      color: var(--sh-accent) !important;
+      filter: drop-shadow(0 0 4px var(--sh-accent));
+    }
+
+    mat-icon {
+      color: #ffffff !important;
+    }
+
+    button {
+      color: #ffffff !important;
+    }
+  }
+
+  // --- Sidebar (black, colored active, intense) ---
+  .sidebar {
+    background-color: var(--sh-sidebar-bg) !important;
+    border-right: 1px solid var(--sh-border) !important;
+    padding: 12px 6px !important;
+    color: #ffffff;
+
+    nav {
+      gap: 2px !important;
+    }
+  }
+
+  .nav-item {
+    border-radius: var(--sh-radius-sm) !important;
+    padding: 14px 14px !important;
+    font-family: var(--sh-font-family) !important;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6) !important;
+    transition: all 0.15s ease !important;
+    border-left: 3px solid transparent;
+
+    mat-icon {
+      color: rgba(255, 255, 255, 0.6) !important;
+    }
+
+    &:hover {
+      color: var(--sh-primary) !important;
+      background: rgba(255, 61, 0, 0.05) !important;
+      border-left-color: var(--sh-primary);
+
+      mat-icon {
+        color: var(--sh-primary) !important;
+      }
+    }
+
+    &.active {
+      background: var(--sh-nav-active-bg) !important;
+      color: var(--sh-nav-active-color) !important;
+      border-left-color: var(--sh-accent) !important;
+      box-shadow: 0 2px 10px rgba(255, 61, 0, 0.2);
+
+      mat-icon {
+        color: var(--sh-nav-active-color) !important;
+      }
+    }
+  }
+
+  // --- Bottom Nav (aggressive dark) ---
+  .bottom-nav {
+    background-color: var(--sh-surface) !important;
+    border-top: 2px solid var(--sh-primary) !important;
+    box-shadow: 0 -2px 10px rgba(255, 61, 0, 0.1) !important;
+  }
+
+  .bottom-nav-item {
+    border-radius: var(--sh-radius-sm) !important;
+    text-transform: uppercase;
+    font-family: var(--sh-font-family) !important;
+    letter-spacing: 1px;
+    font-size: 0.6rem;
+    color: var(--sh-on-surface-secondary) !important;
+
+    &.active {
+      color: var(--sh-primary) !important;
+      background: rgba(255, 61, 0, 0.1) !important;
+
+      mat-icon {
+        color: var(--sh-primary) !important;
+        filter: drop-shadow(0 0 3px var(--sh-primary));
+      }
+    }
+  }
+
+  // --- Buttons (intense, sharp, glowing orange/green) ---
+  .mat-mdc-flat-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-unelevated-button {
+    border-radius: var(--sh-radius-sm) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-weight: 600 !important;
+    font-family: var(--sh-font-family) !important;
+    font-size: 0.85rem !important;
+    box-shadow: 0 2px 8px rgba(255, 61, 0, 0.2) !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(255, 61, 0, 0.35) !important;
+      transform: translateY(-1px);
+    }
+  }
+
+  .mat-mdc-stroked-button,
+  .mat-mdc-outlined-button {
+    border-radius: var(--sh-radius-sm) !important;
+    border: 2px solid var(--sh-primary) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-family: var(--sh-font-family) !important;
+    font-weight: 600 !important;
+    color: var(--sh-primary) !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      background: var(--sh-primary) !important;
+      color: #ffffff !important;
+      box-shadow: 0 2px 10px rgba(255, 61, 0, 0.3) !important;
+    }
+  }
+
+  .mat-mdc-icon-button {
+    border-radius: var(--sh-radius-sm) !important;
+    transition: all 0.15s ease !important;
+
+    &:hover {
+      color: var(--sh-primary) !important;
+      background: rgba(255, 61, 0, 0.08) !important;
+    }
+  }
+
+  // --- Cards (dark surface, orange top accent, low border) ---
+  .mat-mdc-card,
+  .sh-card,
+  .feed-card,
+  .product-card,
+  .request-card,
+  .payment-card {
+    border-radius: var(--sh-radius-md) !important;
+    border: 1px solid var(--sh-border) !important;
+    border-top: 3px solid var(--sh-primary) !important;
+    box-shadow: 0 2px 8px var(--sh-shadow) !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      border-top-color: var(--sh-accent) !important;
+      box-shadow: 0 4px 16px rgba(255, 61, 0, 0.15) !important;
+    }
+  }
+
+  .stat-card {
+    border-radius: var(--sh-radius-md) !important;
+    border: 1px solid var(--sh-border) !important;
+    border-left: 4px solid var(--sh-accent) !important;
+    border-top: none !important;
+    box-shadow: none !important;
+
+    .stat-value {
+      font-family: var(--sh-font-heading) !important;
+      font-size: 2rem;
+      color: var(--sh-primary) !important;
+      letter-spacing: 1px;
+    }
+
+    .stat-icon {
+      color: var(--sh-accent) !important;
+    }
+  }
+
+  .plan-card {
+    border-radius: var(--sh-radius-md) !important;
+    border: 1px solid var(--sh-border) !important;
+
+    &.highlighted {
+      border: 2px solid var(--sh-primary) !important;
+      box-shadow: 0 4px 16px rgba(255, 61, 0, 0.15) !important;
+    }
+  }
+
+  .action-card {
+    border-radius: var(--sh-radius-sm) !important;
+    border: 1px solid var(--sh-border) !important;
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      border-color: var(--sh-primary) !important;
+      box-shadow: 0 2px 10px rgba(255, 61, 0, 0.15) !important;
+
+      mat-icon {
+        color: var(--sh-primary) !important;
+      }
+    }
+  }
+
+  // --- Tabs (dark header, orange indicator, bold) ---
+  .mat-mdc-tab-group,
+  .mat-mdc-tab-nav-bar {
+    border-radius: var(--sh-radius-md) !important;
+    border: 1px solid var(--sh-border) !important;
+    overflow: hidden;
+  }
+
+  .mat-mdc-tab-header {
+    background: var(--sh-surface-variant) !important;
+    border-bottom: 1px solid var(--sh-border) !important;
+  }
+
+  .mat-mdc-tab {
+    border-radius: 0 !important;
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-weight: 500 !important;
+    font-size: 0.82rem !important;
+
+    &.mdc-tab--active {
+      .mdc-tab__text-label {
+        color: var(--sh-primary) !important;
+        font-weight: 700 !important;
+      }
+
+      mat-icon {
+        color: var(--sh-primary) !important;
+      }
+    }
+  }
+
+  .mdc-tab-indicator__content--underline {
+    border-color: var(--sh-primary) !important;
+    border-width: 3px !important;
+  }
+
+  // --- Form Fields (dark, sharp, orange focus) ---
+  .mat-mdc-form-field {
+    .mdc-text-field--outlined {
+      border-radius: var(--sh-radius-sm) !important;
+
+      .mdc-notched-outline__leading {
+        border-radius: var(--sh-radius-sm) 0 0 var(--sh-radius-sm) !important;
+      }
+
+      .mdc-notched-outline__trailing {
+        border-radius: 0 var(--sh-radius-sm) var(--sh-radius-sm) 0 !important;
+      }
+    }
+
+    .mdc-text-field--focused {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__trailing,
+      .mdc-notched-outline__notch {
+        border-color: var(--sh-primary) !important;
+        box-shadow: 0 0 6px rgba(255, 61, 0, 0.2);
+      }
+    }
+
+    .mat-mdc-floating-label {
+      font-family: var(--sh-font-family) !important;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.78rem;
+    }
+  }
+
+  // --- Select ---
+  .mat-mdc-select-panel {
+    border-radius: var(--sh-radius-sm) !important;
+    border: 1px solid var(--sh-border) !important;
+    box-shadow: 0 4px 12px var(--sh-shadow) !important;
+  }
+
+  .mat-mdc-option {
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+  }
+
+  // --- Chips (sharp, colored, intense) ---
+  .mat-mdc-chip,
+  .mdc-evolution-chip {
+    border-radius: var(--sh-radius-sm) !important;
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    font-size: 0.7rem;
+    border: 1px solid var(--sh-primary) !important;
+  }
+
+  // --- Toggle ---
+  .mat-mdc-slide-toggle .mdc-switch__track {
+    border-radius: var(--sh-radius-sm) !important;
+  }
+
+  // --- Divider (orange tinted) ---
+  .mat-divider {
+    border-color: var(--sh-primary) !important;
+    opacity: 0.4;
+  }
+
+  // --- Menu ---
+  .mat-mdc-menu-panel {
+    border-radius: var(--sh-radius-sm) !important;
+    border: 1px solid var(--sh-border) !important;
+    box-shadow: 0 4px 16px var(--sh-shadow) !important;
+  }
+
+  .mat-mdc-menu-item {
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+  }
+
+  // --- Scrollbar (orange) ---
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--sh-primary) !important;
+    border-radius: var(--sh-radius-sm) !important;
+  }
+
+  // --- Feed icon (circle with glow) ---
+  .feed-card-icon {
+    border-radius: 50% !important;
+    box-shadow: 0 0 6px rgba(255, 61, 0, 0.2);
+  }
+
+  // --- Conversations ---
+  .conv-item {
+    border-radius: var(--sh-radius-sm) !important;
+    border-bottom: 1px solid var(--sh-border) !important;
+    transition: all 0.15s ease;
+
+    &.active {
+      background: rgba(255, 61, 0, 0.05) !important;
+      border-left: 3px solid var(--sh-primary) !important;
+    }
+
+    &:hover {
+      background: rgba(255, 61, 0, 0.03) !important;
+    }
+  }
+
+  .conv-avatar {
+    border-radius: var(--sh-radius-sm) !important;
+  }
+
+  // --- Messages ---
+  .message-bubble {
+    border-radius: var(--sh-radius-md) !important;
+
+    &.sent {
+      background: var(--sh-primary) !important;
+      color: #ffffff !important;
+      box-shadow: 0 2px 6px rgba(255, 61, 0, 0.2);
+    }
+  }
+
+  // --- Badges ---
+  .badge-discount, .badge-featured, .plan-badge, .unread-badge {
+    border-radius: var(--sh-radius-sm) !important;
+    font-family: var(--sh-font-family) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+
+  .tag {
+    border-radius: var(--sh-radius-sm) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 0.6rem;
+  }
+
+  // --- Product image (dark overlay on hover) ---
+  .product-image {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(255, 61, 0, 0.1) 100%);
+      pointer-events: none;
+    }
+  }
 }

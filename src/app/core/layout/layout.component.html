@@ -19,6 +19,9 @@
   <!-- Demo switcher -->
   <app-demo-switcher></app-demo-switcher>
 
+  <!-- Skin switcher -->
+  <app-theme-switcher></app-theme-switcher>
+
   <!-- Theme toggle -->
   <button mat-icon-button (click)="toggleTheme()" [matTooltip]="themeService.isDark() ? 'Modo claro' : 'Modo oscuro'">
     <mat-icon>{{ themeService.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>

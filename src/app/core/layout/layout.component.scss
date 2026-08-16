@@ -17,7 +17,7 @@
   right: 0;
   z-index: 1000;
   height: var(--sh-topbar-height);
-  background-color: var(--sh-surface);
+  background-color: var(--sh-topbar-bg);
   color: var(--sh-on-surface);
   border-bottom: 1px solid var(--sh-border);
   box-shadow: 0 1px 4px var(--sh-shadow);
@@ -25,6 +25,7 @@
   align-items: center;
   padding: 0 16px;
   gap: 8px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .brand {
@@ -65,11 +66,11 @@
   width: var(--sh-sidebar-width);
   min-width: var(--sh-sidebar-width);
   height: 100%;
-  background-color: var(--sh-surface);
+  background-color: var(--sh-sidebar-bg);
   border-right: 1px solid var(--sh-border);
   padding: 16px 8px;
   overflow-y: auto;
-  transition: width 0.3s ease, min-width 0.3s ease;
+  transition: width 0.3s ease, min-width 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 
   &.collapsed {
     width: var(--sh-sidebar-collapsed-width);
@@ -103,11 +104,11 @@
   }
 
   &.active {
-    background-color: var(--sh-primary);
-    color: #ffffff;
+    background-color: var(--sh-nav-active-bg);
+    color: var(--sh-nav-active-color);
 
     mat-icon {
-      color: #ffffff;
+      color: var(--sh-nav-active-color);
     }
   }
 
