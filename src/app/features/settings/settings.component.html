@@ -196,22 +196,99 @@
 
         <mat-divider></mat-divider>
 
-        <h2 class="section-title">Personalizar colores</h2>
-        <p class="section-desc">Elegí una paleta de colores para tu perfil.</p>
+        <h2 class="section-title">Estilo visual</h2>
+        <p class="section-desc">Elegí un estilo que se adapte a tu personalidad deportiva.</p>
 
-        <div class="color-palette-section">
-          <div class="color-options disabled" matTooltip="Próximamente - Esta funcionalidad estará disponible en una futura actualización">
-            <div class="color-swatch" style="background-color: #1a237e;"></div>
-            <div class="color-swatch" style="background-color: #1565c0;"></div>
-            <div class="color-swatch" style="background-color: #2e7d32;"></div>
-            <div class="color-swatch" style="background-color: #e65100;"></div>
-            <div class="color-swatch" style="background-color: #6a1b9a;"></div>
-            <div class="color-swatch" style="background-color: #c62828;"></div>
+        <div class="skins-grid">
+          @for (skin of themeService.skins; track skin.id) {
+            <div
+              class="skin-card"
+              [class.selected]="themeService.skin() === skin.id"
+              (click)="selectSkin(skin.id)"
+            >
+              <div class="skin-card-preview" [attr.data-skin]="skin.id">
+                <div class="preview-topbar">
+                  <span class="preview-dot"></span>
+                  <span class="preview-dot"></span>
+                  <span class="preview-dot"></span>
+                </div>
+                <div class="preview-body">
+                  <div class="preview-sidebar">
+                    <span class="preview-nav-item active"></span>
+                    <span class="preview-nav-item"></span>
+                    <span class="preview-nav-item"></span>
+                  </div>
+                  <div class="preview-content">
+                    <span class="preview-card"></span>
+                    <span class="preview-card short"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="skin-card-info">
+                <div class="skin-card-header">
+                  <mat-icon>{{ skin.icon }}</mat-icon>
+                  <span class="skin-card-name">{{ skin.label }}</span>
+                </div>
+                <span class="skin-card-desc">{{ skin.description }}</span>
+              </div>
+              @if (themeService.skin() === skin.id) {
+                <div class="skin-card-badge">
+                  <mat-icon>check_circle</mat-icon>
+                  Activo
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <h2 class="section-title">Personalizar colores</h2>
+        <p class="section-desc">Ajustá los colores principales. Estos se aplican sobre el estilo seleccionado.</p>
+
+        <div class="color-customization">
+          <div class="color-row">
+            <div class="color-info">
+              <span class="color-label">Color primario</span>
+              <span class="color-desc">Navegación activa, botones principales</span>
+            </div>
+            <div class="color-picker-wrapper">
+              <input
+                type="color"
+                class="color-input"
+                [value]="customPrimary()"
+                (input)="onPrimaryChange($event)"
+              >
+              <span class="color-hex">{{ customPrimary() }}</span>
+            </div>
           </div>
-          <p class="coming-soon">
-            <mat-icon>schedule</mat-icon>
-            Próximamente — Podrás personalizar los colores de tu perfil.
-          </p>
+
+          <div class="color-row">
+            <div class="color-info">
+              <span class="color-label">Color acento</span>
+              <span class="color-desc">Iconos destacados, badges, acciones secundarias</span>
+            </div>
+            <div class="color-picker-wrapper">
+              <input
+                type="color"
+                class="color-input"
+                [value]="customAccent()"
+                (input)="onAccentChange($event)"
+              >
+              <span class="color-hex">{{ customAccent() }}</span>
+            </div>
+          </div>
+
+          <div class="color-actions">
+            <button mat-stroked-button (click)="resetColors()">
+              <mat-icon>restart_alt</mat-icon>
+              Restablecer colores del estilo
+            </button>
+            <button mat-flat-button color="primary" (click)="applyColors()">
+              <mat-icon>check</mat-icon>
+              Aplicar colores
+            </button>
+          </div>
         </div>
       </div>
     </mat-tab>

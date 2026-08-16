@@ -13,7 +13,6 @@ import { map } from 'rxjs/operators';
 
 import { ThemeService } from '../services/theme.service';
 import { DemoSwitcherComponent } from '../../shared/components/demo-switcher/demo-switcher.component';
-import { ThemeSwitcherComponent } from '../../shared/components/theme-switcher/theme-switcher.component';
 import { routeAnimations } from '../animations/route-animations';
 
 export interface NavItem {
@@ -37,7 +36,6 @@ export interface NavItem {
     MatListModule,
     MatTooltipModule,
     DemoSwitcherComponent,
-    ThemeSwitcherComponent,
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
