@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -24,6 +24,7 @@ import { MOCK_ATHLETES } from '../../mock-data/athletes.data';
     MatChipsModule,
   ],
   templateUrl: './feed.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './feed.component.scss',
 })
 export class FeedComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -36,6 +36,7 @@ interface DemoUser {
       }
     </mat-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [`
     .demo-menu-header {
       padding: 8px 16px;

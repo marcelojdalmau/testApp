@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -24,6 +24,7 @@ import { AnyUserProfile, HealthProfessionalProfile, CoachProfile } from '../../.
     MatDividerModule,
   ],
   templateUrl: './professional-profile.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './professional-profile.component.scss',
 })
 export class ProfessionalProfileComponent implements OnInit {

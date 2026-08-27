@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -17,6 +17,7 @@ import { ROLE_OPTIONS, RoleOption, UserRole } from '../../../core/models/user.mo
     MatIconModule,
   ],
   templateUrl: './role-select.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './role-select.component.scss',
 })
 export class RoleSelectComponent {

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -33,6 +33,7 @@ import { MOCK_ATHLETES } from '../../mock-data/athletes.data';
     MatTooltipModule,
   ],
   templateUrl: './management.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './management.component.scss',
 })
 export class ManagementComponent implements OnInit {

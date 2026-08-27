@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -35,6 +35,7 @@ import {
     MatChipsModule,
   ],
   templateUrl: './create-profile.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './create-profile.component.scss',
 })
 export class CreateProfileComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -32,6 +32,7 @@ import { Conversation, Message, ServiceRequest, CalendarEvent } from '../../core
     MatBadgeModule,
   ],
   templateUrl: './communication.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './communication.component.scss',
 })
 export class CommunicationComponent implements OnInit {

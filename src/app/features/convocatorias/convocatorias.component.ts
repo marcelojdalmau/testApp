@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,6 +19,7 @@ import { Convocatoria } from '../../core/models/marketplace.model';
     MatChipsModule,
   ],
   templateUrl: './convocatorias.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './convocatorias.component.scss',
 })
 export class ConvocatoriasComponent implements OnInit {
