@@ -1,4 +1,4 @@
-/** User roles in the SportHub ecosystem */
+/** User roles in the Sora Sport ecosystem */
 export type UserRole =
   | 'athlete'
   | 'health-professional'

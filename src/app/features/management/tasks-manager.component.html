@@ -1,0 +1,134 @@
+<div class="tasks-manager">
+  <h2 class="section-title">Tareas</h2>
+  <p class="section-subtitle">Combina items en tareas para asignar a tus atletas</p>
+
+  <mat-card class="task-form-card">
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="name"
+          [maxlength]="nameMax"
+          placeholder="Nombre de la tarea"
+          aria-label="Nombre de la tarea"
+        />
+        @if (nameError(); as msg) {
+          <mat-error class="field-error name-error">{{ msg }}</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Descripción</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          [maxlength]="descriptionMax"
+          rows="3"
+          placeholder="Descripción de la tarea"
+          aria-label="Descripción de la tarea"
+        ></textarea>
+        @if (descriptionError(); as msg) {
+          <mat-error class="field-error description-error">{{ msg }}</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Añadir item</mat-label>
+        <input
+          matInput
+          type="text"
+          [formControl]="itemSearchControl"
+          [matAutocomplete]="auto"
+          (input)="onItemSearch(itemSearchControl.value)"
+          placeholder="Escribe para buscar tus items"
+          aria-label="Buscar item por nombre"
+        />
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          aria-label="Item suggestions"
+          [displayWith]="displayItem"
+          (optionSelected)="onItemSelected($event)"
+        >
+          @for (item of suggestions(); track item.id) {
+            <mat-option [value]="item">{{ item.name }}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+
+      @if (noMatchingItems()) {
+        <p class="no-match" role="status">No hay items que coincidan</p>
+      }
+
+      @if (selectedItems().length > 0) {
+        <mat-chip-set class="selected-items" aria-label="Items seleccionados">
+          @for (item of selectedItems(); track item.id) {
+            <mat-chip (removed)="removeItem(item.id)">
+              {{ item.name }}
+              <button matChipRemove type="button" aria-label="Quitar item">
+                <mat-icon aria-hidden="true">cancel</mat-icon>
+              </button>
+            </mat-chip>
+          }
+        </mat-chip-set>
+      }
+
+      @if (itemsError(); as msg) {
+        <p class="field-error items-error" role="alert">{{ msg }}</p>
+      }
+
+      <div class="form-actions">
+        <button mat-flat-button color="primary" type="submit" class="submit-button">
+          {{ isEditing() ? 'Guardar cambios' : 'Crear tarea' }}
+        </button>
+        @if (isEditing()) {
+          <button mat-stroked-button type="button" (click)="cancelEdit()">Cancelar</button>
+        }
+      </div>
+
+      @if (errorMessage(); as msg) {
+        <p class="form-error" role="alert">{{ msg }}</p>
+      }
+    </form>
+  </mat-card>
+
+  <div class="tasks-list">
+    @if (loading()) {
+      <div class="loading-state" role="status" aria-live="polite">
+        <mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
+        <p>Cargando tareas...</p>
+      </div>
+    } @else {
+    @for (task of tasks(); track task.id) {
+      <mat-card class="task-card">
+        <div class="task-info">
+          <h3 class="task-name">{{ task.name }}</h3>
+          @if (task.description) {
+            <p class="task-description">{{ task.description }}</p>
+          }
+          <span class="task-items">
+            <mat-icon aria-hidden="true">checklist</mat-icon>
+            {{ task.itemIds.length }} items
+          </span>
+        </div>
+        <div class="task-actions">
+          <button mat-icon-button type="button" (click)="edit(task)" aria-label="Editar tarea">
+            <mat-icon aria-hidden="true">edit</mat-icon>
+          </button>
+          <button mat-icon-button type="button" (click)="delete(task)" aria-label="Eliminar tarea">
+            <mat-icon aria-hidden="true">delete</mat-icon>
+          </button>
+        </div>
+      </mat-card>
+    }
+
+    @if (tasks().length === 0) {
+      <div class="empty-state">
+        <mat-icon aria-hidden="true">assignment</mat-icon>
+        <p>Aún no tienes tareas. Crea la primera arriba.</p>
+      </div>
+    }
+    }
+  </div>
+</div>

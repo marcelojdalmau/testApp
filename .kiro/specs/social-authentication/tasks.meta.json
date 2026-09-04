@@ -1,0 +1,612 @@
+{
+  "pbtResults": {
+    "1.3 Escribir property test del validador de Return_URL": {
+      "status": "passed",
+      "lastRunTimestamp": 1787883442604
+    },
+    "5.2 Escribir property test de round-trip del contexto pendiente": {
+      "status": "passed",
+      "lastRunTimestamp": 1787885503313
+    },
+    "5.3 Escribir property test de construcción de `SocialExchangeRequest` sin tenant": {
+      "status": "passed",
+      "lastRunTimestamp": 1787886246741
+    }
+  },
+  "executionHistory": {
+    "1.1 Crear los modelos de autenticación social": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878724571
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878738387
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787881033660
+      }
+    ],
+    "1.2 Implementar el validador puro de Return_URL anti open-redirect": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878724730
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878739448
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787881034625
+      }
+    ],
+    "1.3 Escribir property test del validador de Return_URL": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878724855
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787881039636
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787883458477
+      }
+    ],
+    "2.1 Definir la interfaz `SocialAuthStrategy` y el token de inyección": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878724946
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787881041082
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787883457569
+      }
+    ],
+    "2.2 Implementar `WebSocialAuthStrategy`": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878725075
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787883465584
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787884682157
+      }
+    ],
+    "2.3 Implementar `NativeSocialAuthStrategy`": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878725169
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787883466545
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787884680707
+      }
+    ],
+    "2.4 Crear el resolvedor de estrategia por plataforma y registrarlo en `app.config.ts`": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878725290
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787884690010
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787885087799
+      }
+    ],
+    "2.5 Escribir property test de resolución de estrategia por plataforma": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878725382
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787885094211
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787885238835
+      }
+    ],
+    "3.1 Añadir `completeSocialLogin` a `AuthService`": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878725515
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787881041994
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787883460856
+      }
+    ],
+    "3.2 Escribir unit tests de `completeSocialLogin`": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878725640
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787883467942
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787884679753
+      }
+    ],
+    "3.3 Escribir property test de finalización de sesión consistente": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878725765
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787883468869
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787884678913
+      }
+    ],
+    "3.4 Ajustar el `authInterceptor` para saltar `/auth/social/exchange`": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878725875
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787881043046
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787883459912
+      }
+    ],
+    "3.5 Escribir unit test del interceptor para `/auth/social/exchange`": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878725970
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787883469998
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787884683119
+      }
+    ],
+    "4. Checkpoint - Verificación de lógica pura y servicios base": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878726126
+      },
+      {
+        "executionId": "5b394ef3-801a-452e-b11c-8173d918252e",
+        "chatSessionId": "sess_eebfadf8-e358-4db1-bf44-7f59a392b9bc",
+        "timestamp": 1787913585295
+      },
+      {
+        "executionId": "5b394ef3-801a-452e-b11c-8173d918252e",
+        "chatSessionId": "sess_eebfadf8-e358-4db1-bf44-7f59a392b9bc",
+        "timestamp": 1787914812095
+      }
+    ],
+    "5.1 Implementar generación PKCE + state y persistencia del contexto pendiente": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878726223
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787884688838
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787885238406
+      }
+    ],
+    "5.2 Escribir property test de round-trip del contexto pendiente": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878726341
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787885253638
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787885522307
+      }
+    ],
+    "5.3 Escribir property test de construcción de `SocialExchangeRequest` sin tenant": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878726438
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787886155827
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787886263473
+      }
+    ],
+    "5.4 Escribir property test de scopes exactos {email, name}": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878726525
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787886270365
+      },
+      {
+        "executionId": "1c24325b-78e5-4526-81f7-96a026cfce81",
+        "chatSessionId": "sess_1c2a0fa7-dfc0-47cc-b1f3-b3e2f3e4939f",
+        "timestamp": 1787914867039
+      },
+      {
+        "executionId": "1c24325b-78e5-4526-81f7-96a026cfce81",
+        "chatSessionId": "sess_1c2a0fa7-dfc0-47cc-b1f3-b3e2f3e4939f",
+        "timestamp": 1787914987679
+      }
+    ],
+    "5.5 Implementar `handleCallback` con intercambio y finalización de sesión": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878726714
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787885251862
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787885521397
+      }
+    ],
+    "5.6 Implementar el mapeo de errores a `AuthError` con mensajes en español": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878726843
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787885529709
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787886010998
+      }
+    ],
+    "5.7 Implementar los timeouts del flujo (30 s, 300 s, 10 s)": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878727051
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787886016827
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787886160405
+      }
+    ],
+    "5.8 Escribir property test de atomicidad ante fallo o TokenPair inválido": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878727186
+      },
+      {
+        "executionId": "bbad11ce-fded-4423-a457-566034b7a106",
+        "chatSessionId": "sess_34a82f07-3f08-491c-b4e6-cd031d1d4a4c",
+        "timestamp": 1787915316649
+      },
+      {
+        "executionId": "bbad11ce-fded-4423-a457-566034b7a106",
+        "chatSessionId": "sess_34a82f07-3f08-491c-b4e6-cd031d1d4a4c",
+        "timestamp": 1787915758658
+      }
+    ],
+    "5.9 Escribir unit tests de `SocialAuthService` con reloj falso": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878727296
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787886271742
+      },
+      {
+        "executionId": "1c24325b-78e5-4526-81f7-96a026cfce81",
+        "chatSessionId": "sess_1c2a0fa7-dfc0-47cc-b1f3-b3e2f3e4939f",
+        "timestamp": 1787914871265
+      },
+      {
+        "executionId": "1c24325b-78e5-4526-81f7-96a026cfce81",
+        "chatSessionId": "sess_1c2a0fa7-dfc0-47cc-b1f3-b3e2f3e4939f",
+        "timestamp": 1787914988773
+      }
+    ],
+    "6. Checkpoint - Verificación del servicio de orquestación social": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878727402
+      },
+      {
+        "executionId": "ec8978a1-bfa5-496b-864e-d7298bc16c7f",
+        "chatSessionId": "sess_0e701baa-b3af-407e-865e-cc34f0b1c35b",
+        "timestamp": 1787916148968
+      },
+      {
+        "executionId": "ec8978a1-bfa5-496b-864e-d7298bc16c7f",
+        "chatSessionId": "sess_0e701baa-b3af-407e-865e-cc34f0b1c35b",
+        "timestamp": 1787917019841
+      }
+    ],
+    "7.1 Crear `SocialCallbackComponent`": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878727525
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787885530527
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787886009827
+      }
+    ],
+    "7.2 Registrar la ruta `/auth/callback`": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878727646
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787886272700
+      },
+      {
+        "executionId": "094d1f1d-6c48-4d10-a712-898d600a883d",
+        "chatSessionId": "sess_d624c451-1298-4510-bcb2-75b243339b9b",
+        "timestamp": 1787917065127
+      },
+      {
+        "executionId": "094d1f1d-6c48-4d10-a712-898d600a883d",
+        "chatSessionId": "sess_d624c451-1298-4510-bcb2-75b243339b9b",
+        "timestamp": 1787917112269
+      }
+    ],
+    "7.3 Escribir unit tests de `SocialCallbackComponent`": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878727815
+      },
+      {
+        "executionId": "094d1f1d-6c48-4d10-a712-898d600a883d",
+        "chatSessionId": "sess_d624c451-1298-4510-bcb2-75b243339b9b",
+        "timestamp": 1787917116502
+      },
+      {
+        "executionId": "094d1f1d-6c48-4d10-a712-898d600a883d",
+        "chatSessionId": "sess_d624c451-1298-4510-bcb2-75b243339b9b",
+        "timestamp": 1787917275974
+      }
+    ],
+    "8.1 Añadir botones de proveedor y consentimiento a `LoginComponent`": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878728000
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787886274111
+      },
+      {
+        "executionId": "99099ed2-4982-44b9-b336-e2ec5d9443ba",
+        "chatSessionId": "sess_6abea70c-f97c-40f3-920d-bfcbffded362",
+        "timestamp": 1787917320262
+      },
+      {
+        "executionId": "99099ed2-4982-44b9-b336-e2ec5d9443ba",
+        "chatSessionId": "sess_6abea70c-f97c-40f3-920d-bfcbffded362",
+        "timestamp": 1787917538085
+      }
+    ],
+    "8.2 Añadir botones de proveedor y consentimiento a `RegisterComponent`": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878728133
+      },
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787886275149
+      },
+      {
+        "executionId": "99099ed2-4982-44b9-b336-e2ec5d9443ba",
+        "chatSessionId": "sess_6abea70c-f97c-40f3-920d-bfcbffded362",
+        "timestamp": 1787917321349
+      },
+      {
+        "executionId": "99099ed2-4982-44b9-b336-e2ec5d9443ba",
+        "chatSessionId": "sess_6abea70c-f97c-40f3-920d-bfcbffded362",
+        "timestamp": 1787917539198
+      }
+    ],
+    "8.3 Escribir unit tests de la UI social de Login y Register": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878728294
+      },
+      {
+        "executionId": "99099ed2-4982-44b9-b336-e2ec5d9443ba",
+        "chatSessionId": "sess_6abea70c-f97c-40f3-920d-bfcbffded362",
+        "timestamp": 1787917543449
+      },
+      {
+        "executionId": "99099ed2-4982-44b9-b336-e2ec5d9443ba",
+        "chatSessionId": "sess_6abea70c-f97c-40f3-920d-bfcbffded362",
+        "timestamp": 1787917939265
+      }
+    ],
+    "9. Checkpoint final - Verificación completa (build + tests)": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787878728388
+      },
+      {
+        "executionId": "17f9bdf1-2a35-4e76-af30-a541e1488dd7",
+        "chatSessionId": "sess_24262c94-3898-454e-b240-aa9fc793e602",
+        "timestamp": 1787917975783
+      },
+      {
+        "executionId": "17f9bdf1-2a35-4e76-af30-a541e1488dd7",
+        "chatSessionId": "sess_24262c94-3898-454e-b240-aa9fc793e602",
+        "timestamp": 1787918056904
+      }
+    ],
+    "1. Definir modelos de datos y validador de Return_URL": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787883458554
+      }
+    ],
+    "3. Extender `AuthService` y ajustar el `authInterceptor`": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787884683199
+      }
+    ],
+    "2. Implementar la abstracción de estrategia por plataforma": [
+      {
+        "executionId": "79da52e0-fec4-4113-aff4-db1dd3825c3a",
+        "chatSessionId": "sess_a55c47ed-cfa8-4cda-a1a2-e7c2a4699eb7",
+        "timestamp": 1787885238926
+      }
+    ],
+    "5. Implementar `SocialAuthService`": [
+      {
+        "executionId": "bbad11ce-fded-4423-a457-566034b7a106",
+        "chatSessionId": "sess_34a82f07-3f08-491c-b4e6-cd031d1d4a4c",
+        "timestamp": 1787915758820
+      }
+    ],
+    "7. Implementar el componente de callback y su ruta": [
+      {
+        "executionId": "094d1f1d-6c48-4d10-a712-898d600a883d",
+        "chatSessionId": "sess_d624c451-1298-4510-bcb2-75b243339b9b",
+        "timestamp": 1787917276082
+      }
+    ],
+    "8. Integrar botones de proveedor en Login y Register": [
+      {
+        "executionId": "99099ed2-4982-44b9-b336-e2ec5d9443ba",
+        "chatSessionId": "sess_6abea70c-f97c-40f3-920d-bfcbffded362",
+        "timestamp": 1787917939362
+      }
+    ]
+  }
+}

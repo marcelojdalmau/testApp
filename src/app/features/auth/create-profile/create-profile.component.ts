@@ -112,7 +112,7 @@ export class CreateProfileComponent implements OnInit {
     const temp = this.authService.getTempRegistration();
     const baseProfile = {
       id: temp?.id || 'user_' + Math.random().toString(36).substring(2, 11),
-      email: temp?.email || 'demo@sporthub.com',
+      email: temp?.email || 'demo@sorasport.com',
       fullName: temp?.fullName || 'Usuario Demo',
       role: this.role,
       discipline: this.discipline,

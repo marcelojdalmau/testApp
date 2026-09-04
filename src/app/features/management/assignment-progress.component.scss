@@ -1,0 +1,87 @@
+.assignment-progress {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 16px;
+  color: var(--sh-on-surface);
+}
+
+.progress-card {
+  padding: 20px;
+  border-radius: var(--sh-radius-md);
+}
+
+.athlete-header {
+  margin-bottom: 12px;
+}
+
+.progress-summary {
+  margin-bottom: 16px;
+}
+
+.progress-summary-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.progress-summary-label {
+  font-size: 0.85rem;
+  color: var(--sh-on-surface-secondary);
+}
+
+.progress-summary-percentage {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--sh-primary);
+}
+
+.athlete-name,
+.no-athlete,
+.progress-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.athlete-name {
+  font-weight: 600;
+  color: var(--sh-on-surface);
+}
+
+.no-athlete {
+  color: var(--sh-on-surface-secondary);
+}
+
+.progress-error {
+  color: var(--sh-error, #d32f2f);
+}
+
+.item-row .item-name {
+  font-size: 0.9rem;
+  color: var(--sh-on-surface);
+}
+
+.item-state {
+  font-size: 0.8rem;
+  color: var(--sh-on-surface-secondary);
+}
+
+.item-completed .item-state {
+  color: var(--sh-success, #2e7d32);
+}
+
+.loading-state {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--sh-on-surface-secondary);
+  font-size: 0.9rem;
+}

@@ -10,7 +10,7 @@
   <span class="brand">
     <mat-icon class="brand-icon">sports_soccer</mat-icon>
     @if (!isMobile()) {
-      <span class="brand-text">SportHub</span>
+      <span class="brand-text">Sora Sport</span>
     }
   </span>
 
@@ -36,7 +36,7 @@
   @if (!isMobile()) {
     <aside class="sidebar" [class.collapsed]="sidebarCollapsed()">
       <nav>
-        @for (item of navItems; track item.route) {
+        @for (item of navItems(); track item.route) {
           <a
             class="nav-item"
             [routerLink]="item.route"
@@ -71,5 +71,27 @@
         <span class="bottom-nav-label">{{ item.label }}</span>
       </a>
     }
+
+    <!-- Acceso al resto de secciones que no entran en la barra -->
+    <button
+      type="button"
+      class="bottom-nav-item bottom-nav-more"
+      [matMenuTriggerFor]="moreMenu"
+      #moreTrigger="matMenuTrigger"
+      [class.active]="moreTrigger.menuOpen"
+      aria-label="Más secciones"
+    >
+      <mat-icon>more_horiz</mat-icon>
+      <span class="bottom-nav-label">Más</span>
+    </button>
   </nav>
+
+  <mat-menu #moreMenu="matMenu" class="more-nav-menu" yPosition="above" xPosition="before">
+    @for (item of secondaryNavItems(); track item.route) {
+      <a mat-menu-item [routerLink]="item.route" routerLinkActive="active-menu-item">
+        <mat-icon>{{ item.icon }}</mat-icon>
+        <span>{{ item.label }}</span>
+      </a>
+    }
+  </mat-menu>
 }

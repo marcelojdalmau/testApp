@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sporthub": {
+    "soraSport": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -83,10 +83,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "sporthub:build:production"
+              "buildTarget": "soraSport:build:production"
             },
             "development": {
-              "buildTarget": "sporthub:build:development"
+              "buildTarget": "soraSport:build:development"
             }
           },
           "defaultConfiguration": "development"

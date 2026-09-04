@@ -1,0 +1,134 @@
+.tasks-manager {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--sh-on-surface);
+}
+
+.section-subtitle {
+  font-size: 0.9rem;
+  color: var(--sh-on-surface-secondary);
+  margin: 0 0 20px;
+}
+
+.task-form-card {
+  padding: 20px;
+  border-radius: var(--sh-radius-md);
+  margin-bottom: 24px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.no-match {
+  margin: -8px 0 12px;
+  color: var(--sh-on-surface-secondary);
+  font-size: 0.85rem;
+}
+
+.selected-items {
+  margin-bottom: 12px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.form-error {
+  margin: 12px 0 0;
+  color: var(--sh-error, #d32f2f);
+  font-size: 0.85rem;
+}
+
+.field-error {
+  font-size: 0.8rem;
+}
+
+.items-error {
+  color: var(--sh-error, #d32f2f);
+  margin: 0 0 12px;
+}
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-card {
+  padding: 16px 20px;
+  border-radius: var(--sh-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.task-info {
+  flex: 1;
+
+  .task-name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: var(--sh-on-surface);
+  }
+
+  .task-description {
+    font-size: 0.85rem;
+    color: var(--sh-on-surface-secondary);
+    margin: 0 0 8px;
+    line-height: 1.4;
+  }
+
+  .task-items {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8rem;
+    color: var(--sh-on-surface-secondary);
+
+    mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.task-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 16px;
+  color: var(--sh-on-surface-secondary);
+
+  mat-icon {
+    font-size: 44px;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 12px;
+  }
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px 16px;
+  color: var(--sh-on-surface-secondary);
+}

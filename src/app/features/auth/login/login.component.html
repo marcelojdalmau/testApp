@@ -3,54 +3,142 @@
     <!-- Logo -->
     <div class="auth-header">
       <mat-icon class="logo-icon">sports_soccer</mat-icon>
-      <h1 class="logo-text">SportHub</h1>
+      <h1 class="logo-text">Sora Sport</h1>
       <p class="subtitle">Tu ecosistema deportivo integral</p>
     </div>
 
     <!-- Login Form -->
-    <form (ngSubmit)="login()" class="auth-form">
+    <form [formGroup]="form" (ngSubmit)="login()" class="auth-form">
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput type="email" [(ngModel)]="email" name="email" placeholder="tu@email.com">
+        <input matInput type="email" formControlName="email" placeholder="tu@email.com" autocomplete="email">
         <mat-icon matPrefix>email</mat-icon>
+        @if (form.controls.email.touched && form.controls.email.invalid) {
+          <mat-error>
+            @if (form.controls.email.hasError('required')) {
+              El email es obligatorio
+            } @else {
+              Ingresá un email válido
+            }
+          </mat-error>
+        }
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Contraseña</mat-label>
-        <input matInput [type]="hidePassword ? 'password' : 'text'" [(ngModel)]="password" name="password">
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" autocomplete="current-password">
         <mat-icon matPrefix>lock</mat-icon>
-        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword"
+                [attr.aria-label]="hidePassword ? 'Mostrar contraseña' : 'Ocultar contraseña'">
           <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
+        @if (form.controls.password.touched && form.controls.password.invalid) {
+          <mat-error>
+            @if (form.controls.password.hasError('required')) {
+              La contraseña es obligatoria
+            } @else {
+              La contraseña debe tener entre 8 y 72 caracteres
+            }
+          </mat-error>
+        }
       </mat-form-field>
 
       @if (errorMessage) {
         <p class="error-msg">{{ errorMessage }}</p>
       }
 
-      <button mat-flat-button color="primary" type="submit" class="login-btn">
-        Ingresar
+      <button mat-flat-button color="primary" type="submit" class="login-btn" [disabled]="isLoading()">
+        @if (isLoading()) {
+          <mat-progress-spinner diameter="24" mode="indeterminate"></mat-progress-spinner>
+        } @else {
+          Ingresar
+        }
       </button>
+
+      <p class="forgot-link">
+        <a routerLink="/auth/forgot-password">¿Olvidaste tu contraseña?</a>
+      </p>
     </form>
 
-    <!-- Divider -->
-    <div class="divider-container">
-      <mat-divider></mat-divider>
-      <span class="divider-text">o continuar con</span>
-      <mat-divider></mat-divider>
-    </div>
+    <!-- Social Authentication -->
+    <section class="social-auth" aria-labelledby="social-auth-heading">
+      <div class="social-divider" role="separator">
+        <span id="social-auth-heading">O continuá con</span>
+      </div>
 
-    <!-- Social Login -->
-    <div class="social-buttons">
-      <button mat-stroked-button (click)="socialLogin('google')" class="social-btn">
-        <mat-icon>mail</mat-icon>
-        Google
+      <div class="social-buttons">
+        @for (btn of socialProviders; track btn.provider) {
+          <button
+            mat-stroked-button
+            type="button"
+            class="social-btn"
+            [class.social-btn--google]="btn.provider === 'google'"
+            [class.social-btn--facebook]="btn.provider === 'facebook'"
+            [class.social-btn--apple]="btn.provider === 'apple'"
+            [disabled]="isLoading()"
+            [attr.aria-label]="'Continuar con ' + btn.label"
+            (click)="startSocialLogin(btn.provider)">
+            <span class="social-btn__logo" aria-hidden="true">
+              @switch (btn.provider) {
+                @case ('google') {
+                  <svg viewBox="0 0 18 18" width="18" height="18" focusable="false">
+                    <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.71-1.57 2.68-3.89 2.68-6.62z"/>
+                    <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.8.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.7H.96v2.33A9 9 0 0 0 9 18z"/>
+                    <path fill="#FBBC05" d="M3.97 10.72a5.4 5.4 0 0 1 0-3.44V4.95H.96a9 9 0 0 0 0 8.1l3.01-2.33z"/>
+                    <path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58C13.47.89 11.43 0 9 0A9 9 0 0 0 .96 4.95l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58z"/>
+                  </svg>
+                }
+                @case ('facebook') {
+                  <svg viewBox="0 0 24 24" width="18" height="18" focusable="false">
+                    <path fill="#1877F2" d="M24 12a12 12 0 1 0-13.88 11.85v-8.38H7.08V12h3.04V9.36c0-3 1.79-4.67 4.53-4.67 1.31 0 2.68.24 2.68.24v2.95h-1.51c-1.49 0-1.95.93-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38A12 12 0 0 0 24 12z"/>
+                  </svg>
+                }
+                @case ('apple') {
+                  <svg viewBox="0 0 24 24" width="18" height="18" focusable="false">
+                    <path fill="currentColor" d="M17.05 12.54c-.03-2.53 2.07-3.74 2.16-3.8-1.18-1.72-3.01-1.96-3.66-1.99-1.56-.16-3.04.92-3.83.92-.79 0-2.01-.9-3.3-.87-1.7.02-3.27.99-4.14 2.51-1.77 3.07-.45 7.61 1.27 10.1.84 1.22 1.84 2.59 3.15 2.54 1.26-.05 1.74-.82 3.27-.82 1.52 0 1.96.82 3.29.79 1.36-.02 2.22-1.24 3.05-2.47.96-1.41 1.36-2.78 1.38-2.85-.03-.01-2.64-1.01-2.67-4.01M14.6 4.94c.7-.85 1.17-2.03 1.04-3.2-1 .04-2.22.67-2.94 1.51-.64.75-1.21 1.95-1.06 3.1 1.12.09 2.26-.57 2.96-1.41"/>
+                  </svg>
+                }
+              }
+            </span>
+            <span class="social-btn__label">{{ btn.label }}</span>
+          </button>
+        }
+      </div>
+
+      @if (isLoading()) {
+        <div class="social-loading" role="status" aria-live="polite">
+          <mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner>
+          <span>Conectando con el proveedor…</span>
+        </div>
+      }
+
+      <!-- Consent control (Req 9.3, 9.4) -->
+      <button
+        type="button"
+        class="consent-toggle"
+        [attr.aria-expanded]="showConsent()"
+        aria-controls="consent-panel"
+        (click)="toggleConsent()">
+        <mat-icon aria-hidden="true">{{ showConsent() ? 'expand_less' : 'help_outline' }}</mat-icon>
+        <span>¿Qué datos solicitamos?</span>
       </button>
-      <button mat-stroked-button (click)="socialLogin('facebook')" class="social-btn">
-        <mat-icon>facebook</mat-icon>
-        Facebook
-      </button>
-    </div>
+
+      @if (showConsent()) {
+        <div id="consent-panel" class="consent-panel">
+          <p class="consent-intro">Solicitamos a tu proveedor únicamente estos datos:</p>
+          <ul class="consent-list">
+            <li>
+              <mat-icon aria-hidden="true">email</mat-icon>
+              <span><strong>Correo electrónico</strong>: para identificarte al iniciar sesión en tu cuenta.</span>
+            </li>
+            <li>
+              <mat-icon aria-hidden="true">person</mat-icon>
+              <span><strong>Nombre</strong>: para mostrarlo en tu perfil dentro de Sora Sport.</span>
+            </li>
+          </ul>
+        </div>
+      }
+    </section>
 
     <!-- Register Link -->
     <p class="register-link">

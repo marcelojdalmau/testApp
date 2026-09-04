@@ -88,8 +88,8 @@ export const AVAILABLE_SKINS: SkinInfo[] = [
   providedIn: 'root'
 })
 export class ThemeService {
-  private readonly MODE_STORAGE_KEY = 'sporthub-theme-mode';
-  private readonly SKIN_STORAGE_KEY = 'sporthub-theme-skin';
+  private readonly MODE_STORAGE_KEY = 'sora-sport-theme-mode';
+  private readonly SKIN_STORAGE_KEY = 'sora-sport-theme-skin';
 
   /** Current theme mode signal */
   readonly mode = signal<ThemeMode>(this.loadSavedTheme());

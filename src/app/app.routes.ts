@@ -1,5 +1,8 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './core/layout/layout.component';
+import { authGuard } from './core/guards/auth.guard';
+import { professionalGuard } from './core/guards/professional.guard';
+import { athleteGuard } from './core/guards/athlete.guard';
 
 export const routes: Routes = [
   // Auth routes (no layout shell)
@@ -11,6 +14,7 @@ export const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    //canActivate: [authGuard],
     children: [
       { path: '', redirectTo: 'feed', pathMatch: 'full' },
       {
@@ -31,7 +35,13 @@ export const routes: Routes = [
       },
       {
         path: 'management',
+        canActivate: [professionalGuard],
         loadComponent: () => import('./features/management/management.component').then(m => m.ManagementComponent),
+      },
+      {
+        path: 'control-center',
+        canActivate: [athleteGuard],
+        loadComponent: () => import('./features/control-center/control-center.component').then(m => m.ControlCenterComponent),
       },
       {
         path: 'communication',

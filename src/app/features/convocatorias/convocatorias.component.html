@@ -2,8 +2,23 @@
   <h1 class="page-title">Convocatorias</h1>
   <p class="page-subtitle">Oportunidades de empleo, pruebas de jugadores y sponsors</p>
 
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Buscar por club o ubicación</mat-label>
+    <mat-icon matPrefix>search</mat-icon>
+    <input
+      matInput
+      type="text"
+      [ngModel]="searchQuery()"
+      (input)="onSearchInput($any($event.target).value)"
+      [maxlength]="searchMaxLength"
+      minlength="0"
+      placeholder="Nombre del club o ubicación"
+      aria-label="Buscar convocatorias por club o ubicación"
+    />
+  </mat-form-field>
+
   <div class="convocatorias-list">
-    @for (conv of convocatorias(); track conv.id) {
+    @for (conv of filteredConvocatorias(); track conv.id) {
       <mat-card class="convocatoria-card">
         <div class="conv-header">
           <div class="conv-icon" [style.background-color]="getConvocatoriaColor(conv.type)">
@@ -45,10 +60,15 @@
     }
   </div>
 
-  @if (convocatorias().length === 0) {
+  @if (allConvocatorias().length === 0) {
     <div class="empty-state">
       <mat-icon>work_off</mat-icon>
       <p>No hay convocatorias abiertas en este momento.</p>
+    </div>
+  } @else if (noMatches()) {
+    <div class="empty-state empty-result">
+      <mat-icon>search_off</mat-icon>
+      <p>No se encontraron convocatorias que coincidan con tu búsqueda.</p>
     </div>
   }
 </div>

@@ -10,12 +10,24 @@ export const AUTH_ROUTES: Routes = [
     loadComponent: () => import('./register/register.component').then(m => m.RegisterComponent),
   },
   {
-    path: 'role-select',
-    loadComponent: () => import('./role-select/role-select.component').then(m => m.RoleSelectComponent),
+    path: 'forgot-password',
+    loadComponent: () =>
+      import('./forgot-password/forgot-password.component').then(m => m.ForgotPasswordComponent),
   },
   {
-    path: 'create-profile',
-    loadComponent: () => import('./create-profile/create-profile.component').then(m => m.CreateProfileComponent),
+    path: 'reset-password',
+    loadComponent: () =>
+      import('./reset-password/reset-password.component').then(m => m.ResetPasswordComponent),
+  },
+  {
+    path: 'set-password',
+    loadComponent: () =>
+      import('./set-password/set-password.component').then(m => m.SetPasswordComponent),
+  },
+  {
+    path: 'callback',
+    loadComponent: () =>
+      import('./callback/social-callback.component').then(m => m.SocialCallbackComponent),
   },
   {
     path: '',
