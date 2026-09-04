@@ -1,0 +1,101 @@
+<div class="task-assignment">
+  <h2 class="section-title">Asignar tarea</h2>
+  <p class="section-subtitle">Asigna una tarea a tus atletas por método directo, mensaje o en masa</p>
+
+  <mat-card class="assignment-card">
+    @if (loading()) {
+      <div class="loading-state" role="status" aria-live="polite">
+        <mat-progress-spinner mode="indeterminate" diameter="36"></mat-progress-spinner>
+        <span>Cargando tareas...</span>
+      </div>
+    } @else {
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tarea</mat-label>
+      <mat-select
+        [value]="selectedTaskId()"
+        (valueChange)="onTaskChange($event)"
+        aria-label="Seleccionar tarea"
+      >
+        @for (task of tasks(); track task.id) {
+          <mat-option [value]="task.id">{{ task.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    @if (tasks().length === 0) {
+      <p class="no-tasks" role="status">
+        Aún no tienes tareas para asignar. Crea una tarea primero.
+      </p>
+    }
+    }
+
+    <div class="method-section">
+      <span class="method-label">Método de asignación</span>
+      <mat-button-toggle-group
+        class="method-toggle"
+        [value]="method()"
+        (change)="onMethodChange($event.value)"
+        aria-label="Método de asignación"
+      >
+        <mat-button-toggle [value]="AssignmentMethod.Direct" class="method-direct">
+          <mat-icon>person</mat-icon>
+          Directa
+        </mat-button-toggle>
+        <mat-button-toggle [value]="AssignmentMethod.Message" class="method-message">
+          <mat-icon>mail</mat-icon>
+          Mensaje
+        </mat-button-toggle>
+        <mat-button-toggle [value]="AssignmentMethod.Bulk" class="method-bulk">
+          <mat-icon>groups</mat-icon>
+          En masa
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <div class="athletes-section">
+      <span class="athletes-label">Atletas</span>
+      <div class="athletes-list">
+        @for (athlete of athletes(); track athlete.id) {
+          <mat-checkbox
+            class="athlete-option"
+            [checked]="isSelected(athlete.id)"
+            (change)="toggleAthlete(athlete.id, $event.checked)"
+          >
+            {{ athlete.name }}
+          </mat-checkbox>
+        }
+      </div>
+      <span class="selection-count">{{ selectedAthleteIds().length }} seleccionado(s)</span>
+    </div>
+
+    <div class="form-actions">
+      <button
+        mat-flat-button
+        color="primary"
+        type="button"
+        class="assign-button"
+        [disabled]="assigning()"
+        (click)="assign()"
+      >
+        @if (assigning()) {
+          <mat-progress-spinner mode="indeterminate" diameter="20"></mat-progress-spinner>
+          <span class="assign-button-label">Asignando...</span>
+        } @else {
+          Asignar
+        }
+      </button>
+    </div>
+
+    @if (validationMessage(); as msg) {
+      <p class="validation-error" role="alert">{{ msg }}</p>
+    }
+
+    @if (errorMessage(); as msg) {
+      <p class="form-error" role="alert">{{ msg }}</p>
+    }
+
+    @if (successMessage(); as msg) {
+      <p class="form-success" role="status">{{ msg }}</p>
+    }
+  </mat-card>
+</div>

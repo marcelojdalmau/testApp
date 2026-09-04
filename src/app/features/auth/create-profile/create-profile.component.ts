@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -35,6 +35,7 @@ import {
     MatChipsModule,
   ],
   templateUrl: './create-profile.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './create-profile.component.scss',
 })
 export class CreateProfileComponent implements OnInit {
@@ -111,7 +112,7 @@ export class CreateProfileComponent implements OnInit {
     const temp = this.authService.getTempRegistration();
     const baseProfile = {
       id: temp?.id || 'user_' + Math.random().toString(36).substring(2, 11),
-      email: temp?.email || 'demo@sporthub.com',
+      email: temp?.email || 'demo@sorasport.com',
       fullName: temp?.fullName || 'Usuario Demo',
       role: this.role,
       discipline: this.discipline,

@@ -1,0 +1,112 @@
+.task-assignment {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--sh-on-surface);
+}
+
+.section-subtitle {
+  font-size: 0.9rem;
+  color: var(--sh-on-surface-secondary);
+  margin: 0 0 20px;
+}
+
+.assignment-card {
+  padding: 20px;
+  border-radius: var(--sh-radius-md);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.no-tasks {
+  margin: -8px 0 16px;
+  color: var(--sh-on-surface-secondary);
+  font-size: 0.85rem;
+}
+
+.method-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.method-label,
+.athletes-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--sh-on-surface-secondary);
+}
+
+.method-toggle {
+  flex-wrap: wrap;
+}
+
+.athletes-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.athletes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.athlete-option {
+  display: block;
+}
+
+.selection-count {
+  font-size: 0.8rem;
+  color: var(--sh-on-surface-secondary);
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.validation-error,
+.form-error {
+  color: var(--sh-error, #d32f2f);
+  font-size: 0.85rem;
+  margin: 4px 0 0;
+}
+
+.form-success {
+  color: var(--sh-success, #2e7d32);
+  font-size: 0.85rem;
+  margin: 4px 0 0;
+}
+
+.loading-state {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0 20px;
+  color: var(--sh-on-surface-secondary);
+  font-size: 0.9rem;
+}
+
+.assign-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  .assign-button-label {
+    margin-left: 4px;
+  }
+}

@@ -1,0 +1,118 @@
+<div class="items-manager">
+  <h2 class="section-title">Items</h2>
+  <p class="section-subtitle">Bloques reutilizables para componer tareas</p>
+
+  <mat-card class="item-form-card">
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="name"
+          [maxlength]="nameMax"
+          placeholder="Nombre del item"
+          aria-label="Nombre del item"
+        />
+        @if (nameError(); as msg) {
+          <mat-error class="field-error name-error">{{ msg }}</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Descripción</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          [maxlength]="descriptionMax"
+          rows="3"
+          placeholder="Descripción del item"
+          aria-label="Descripción del item"
+        ></textarea>
+        @if (descriptionError(); as msg) {
+          <mat-error class="field-error description-error">{{ msg }}</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Duración (minutos)</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="durationMinutes"
+          [min]="durationMin"
+          [max]="durationMax"
+          placeholder="Entre 1 y 1440"
+          aria-label="Duración en minutos"
+        />
+        @if (durationError(); as msg) {
+          <mat-error class="field-error duration-error">{{ msg }}</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-flat-button color="primary" type="submit" class="submit-button">
+          {{ isEditing() ? 'Guardar cambios' : 'Crear item' }}
+        </button>
+        @if (isEditing()) {
+          <button mat-stroked-button type="button" (click)="cancelEdit()">
+            Cancelar
+          </button>
+        }
+      </div>
+
+      @if (errorMessage(); as msg) {
+        <p class="form-error" role="alert">{{ msg }}</p>
+      }
+    </form>
+  </mat-card>
+
+  <div class="items-list">
+    @if (loading()) {
+      <div class="loading-state" role="status" aria-live="polite">
+        <mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
+        <p>Cargando items...</p>
+      </div>
+    } @else {
+    @for (item of items(); track item.id) {
+      <mat-card class="item-card">
+        <div class="item-info">
+          <h3 class="item-name">{{ item.name }}</h3>
+          @if (item.description) {
+            <p class="item-description">{{ item.description }}</p>
+          }
+          <span class="item-duration">
+            <mat-icon>schedule</mat-icon>
+            {{ item.durationMinutes }} min
+          </span>
+        </div>
+        <div class="item-actions">
+          <button
+            mat-icon-button
+            type="button"
+            (click)="edit(item)"
+            aria-label="Editar item"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            type="button"
+            (click)="delete(item)"
+            aria-label="Eliminar item"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-card>
+    }
+
+    @if (items().length === 0) {
+      <div class="empty-state">
+        <mat-icon>inventory_2</mat-icon>
+        <p>Aún no tienes items. Crea el primero arriba.</p>
+      </div>
+    }
+    }
+  </div>
+</div>

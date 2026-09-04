@@ -1,0 +1,63 @@
+<div class="assignment-progress">
+  <h2 class="section-title">Progreso de la asignación</h2>
+
+  <mat-card class="progress-card">
+    @if (loading()) {
+      <div class="loading-state" role="status" aria-live="polite">
+        <mat-progress-spinner mode="indeterminate" diameter="36"></mat-progress-spinner>
+        <span>Cargando progreso...</span>
+      </div>
+    } @else if (unavailable()) {
+      <!-- Requirement 7.5: progress unavailable; no item state is rendered. -->
+      <p class="progress-error" role="alert">
+        <mat-icon aria-hidden="true">error_outline</mat-icon>
+        No se pudo obtener el progreso de esta asignación
+      </p>
+    } @else {
+      <div class="athlete-header">
+        @if (hasNoAthlete()) {
+          <!-- Requirement 7.4: no athlete assigned indication. -->
+          <p class="no-athlete" role="status">
+            <mat-icon aria-hidden="true">person_off</mat-icon>
+            Ningún atleta asignado
+          </p>
+        } @else {
+          <p class="athlete-name" role="status">
+            <mat-icon aria-hidden="true">person</mat-icon>
+            <span class="athlete-name-text">{{ athleteName() }}</span>
+          </p>
+        }
+      </div>
+
+      <!-- Progress summary: completion bar + percentage. -->
+      <div class="progress-summary">
+        <div class="progress-summary-header">
+          <span class="progress-summary-label">
+            {{ completedCount() }} de {{ totalCount() }} items completados
+          </span>
+          <span class="progress-summary-percentage">{{ percentage() }}%</span>
+        </div>
+        <mat-progress-bar
+          mode="determinate"
+          [value]="percentage()"
+          [attr.aria-label]="'Progreso ' + percentage() + ' por ciento'"
+        ></mat-progress-bar>
+      </div>
+
+      <!-- Requirement 7.2/7.3/7.4: per-item completed / not-completed state. -->
+      <mat-list class="items-list">
+        @for (item of items(); track item.itemId) {
+          <mat-list-item class="item-row" [class.item-completed]="item.completed">
+            <mat-icon matListItemIcon aria-hidden="true">
+              {{ item.completed ? 'check_circle' : 'radio_button_unchecked' }}
+            </mat-icon>
+            <span matListItemTitle class="item-name">{{ item.itemName }}</span>
+            <span matListItemLine class="item-state">
+              {{ item.completed ? 'Completado' : 'No completado' }}
+            </span>
+          </mat-list-item>
+        }
+      </mat-list>
+    }
+  </mat-card>
+</div>

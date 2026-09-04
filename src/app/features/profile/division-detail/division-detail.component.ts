@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -25,6 +25,7 @@ import { AnyUserProfile } from '../../../core/models/user.model';
     MatDividerModule,
   ],
   templateUrl: './division-detail.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './division-detail.component.scss',
 })
 export class DivisionDetailComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -41,6 +41,7 @@ import { ThemeService, ThemeSkin, AVAILABLE_SKINS } from '../../../core/services
       }
     </mat-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [`
     .skin-trigger {
       transition: transform 0.2s ease;

@@ -187,3 +187,34 @@
 .bottom-nav-label {
   font-size: 0.65rem;
 }
+
+// "Más" trigger: es un <button>, reseteamos para que calce con los <a>
+.bottom-nav-more {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+// Menú "Más" (accesos secundarios en mobile)
+::ng-deep .more-nav-menu {
+  .mat-mdc-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--sh-on-surface);
+
+    mat-icon {
+      color: var(--sh-on-surface-secondary);
+    }
+
+    &.active-menu-item {
+      color: var(--sh-primary);
+
+      mat-icon {
+        color: var(--sh-primary);
+      }
+    }
+  }
+}

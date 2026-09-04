@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
@@ -8,6 +8,7 @@ import { MOCK_ATHLETES } from '../../../mock-data/athletes.data';
   selector: 'app-profile-view',
   standalone: true,
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `<p>Redirigiendo al perfil...</p>`,
 })
 export class ProfileViewComponent implements OnInit {

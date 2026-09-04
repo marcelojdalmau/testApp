@@ -16,6 +16,16 @@
   margin: 0 0 24px;
 }
 
+.search-field {
+  width: 100%;
+  margin-bottom: 20px;
+
+  mat-icon[matPrefix] {
+    margin-right: 8px;
+    color: var(--sh-on-surface-secondary);
+  }
+}
+
 .convocatorias-list {
   display: flex;
   flex-direction: column;

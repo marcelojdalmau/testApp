@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -26,6 +26,7 @@ import { SportDiscipline } from '../../core/models/user.model';
     MatChipsModule,
   ],
   templateUrl: './marketplace.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './marketplace.component.scss',
 })
 export class MarketplaceComponent implements OnInit {

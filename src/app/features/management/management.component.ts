@@ -1,132 +1,81 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule } from '@angular/material/list';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { AuthService } from '../../core/services/auth.service';
-import { MockClubService } from '../../mock-data/services/mock-club.service';
-import { MockUserService } from '../../mock-data/services/mock-user.service';
-import { UserRole, AnyUserProfile } from '../../core/models/user.model';
-import { StaffRecommendation, Club, Division } from '../../core/models/club.model';
-import { MOCK_ATHLETES } from '../../mock-data/athletes.data';
+import { CurrentUserService } from '../../core/services/current-user.service';
+import { MockTaskService } from '../../mock-data/services/mock-task.service';
+import { TaskAssignment } from '../../core/models/management.model';
+import { ItemsManagerComponent } from './items-manager.component';
+import { TasksManagerComponent } from './tasks-manager.component';
+import { TaskAssignmentComponent } from './task-assignment.component';
+import { AssignmentProgressComponent } from './assignment-progress.component';
 
+/**
+ * Professional workspace shell hosted at the `/management` route.
+ *
+ * Standalone, OnPush, signal-driven. Composes the four professional-facing
+ * child areas in a tabbed layout ({@link MatTabsModule}):
+ * - Items ({@link ItemsManagerComponent}, Requirement 4.1)
+ * - Tasks ({@link TasksManagerComponent}, Requirement 5.1)
+ * - Assignment ({@link TaskAssignmentComponent})
+ * - Progress ({@link AssignmentProgressComponent}, one per assignment)
+ *
+ * The signed-in professional's id is resolved from {@link CurrentUserService}
+ * (Requirement 3.2). The former athlete recommendation view previously hosted
+ * here has been migrated to `ControlCenterComponent` / `RecommendationTabsComponent`.
+ */
 @Component({
   selector: 'app-management',
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink,
     MatTabsModule,
-    MatCardModule,
     MatIconModule,
-    MatButtonModule,
-    MatChipsModule,
-    MatDividerModule,
-    MatListModule,
-    MatTooltipModule,
+    MatProgressSpinnerModule,
+    ItemsManagerComponent,
+    TasksManagerComponent,
+    TaskAssignmentComponent,
+    AssignmentProgressComponent,
   ],
   templateUrl: './management.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './management.component.scss',
 })
 export class ManagementComponent implements OnInit {
-  private authService = inject(AuthService);
-  private clubService = inject(MockClubService);
-  private userService = inject(MockUserService);
+  private readonly currentUser = inject(CurrentUserService);
+  private readonly taskService = inject(MockTaskService);
 
-  userRole = signal<UserRole>('athlete');
-  userId = signal<string>('');
-  recommendations = signal<StaffRecommendation[]>([]);
-  myRecommendations = signal<StaffRecommendation[]>([]);
-  clubs = signal<Club[]>([]);
-  managedPlayers = signal<AnyUserProfile[]>([]);
+  /** The signed-in professional's id, resolved from CurrentUserService. */
+  readonly professionalId = computed(() => this.currentUser.userId());
+
+  /** The professional's TaskAssignments, one Progress panel is shown per record. */
+  readonly assignments = signal<TaskAssignment[]>([]);
+
+  /** True while the professional's assignments are being loaded. */
+  readonly loading = signal<boolean>(false);
 
   ngOnInit(): void {
-    const user = this.authService.currentUser();
-    const role = user?.role ?? 'athlete';
-    this.userRole.set(role);
-    this.userId.set(user?.id ?? '');
-
-    if (role === 'athlete') {
-      // Athlete: load ALL recommendations for this athlete (from all professionals)
-      const playerId = user?.id ?? MOCK_ATHLETES[0].id;
-      this.clubService.getRecommendationsForPlayer(playerId).subscribe(recs => {
-        this.recommendations.set(recs);
-      });
-    } else if (role === 'institution') {
-      // Institution: load clubs
-      this.clubService.getClubs().subscribe(clubs => {
-        this.clubs.set(clubs);
-      });
-    } else if (role === 'health-professional' || role === 'coach') {
-      // Professional/Coach: load ONLY recommendations created by this user
-      const staffId = user?.id ?? '';
-      this.clubService.getRecommendationsByStaff(staffId).subscribe(recs => {
-        this.myRecommendations.set(recs);
-      });
-      // Also load the athletes they work with (based on their recommendations)
-      this.userService.getAthletes().subscribe(athletes => {
-        // Filter to athletes that have recommendations from this staff
-        this.clubService.getRecommendationsByStaff(staffId).subscribe(recs => {
-          const playerIds = [...new Set(recs.map(r => r.playerId))];
-          const managed = athletes.filter(a => playerIds.includes(a.id));
-          this.managedPlayers.set(managed.length > 0 ? managed : athletes.slice(0, 3));
-        });
-      });
-    }
+    this.reloadAssignments();
   }
 
-  getRecommendationIcon(type: string): string {
-    switch (type) {
-      case 'diet': return 'restaurant';
-      case 'exercise': return 'fitness_center';
-      case 'rehabilitation': return 'healing';
-      case 'psychological': return 'psychology';
-      case 'tactical': return 'sports_soccer';
-      default: return 'assignment';
-    }
-  }
-
-  getRecommendationColor(type: string): string {
-    switch (type) {
-      case 'diet': return '#2e7d32';
-      case 'exercise': return '#1565c0';
-      case 'rehabilitation': return '#e65100';
-      case 'psychological': return '#6a1b9a';
-      case 'tactical': return '#00838f';
-      default: return '#616161';
-    }
-  }
-
-  getTypeLabel(type: string): string {
-    switch (type) {
-      case 'diet': return 'Nutrición';
-      case 'exercise': return 'Preparación Física';
-      case 'rehabilitation': return 'Rehabilitación';
-      case 'psychological': return 'Psicología';
-      case 'tactical': return 'Táctica';
-      default: return type;
-    }
-  }
-
-  getRecsOfType(type: string): StaffRecommendation[] {
-    return this.recommendations().filter(r => r.type === type);
-  }
-
-  /** Get recommendations created by the current professional, grouped per player */
-  getMyRecsForPlayer(playerId: string): StaffRecommendation[] {
-    return this.myRecommendations().filter(r => r.playerId === playerId);
-  }
-
-  /** Get player name from managed players list */
-  getPlayerName(playerId: string): string {
-    const player = this.managedPlayers().find(p => p.id === playerId);
-    return player?.fullName ?? playerId;
+  /** Re-read the professional's assignments from the store. */
+  reloadAssignments(): void {
+    this.loading.set(true);
+    this.taskService.getAssignmentsForProfessional(this.professionalId()).subscribe({
+      next: assignments => {
+        this.assignments.set(assignments);
+        this.loading.set(false);
+      },
+      error: () => this.loading.set(false),
+    });
   }
 }

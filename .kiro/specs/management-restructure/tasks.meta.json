@@ -1,0 +1,635 @@
+{
+  "pbtResults": {
+    "2.4 Write property test for Item autocomplete suggestions": {
+      "status": "passed",
+      "lastRunTimestamp": 1788200204850
+    },
+    "2.2 Write property test for Item CRUD lifecycle and ownership round-trip": {
+      "status": "passed",
+      "lastRunTimestamp": 1788200228618
+    },
+    "2.3 Write property test for rejected invalid/absent Item operations": {
+      "status": "passed",
+      "lastRunTimestamp": 1788200753547
+    }
+  },
+  "executionHistory": {
+    "1. Define management data models": [
+      {
+        "executionId": "7c803787-634f-451f-b0b9-f4f4a962d722",
+        "chatSessionId": "sess_4e3d3c1f-823d-4014-a8e2-2eafd7e66abd",
+        "timestamp": 1788199123177
+      },
+      {
+        "executionId": "7c803787-634f-451f-b0b9-f4f4a962d722",
+        "chatSessionId": "sess_4e3d3c1f-823d-4014-a8e2-2eafd7e66abd",
+        "timestamp": 1788199241660
+      }
+    ],
+    "2.1 Create `MockItemService` with a mutable signal-backed store": [
+      {
+        "executionId": "a91be4c4-d31b-4b72-bdc5-884dd978a1db",
+        "chatSessionId": "sess_a4a582d7-b130-4f09-a07d-36345b40f502",
+        "timestamp": 1788199848357
+      },
+      {
+        "executionId": "a91be4c4-d31b-4b72-bdc5-884dd978a1db",
+        "chatSessionId": "sess_a4a582d7-b130-4f09-a07d-36345b40f502",
+        "timestamp": 1788199983604
+      }
+    ],
+    "2.2 Write property test for Item CRUD lifecycle and ownership round-trip": [
+      {
+        "executionId": "a91be4c4-d31b-4b72-bdc5-884dd978a1db",
+        "chatSessionId": "sess_a4a582d7-b130-4f09-a07d-36345b40f502",
+        "timestamp": 1788199989473
+      },
+      {
+        "executionId": "a91be4c4-d31b-4b72-bdc5-884dd978a1db",
+        "chatSessionId": "sess_a4a582d7-b130-4f09-a07d-36345b40f502",
+        "timestamp": 1788200774696
+      }
+    ],
+    "2.3 Write property test for rejected invalid/absent Item operations": [
+      {
+        "executionId": "a91be4c4-d31b-4b72-bdc5-884dd978a1db",
+        "chatSessionId": "sess_a4a582d7-b130-4f09-a07d-36345b40f502",
+        "timestamp": 1788199990477
+      },
+      {
+        "executionId": "a91be4c4-d31b-4b72-bdc5-884dd978a1db",
+        "chatSessionId": "sess_a4a582d7-b130-4f09-a07d-36345b40f502",
+        "timestamp": 1788200775542
+      }
+    ],
+    "2.4 Write property test for Item autocomplete suggestions": [
+      {
+        "executionId": "a91be4c4-d31b-4b72-bdc5-884dd978a1db",
+        "chatSessionId": "sess_a4a582d7-b130-4f09-a07d-36345b40f502",
+        "timestamp": 1788199991480
+      },
+      {
+        "executionId": "a91be4c4-d31b-4b72-bdc5-884dd978a1db",
+        "chatSessionId": "sess_a4a582d7-b130-4f09-a07d-36345b40f502",
+        "timestamp": 1788200776427
+      }
+    ],
+    "2. Implement `MockItemService` (session-persistent Item store)": [
+      {
+        "executionId": "a91be4c4-d31b-4b72-bdc5-884dd978a1db",
+        "chatSessionId": "sess_a4a582d7-b130-4f09-a07d-36345b40f502",
+        "timestamp": 1788200776509
+      }
+    ],
+    "3.1 Create `MockTaskService` with Task CRUD": [
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788200866325
+      },
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201045429
+      }
+    ],
+    "3.2 Write property test for Task persistence preserving ordered items": [
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201051530
+      },
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201329111
+      }
+    ],
+    "3.3 Implement Task assignment (direct, message, bulk) with dedup and rollback": [
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201052139
+      },
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201329863
+      }
+    ],
+    "3.7 Implement plan activation and item completion": [
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201338850
+      },
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201581380
+      }
+    ],
+    "3.4 Write property test for one TaskAssignment per new athlete": [
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201339620
+      },
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201578178
+      }
+    ],
+    "3.5 Write property test for no duplicate TaskAssignment": [
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201341146
+      },
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201579072
+      }
+    ],
+    "3.6 Write property test for bulk assignment atomicity and rollback": [
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201342059
+      },
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201580489
+      }
+    ],
+    "3.8 Write property test for at most one active plan per athlete": [
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201589785
+      },
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201900299
+      }
+    ],
+    "3.9 Write property test for item completion bidirectional round-trip": [
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201590045
+      },
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201901652
+      }
+    ],
+    "3.10 Write property test for completion rejected for a non-assigned athlete": [
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201590221
+      },
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201902592
+      }
+    ],
+    "3. Implement `MockTaskService` (Tasks, TaskAssignments, ItemCompletions)": [
+      {
+        "executionId": "598d7a48-f01f-4d2e-a73a-4d05de263eae",
+        "chatSessionId": "sess_1e18668a-5ecb-467a-9906-b529aed3a816",
+        "timestamp": 1788201902737
+      }
+    ],
+    "4. Checkpoint - Ensure all store tests pass": [
+      {
+        "executionId": "53fc98b9-cd51-45b6-8cde-21b24cffaba4",
+        "chatSessionId": "sess_edad6ed8-acf8-42df-b541-d864a4c2f890",
+        "timestamp": 1788201994818
+      },
+      {
+        "executionId": "53fc98b9-cd51-45b6-8cde-21b24cffaba4",
+        "chatSessionId": "sess_edad6ed8-acf8-42df-b541-d864a4c2f890",
+        "timestamp": 1788202056814
+      }
+    ],
+    "5.1 Create `CurrentUserService`": [
+      {
+        "executionId": "135d2b32-ebd4-4347-b6bf-ef36af7bed99",
+        "chatSessionId": "sess_78a8b537-d215-4fd8-b994-1ab8b8a7f038",
+        "timestamp": 1788202113962
+      },
+      {
+        "executionId": "135d2b32-ebd4-4347-b6bf-ef36af7bed99",
+        "chatSessionId": "sess_78a8b537-d215-4fd8-b994-1ab8b8a7f038",
+        "timestamp": 1788202227691
+      }
+    ],
+    "5.2 Create `professionalGuard` and `athleteGuard`": [
+      {
+        "executionId": "135d2b32-ebd4-4347-b6bf-ef36af7bed99",
+        "chatSessionId": "sess_78a8b537-d215-4fd8-b994-1ab8b8a7f038",
+        "timestamp": 1788202235162
+      },
+      {
+        "executionId": "135d2b32-ebd4-4347-b6bf-ef36af7bed99",
+        "chatSessionId": "sess_78a8b537-d215-4fd8-b994-1ab8b8a7f038",
+        "timestamp": 1788202509990
+      }
+    ],
+    "5.3 Write property test for role-guard routing": [
+      {
+        "executionId": "135d2b32-ebd4-4347-b6bf-ef36af7bed99",
+        "chatSessionId": "sess_78a8b537-d215-4fd8-b994-1ab8b8a7f038",
+        "timestamp": 1788202514887
+      },
+      {
+        "executionId": "135d2b32-ebd4-4347-b6bf-ef36af7bed99",
+        "chatSessionId": "sess_78a8b537-d215-4fd8-b994-1ab8b8a7f038",
+        "timestamp": 1788202649419
+      }
+    ],
+    "5. Implement `CurrentUserService` and role guards": [
+      {
+        "executionId": "135d2b32-ebd4-4347-b6bf-ef36af7bed99",
+        "chatSessionId": "sess_78a8b537-d215-4fd8-b994-1ab8b8a7f038",
+        "timestamp": 1788202649520
+      }
+    ],
+    "6. Wire routing and navigation": [
+      {
+        "executionId": "3edbff39-a310-4cf1-a18d-af30d12618fb",
+        "chatSessionId": "sess_ee647a26-c790-4669-bc3e-bf3a559ab678",
+        "timestamp": 1788203125475
+      },
+      {
+        "executionId": "3edbff39-a310-4cf1-a18d-af30d12618fb",
+        "chatSessionId": "sess_ee647a26-c790-4669-bc3e-bf3a559ab678",
+        "timestamp": 1788203659868
+      }
+    ],
+    "7.1 Add search filtering to `ConvocatoriasComponent`": [
+      {
+        "executionId": "2e9d7834-6317-416a-8368-eeae018f30a7",
+        "chatSessionId": "sess_46f2a636-a7ce-46f2-809c-9e98ff5bb5e5",
+        "timestamp": 1788203736082
+      },
+      {
+        "executionId": "2e9d7834-6317-416a-8368-eeae018f30a7",
+        "chatSessionId": "sess_46f2a636-a7ce-46f2-809c-9e98ff5bb5e5",
+        "timestamp": 1788204599238
+      }
+    ],
+    "7.2 Write property test for the search filter": [
+      {
+        "executionId": "2e9d7834-6317-416a-8368-eeae018f30a7",
+        "chatSessionId": "sess_46f2a636-a7ce-46f2-809c-9e98ff5bb5e5",
+        "timestamp": 1788204603499
+      },
+      {
+        "executionId": "2e9d7834-6317-416a-8368-eeae018f30a7",
+        "chatSessionId": "sess_46f2a636-a7ce-46f2-809c-9e98ff5bb5e5",
+        "timestamp": 1788204845220
+      }
+    ],
+    "7.3 Write example/edge and fakeAsync tests for search": [
+      {
+        "executionId": "2e9d7834-6317-416a-8368-eeae018f30a7",
+        "chatSessionId": "sess_46f2a636-a7ce-46f2-809c-9e98ff5bb5e5",
+        "timestamp": 1788204604579
+      },
+      {
+        "executionId": "2e9d7834-6317-416a-8368-eeae018f30a7",
+        "chatSessionId": "sess_46f2a636-a7ce-46f2-809c-9e98ff5bb5e5",
+        "timestamp": 1788204845907
+      }
+    ],
+    "7. Implement Convocatorias search": [
+      {
+        "executionId": "2e9d7834-6317-416a-8368-eeae018f30a7",
+        "chatSessionId": "sess_46f2a636-a7ce-46f2-809c-9e98ff5bb5e5",
+        "timestamp": 1788204846066
+      }
+    ],
+    "8. Checkpoint - Ensure guards, routing, and search tests pass": [
+      {
+        "executionId": "6a9e258b-e222-45a8-883f-e88c03e2c078",
+        "chatSessionId": "sess_94c59281-18a2-4d14-8343-8aeec3b781f5",
+        "timestamp": 1788204884413
+      },
+      {
+        "executionId": "6a9e258b-e222-45a8-883f-e88c03e2c078",
+        "chatSessionId": "sess_94c59281-18a2-4d14-8343-8aeec3b781f5",
+        "timestamp": 1788205218797
+      }
+    ],
+    "6.1 Update `app.routes.ts` for guards and control-center": [
+      {
+        "executionId": "6a9e258b-e222-45a8-883f-e88c03e2c078",
+        "chatSessionId": "sess_94c59281-18a2-4d14-8343-8aeec3b781f5",
+        "timestamp": 1788204991402
+      },
+      {
+        "executionId": "6a9e258b-e222-45a8-883f-e88c03e2c078",
+        "chatSessionId": "sess_94c59281-18a2-4d14-8343-8aeec3b781f5",
+        "timestamp": 1788205091151
+      }
+    ],
+    "6.2 Remove marketplace entries from `LayoutComponent` navigation": [
+      {
+        "executionId": "6a9e258b-e222-45a8-883f-e88c03e2c078",
+        "chatSessionId": "sess_94c59281-18a2-4d14-8343-8aeec3b781f5",
+        "timestamp": 1788204992509
+      },
+      {
+        "executionId": "6a9e258b-e222-45a8-883f-e88c03e2c078",
+        "chatSessionId": "sess_94c59281-18a2-4d14-8343-8aeec3b781f5",
+        "timestamp": 1788205091551
+      }
+    ],
+    "6.3 Write example tests for navigation and routing config": [
+      {
+        "executionId": "6a9e258b-e222-45a8-883f-e88c03e2c078",
+        "chatSessionId": "sess_94c59281-18a2-4d14-8343-8aeec3b781f5",
+        "timestamp": 1788205095531
+      },
+      {
+        "executionId": "6a9e258b-e222-45a8-883f-e88c03e2c078",
+        "chatSessionId": "sess_94c59281-18a2-4d14-8343-8aeec3b781f5",
+        "timestamp": 1788205161782
+      }
+    ],
+    "9.1 Build `ItemsManagerComponent`": [
+      {
+        "executionId": "b29fd0f5-7b19-4a1e-a68a-c61eac3df20d",
+        "chatSessionId": "sess_a11d8cb2-37ab-460f-b525-67eaf72bed6b",
+        "timestamp": 1788205319332
+      },
+      {
+        "executionId": "b29fd0f5-7b19-4a1e-a68a-c61eac3df20d",
+        "chatSessionId": "sess_a11d8cb2-37ab-460f-b525-67eaf72bed6b",
+        "timestamp": 1788205725509
+      }
+    ],
+    "9.2 Write example tests for Items validation and error states": [
+      {
+        "executionId": "b29fd0f5-7b19-4a1e-a68a-c61eac3df20d",
+        "chatSessionId": "sess_a11d8cb2-37ab-460f-b525-67eaf72bed6b",
+        "timestamp": 1788205734735
+      }
+    ],
+    "9. Implement professional Items management UI": [
+      {
+        "executionId": "b29fd0f5-7b19-4a1e-a68a-c61eac3df20d",
+        "chatSessionId": "sess_a11d8cb2-37ab-460f-b525-67eaf72bed6b",
+        "timestamp": 1788205734925
+      }
+    ],
+    "10.1 Build `TasksManagerComponent` with autocomplete": [
+      {
+        "executionId": "36b33f74-795a-4c00-933a-fcda1e1d5a80",
+        "chatSessionId": "sess_5d3d598d-bf48-42b3-9d4c-fd17f503bb63",
+        "timestamp": 1788228330309
+      },
+      {
+        "executionId": "36b33f74-795a-4c00-933a-fcda1e1d5a80",
+        "chatSessionId": "sess_5d3d598d-bf48-42b3-9d4c-fd17f503bb63",
+        "timestamp": 1788228737136
+      }
+    ],
+    "10.2 Write example test for autocomplete no-match": [
+      {
+        "executionId": "36b33f74-795a-4c00-933a-fcda1e1d5a80",
+        "chatSessionId": "sess_5d3d598d-bf48-42b3-9d4c-fd17f503bb63",
+        "timestamp": 1788228745262
+      },
+      {
+        "executionId": "36b33f74-795a-4c00-933a-fcda1e1d5a80",
+        "chatSessionId": "sess_5d3d598d-bf48-42b3-9d4c-fd17f503bb63",
+        "timestamp": 1788228868621
+      }
+    ],
+    "10. Implement professional Tasks management UI": [
+      {
+        "executionId": "36b33f74-795a-4c00-933a-fcda1e1d5a80",
+        "chatSessionId": "sess_5d3d598d-bf48-42b3-9d4c-fd17f503bb63",
+        "timestamp": 1788228868783
+      }
+    ],
+    "11.1 Build `TaskAssignmentComponent`": [
+      {
+        "executionId": "2376b57e-e10d-42dc-af36-17fb7e9c5f6d",
+        "chatSessionId": "sess_75d43cbd-8e65-4c71-beeb-4210f2606480",
+        "timestamp": 1788228906648
+      },
+      {
+        "executionId": "2376b57e-e10d-42dc-af36-17fb7e9c5f6d",
+        "chatSessionId": "sess_75d43cbd-8e65-4c71-beeb-4210f2606480",
+        "timestamp": 1788229209117
+      }
+    ],
+    "11.2 Write example tests for assignment UI": [
+      {
+        "executionId": "2376b57e-e10d-42dc-af36-17fb7e9c5f6d",
+        "chatSessionId": "sess_75d43cbd-8e65-4c71-beeb-4210f2606480",
+        "timestamp": 1788229217191
+      },
+      {
+        "executionId": "2376b57e-e10d-42dc-af36-17fb7e9c5f6d",
+        "chatSessionId": "sess_75d43cbd-8e65-4c71-beeb-4210f2606480",
+        "timestamp": 1788229425129
+      }
+    ],
+    "11. Implement Task assignment UI": [
+      {
+        "executionId": "2376b57e-e10d-42dc-af36-17fb7e9c5f6d",
+        "chatSessionId": "sess_75d43cbd-8e65-4c71-beeb-4210f2606480",
+        "timestamp": 1788229425276
+      }
+    ],
+    "12.1 Build `AssignmentProgressComponent`": [
+      {
+        "executionId": "5edeec3e-f6a3-4eed-8bd5-8bfe0bb3d484",
+        "chatSessionId": "sess_676b5c13-fe48-47e2-9837-0b19f5f36fab",
+        "timestamp": 1788229648320
+      },
+      {
+        "executionId": "5edeec3e-f6a3-4eed-8bd5-8bfe0bb3d484",
+        "chatSessionId": "sess_676b5c13-fe48-47e2-9837-0b19f5f36fab",
+        "timestamp": 1788229930031
+      }
+    ],
+    "12.2 Write example tests for progress rendering": [
+      {
+        "executionId": "17830136-f272-4c2f-a2c3-78c3194d3235",
+        "chatSessionId": "sess_8fbdcc32-871c-4ffe-ba49-366b910d88f4",
+        "timestamp": 1788229959080
+      },
+      {
+        "executionId": "17830136-f272-4c2f-a2c3-78c3194d3235",
+        "chatSessionId": "sess_8fbdcc32-871c-4ffe-ba49-366b910d88f4",
+        "timestamp": 1788230033613
+      }
+    ],
+    "12. Implement assignment progress view": [
+      {
+        "executionId": "17830136-f272-4c2f-a2c3-78c3194d3235",
+        "chatSessionId": "sess_8fbdcc32-871c-4ffe-ba49-366b910d88f4",
+        "timestamp": 1788230033810
+      }
+    ],
+    "13.1 Repurpose `ManagementComponent` as the professional shell": [
+      {
+        "executionId": "3034aea1-cc23-477e-b43c-03b49d4e0fb4",
+        "chatSessionId": "sess_94a13029-abf4-4607-9fc2-a114c855ffd3",
+        "timestamp": 1788230100147
+      },
+      {
+        "executionId": "3034aea1-cc23-477e-b43c-03b49d4e0fb4",
+        "chatSessionId": "sess_94a13029-abf4-4607-9fc2-a114c855ffd3",
+        "timestamp": 1788230345957
+      }
+    ],
+    "14. Checkpoint - Ensure professional UI tests pass": [
+      {
+        "executionId": "67cb57da-b8ca-472f-8721-c6d3640ea649",
+        "chatSessionId": "sess_22ef307c-e014-4887-891f-8fec30c24f20",
+        "timestamp": 1788230381907
+      },
+      {
+        "executionId": "67cb57da-b8ca-472f-8721-c6d3640ea649",
+        "chatSessionId": "sess_22ef307c-e014-4887-891f-8fec30c24f20",
+        "timestamp": 1788230447624
+      }
+    ],
+    "15.1 Build `RecommendationTabsComponent` (migrated from management)": [
+      {
+        "executionId": "7cf0cc6b-9770-4afc-bd6c-cd477b5e2c5b",
+        "chatSessionId": "sess_a1eb012f-d506-4b92-adda-ca7fdc0d340c",
+        "timestamp": 1788230608584
+      },
+      {
+        "executionId": "7cf0cc6b-9770-4afc-bd6c-cd477b5e2c5b",
+        "chatSessionId": "sess_a1eb012f-d506-4b92-adda-ca7fdc0d340c",
+        "timestamp": 1788230789871
+      }
+    ],
+    "15.4 Build `PlanListComponent` with activation and item check-off": [
+      {
+        "executionId": "7cf0cc6b-9770-4afc-bd6c-cd477b5e2c5b",
+        "chatSessionId": "sess_a1eb012f-d506-4b92-adda-ca7fdc0d340c",
+        "timestamp": 1788230609542
+      },
+      {
+        "executionId": "7cf0cc6b-9770-4afc-bd6c-cd477b5e2c5b",
+        "chatSessionId": "sess_a1eb012f-d506-4b92-adda-ca7fdc0d340c",
+        "timestamp": 1788230790955
+      }
+    ],
+    "15.2 Write property test for recommendation grouping": [
+      {
+        "executionId": "7cf0cc6b-9770-4afc-bd6c-cd477b5e2c5b",
+        "chatSessionId": "sess_a1eb012f-d506-4b92-adda-ca7fdc0d340c",
+        "timestamp": 1788230795954
+      },
+      {
+        "executionId": "7cf0cc6b-9770-4afc-bd6c-cd477b5e2c5b",
+        "chatSessionId": "sess_a1eb012f-d506-4b92-adda-ca7fdc0d340c",
+        "timestamp": 1788231056726
+      }
+    ],
+    "15.3 Write example test for recommendation load failure": [
+      {
+        "executionId": "7cf0cc6b-9770-4afc-bd6c-cd477b5e2c5b",
+        "chatSessionId": "sess_a1eb012f-d506-4b92-adda-ca7fdc0d340c",
+        "timestamp": 1788230796918
+      },
+      {
+        "executionId": "7cf0cc6b-9770-4afc-bd6c-cd477b5e2c5b",
+        "chatSessionId": "sess_a1eb012f-d506-4b92-adda-ca7fdc0d340c",
+        "timestamp": 1788231057668
+      }
+    ],
+    "15.5 Write example tests for active indicator and completion/activation failures": [
+      {
+        "executionId": "7cf0cc6b-9770-4afc-bd6c-cd477b5e2c5b",
+        "chatSessionId": "sess_a1eb012f-d506-4b92-adda-ca7fdc0d340c",
+        "timestamp": 1788230797860
+      },
+      {
+        "executionId": "7cf0cc6b-9770-4afc-bd6c-cd477b5e2c5b",
+        "chatSessionId": "sess_a1eb012f-d506-4b92-adda-ca7fdc0d340c",
+        "timestamp": 1788231059088
+      }
+    ],
+    "15.6 Build `ControlCenterComponent` shell": [
+      {
+        "executionId": "7cf0cc6b-9770-4afc-bd6c-cd477b5e2c5b",
+        "chatSessionId": "sess_a1eb012f-d506-4b92-adda-ca7fdc0d340c",
+        "timestamp": 1788230798986
+      },
+      {
+        "executionId": "7cf0cc6b-9770-4afc-bd6c-cd477b5e2c5b",
+        "chatSessionId": "sess_a1eb012f-d506-4b92-adda-ca7fdc0d340c",
+        "timestamp": 1788231060063
+      }
+    ],
+    "15. Implement athlete Control Center": [
+      {
+        "executionId": "7cf0cc6b-9770-4afc-bd6c-cd477b5e2c5b",
+        "chatSessionId": "sess_a1eb012f-d506-4b92-adda-ca7fdc0d340c",
+        "timestamp": 1788231060189
+      }
+    ],
+    "16. Final checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "139a20d1-0db1-4378-85e7-60b2e91b58f2",
+        "chatSessionId": "sess_462bbc17-bc30-40df-a423-ff5b8e3bd951",
+        "timestamp": 1788231089783
+      },
+      {
+        "executionId": "139a20d1-0db1-4378-85e7-60b2e91b58f2",
+        "chatSessionId": "sess_462bbc17-bc30-40df-a423-ff5b8e3bd951",
+        "timestamp": 1788231151351
+      }
+    ],
+    "17.1 Add loading and empty-state affordances across professional and Control Center views for a smoother experience.": [
+      {
+        "executionId": "d583ac06-9f9b-4323-945f-24c8b47ac20f",
+        "chatSessionId": "sess_151db958-61bf-4972-ad10-38b7756fed62",
+        "timestamp": 1788231190552
+      },
+      {
+        "executionId": "d583ac06-9f9b-4323-945f-24c8b47ac20f",
+        "chatSessionId": "sess_151db958-61bf-4972-ad10-38b7756fed62",
+        "timestamp": 1788231661348
+      }
+    ],
+    "17.2 Add ARIA labels and keyboard navigation for the autocomplete, tabs, and plan checkboxes.": [
+      {
+        "executionId": "d583ac06-9f9b-4323-945f-24c8b47ac20f",
+        "chatSessionId": "sess_151db958-61bf-4972-ad10-38b7756fed62",
+        "timestamp": 1788231191528
+      },
+      {
+        "executionId": "d583ac06-9f9b-4323-945f-24c8b47ac20f",
+        "chatSessionId": "sess_151db958-61bf-4972-ad10-38b7756fed62",
+        "timestamp": 1788231662447
+      }
+    ],
+    "17. Optional polish": [
+      {
+        "executionId": "d583ac06-9f9b-4323-945f-24c8b47ac20f",
+        "chatSessionId": "sess_151db958-61bf-4972-ad10-38b7756fed62",
+        "timestamp": 1788231662613
+      }
+    ]
+  }
+}

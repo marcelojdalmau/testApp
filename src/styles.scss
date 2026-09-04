@@ -4,11 +4,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Bebas+Neue&family=Teko:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
 
 // ============================================================
-// SportHub Custom Theme - Deportivo Sobrio
+// Sora Sport Custom Theme - Deportivo Sobrio
 // ============================================================
 
 // Light Theme
-$sporthub-light-theme: mat.define-theme((
+$sora-sport-light-theme: mat.define-theme((
   color: (
     theme-type: light,
     primary: mat.$violet-palette,
@@ -24,7 +24,7 @@ $sporthub-light-theme: mat.define-theme((
 ));
 
 // Dark Theme
-$sporthub-dark-theme: mat.define-theme((
+$sora-sport-dark-theme: mat.define-theme((
   color: (
     theme-type: dark,
     primary: mat.$violet-palette,
@@ -584,12 +584,12 @@ $sporthub-dark-theme: mat.define-theme((
 // ============================================================
 
 html {
-  @include mat.theme($sporthub-light-theme);
+  @include mat.theme($sora-sport-light-theme);
   color-scheme: light;
 }
 
 html.dark-theme {
-  @include mat.theme($sporthub-dark-theme);
+  @include mat.theme($sora-sport-dark-theme);
   color-scheme: dark;
 }
 
@@ -3983,4 +3983,19 @@ body {
       pointer-events: none;
     }
   }
+}
+
+
+// ============================================================
+// GLOBAL FIX: notched-outline notch side borders
+// El __notch es la pieza central del outline (donde flota el label).
+// Por defecto solo debe tener borde arriba/abajo. Varios skins aplican
+// `border-width` genérico sobre `.mdc-notched-outline__notch`, lo que
+// activa tambien los bordes izquierdo/derecho y genera una linea
+// vertical fea dentro del input. Aca los neutralizamos globalmente.
+// ============================================================
+
+.mat-mdc-form-field .mdc-notched-outline__notch {
+  border-left: none !important;
+  border-right: none !important;
 }

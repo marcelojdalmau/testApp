@@ -1,0 +1,455 @@
+{
+  "pbtResults": {
+    "1.5 Write property tests for AuthValidators": {
+      "status": "passed",
+      "lastRunTimestamp": 1787796600936
+    },
+    "1.3 Write property test for TokenStorageService round-trip": {
+      "status": "passed",
+      "lastRunTimestamp": 1787797741073
+    },
+    "2.3 Write property test for logout state clearing": {
+      "status": "passed",
+      "lastRunTimestamp": 1787798915656
+    },
+    "3.5 Write property test for authGuard return URL preservation": {
+      "status": "passed",
+      "lastRunTimestamp": 1787800187201
+    }
+  },
+  "executionHistory": {
+    "1.1 Create auth data models and API configuration": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794820836
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794831620
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787796403832
+      }
+    ],
+    "1.2 Create TokenStorageService": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794820935
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787796408811
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787796620949
+      }
+    ],
+    "1.3 Write property test for TokenStorageService round-trip": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794821037
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787796626305
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787797756794
+      }
+    ],
+    "1.4 Create AuthValidators utility class": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794821176
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794832321
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787796404391
+      }
+    ],
+    "1.5 Write property tests for AuthValidators": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794821266
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787796409550
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787796621658
+      }
+    ],
+    "2.1 Rewrite AuthService with signals and HTTP backend calls": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794821348
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787796627101
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787797757771
+      }
+    ],
+    "2.2 Write unit tests for AuthService": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794821429
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787797762545
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787798956164
+      }
+    ],
+    "2.3 Write property test for logout state clearing": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794821508
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787797763233
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787798957075
+      }
+    ],
+    "3.1 Create functional authInterceptor": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794821593
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787797763954
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787798957923
+      }
+    ],
+    "3.2 Create functional authGuard": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794821673
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787797764702
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787798958756
+      }
+    ],
+    "3.3 Register interceptor and guard in app configuration": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794821757
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787798967496
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800285307
+      }
+    ],
+    "3.4 Write property tests for authInterceptor": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794821842
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787798967665
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800202704
+      }
+    ],
+    "3.5 Write property test for authGuard return URL preservation": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794821919
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787798967786
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800204734
+      }
+    ],
+    "4. Checkpoint - Core services verification": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794821996
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800313658
+      }
+    ],
+    "5.1 Rewrite LoginComponent with reactive forms": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794822079
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800333547
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800591738
+      }
+    ],
+    "5.2 Rewrite RegisterComponent with reactive forms": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794822189
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800334438
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800592663
+      }
+    ],
+    "5.3 Create ForgotPasswordComponent": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794822268
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800335376
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800593487
+      }
+    ],
+    "5.4 Create ResetPasswordComponent": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794822347
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800598326
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800802346
+      }
+    ],
+    "5.5 Create SetPasswordComponent": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794822432
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800599167
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800803186
+      }
+    ],
+    "5.6 Update auth routes": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794822518
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800599976
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800804123
+      }
+    ],
+    "6. Checkpoint - Full feature verification": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794822594
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800823538
+      }
+    ],
+    "7.1 Write unit tests for LoginComponent": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794822676
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800831211
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787801129329
+      }
+    ],
+    "7.2 Write unit tests for RegisterComponent": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794822755
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800830401
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787801130720
+      }
+    ],
+    "7.3 Write unit tests for ForgotPasswordComponent, ResetPasswordComponent, SetPasswordComponent": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787794822839
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800829395
+      },
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787801131758
+      }
+    ],
+    "1. Set up core infrastructure and data models": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787797756902
+      }
+    ],
+    "2. Implement AuthService": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787798957168
+      }
+    ],
+    "3. Implement authInterceptor and authGuard": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800285463
+      }
+    ],
+    "5. Implement auth page components": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787800804216
+      }
+    ],
+    "7. Write component unit tests": [
+      {
+        "executionId": "e5fc2dcf-2e67-430f-a8c4-83b56ddbe0c0",
+        "chatSessionId": "sess_2bd77ebd-721d-4832-be7d-4600e8af4d73",
+        "timestamp": 1787801131858
+      }
+    ]
+  }
+}
