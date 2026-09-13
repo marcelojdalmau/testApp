@@ -1,0 +1,326 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Update `auth.model.ts` interfaces": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887656748
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887666940
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887779366
+      }
+    ],
+    "2.1 Add `uuid()` and `maxLength()` validators": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887656821
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887668291
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887780757
+      }
+    ],
+    "2.5 Add `default_tenant_id` persistence to `TokenStorageService`": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887656947
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887669232
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887781696
+      }
+    ],
+    "3.1 Verify and align `API_BASE_URL` token": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887656999
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887670369
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887782897
+      }
+    ],
+    "4.1 Rewrite `handleError` to extract from the `{ error }` body shape": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887657048
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887792709
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887872952
+      }
+    ],
+    "4.2 Align `login`, `refreshToken`, and `logout` bodies and behavior": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887657098
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887890849
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888005460
+      }
+    ],
+    "4.3 Update `register` and add recovery/challenge methods": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887657149
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888010337
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888119536
+      }
+    ],
+    "5. Checkpoint - core service and foundations": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887657201
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888136518
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888143695
+      }
+    ],
+    "6.1 Add `full_name` and `tenant_id` form controls and payload": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887657251
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888178150
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888486871
+      }
+    ],
+    "6.2 Add register error mapping including 404 branch": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887657336
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888503121
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888585308
+      }
+    ],
+    "7.1 Confirm challenge navigation and validation": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887657407
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888179038
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888488104
+      }
+    ],
+    "7.2 Confirm login error mapping branches": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887657456
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888503814
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888586329
+      }
+    ],
+    "8.1 Update ForgotPasswordComponent (enumeration-safe)": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887657500
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888180429
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888489489
+      }
+    ],
+    "8.2 Update ResetPasswordComponent (`{ error }`-derived messages)": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887657552
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888181839
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888490438
+      }
+    ],
+    "8.3 Update SetPasswordComponent (respond-to-challenge)": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887657599
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888182686
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888491645
+      }
+    ],
+    "9. Final checkpoint - full flows wired": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887657646
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888591298
+      },
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888609388
+      }
+    ],
+    "1. Align auth data models to backend contracts": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887779474
+      }
+    ],
+    "2. Extend validators and storage foundations": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887781746
+      }
+    ],
+    "3. Confirm API base URL configuration": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788887782950
+      }
+    ],
+    "4. Update AuthService to match verified contracts": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888119585
+      }
+    ],
+    "8. Update recovery and challenge page components": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888491720
+      }
+    ],
+    "6. Update RegisterComponent for tenant_id and full_name": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888585363
+      }
+    ],
+    "7. Update LoginComponent challenge navigation and error branches": [
+      {
+        "executionId": "390fd069-77ca-47fa-9129-b87ba1a8ac4e",
+        "chatSessionId": "sess_e9fe6519-1c6c-4bde-b5d1-bda3880b8349",
+        "timestamp": 1788888586383
+      }
+    ]
+  }
+}

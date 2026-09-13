@@ -74,8 +74,16 @@ export class RegisterComponent {
   ];
 
   readonly form = this.fb.nonNullable.group({
-    full_name: ['', [AuthValidators.required()]],
     email: ['', [AuthValidators.required(), AuthValidators.email()]],
+    full_name: [
+      '',
+      [
+        AuthValidators.required(), // empty full_name blocked (Req 5.5)
+        AuthValidators.nonBlank(), // whitespace-only non-empty blocked (Req 5.6)
+        AuthValidators.maxLength(200), // >200 characters blocked (Req 5.6)
+      ],
+    ],
+    tenant_id: ['', [AuthValidators.required(), AuthValidators.uuid()]],
     password: ['', [AuthValidators.required(), AuthValidators.password()]],
     confirmPassword: ['', [AuthValidators.required(), AuthValidators.matchField('password')]],
     account_type: [''],
@@ -90,11 +98,12 @@ export class RegisterComponent {
       return;
     }
 
-    const { full_name, email, password, account_type } = this.form.getRawValue();
+    const { email, password, full_name, tenant_id, account_type } = this.form.getRawValue();
     const payload: RegisterRequest = {
-      full_name,
       email,
       password,
+      full_name,
+      tenant_id,
       ...(account_type ? { account_type } : {}),
     };
 
@@ -149,6 +158,8 @@ export class RegisterComponent {
     switch (error?.statusCode) {
       case 409:
         return 'El email ya está registrado.';
+      case 404:
+        return 'No se encontró la institución.';
       case 403:
         return 'El registro no está permitido.';
       case 400:

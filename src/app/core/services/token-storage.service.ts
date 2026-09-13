@@ -6,6 +6,7 @@ export class TokenStorageService {
   private readonly TOKENS_KEY = 'sora-sport-auth-tokens';
   private readonly ROLES_KEY = 'sora-sport-auth-roles';
   private readonly RETURN_URL_KEY = 'sora-sport-return-url';
+  private readonly TENANT_KEY = 'sora-sport-default-tenant-id';
   private readonly DEMO_USER_KEY = 'sora-sport-demo-user';
 
   storeTokens(tokens: TokenPair): void {
@@ -63,6 +64,18 @@ export class TokenStorageService {
     localStorage.removeItem(this.RETURN_URL_KEY);
   }
 
+  storeDefaultTenantId(tenantId: string): void {
+    localStorage.setItem(this.TENANT_KEY, tenantId);
+  }
+
+  getDefaultTenantId(): string | null {
+    return localStorage.getItem(this.TENANT_KEY);
+  }
+
+  clearDefaultTenantId(): void {
+    localStorage.removeItem(this.TENANT_KEY);
+  }
+
   /**
    * Persists the selected demo user profile. Used by the demo user switcher while the
    * app is mid-migration from the deprecated `AuthService.currentUser()` stub to
@@ -93,6 +106,7 @@ export class TokenStorageService {
     this.clearTokens();
     this.clearRoles();
     this.clearReturnUrl();
+    this.clearDefaultTenantId();
     this.clearDemoUser();
   }
 

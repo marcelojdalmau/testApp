@@ -1,7 +1,7 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, throwError, finalize } from 'rxjs';
+import { Observable, throwError, finalize, defer } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 import { TokenStorageService } from './token-storage.service';
@@ -35,28 +35,68 @@ export class AuthService {
 
   login(credentials: LoginRequest): Observable<LoginResponse> {
     this._isLoading.set(true);
-    return this.http.post<LoginResponse>(`${this.apiBaseUrl}/auth/login`, credentials).pipe(
-      tap((response) => {
-        if (!response.challenge) {
-          this.tokenStorage.storeTokens({
-            access_token: response.access_token,
-            id_token: response.id_token,
-            refresh_token: response.refresh_token,
-            expires_in: response.expires_in,
-          });
-          this.tokenStorage.storeRoles(response.roles);
-          this._isAuthenticated.set(true);
-          this._userRoles.set(response.roles);
-        }
+    return this.http
+      .post<LoginResponse>(`${this.apiBaseUrl}/auth/login`, { email: credentials.email, password: credentials.password })
+      .pipe(
+        tap((response) => {
+          // On a challenge response, persist nothing and let LoginComponent route (Req 3.2, 3.3).
+          if (response.challenge) {
+            return;
+          }
+          this.persistSession(response);
+        }),
+        catchError((error) => this.handleError(error)),
+        finalize(() => this._isLoading.set(false)),
+      );
+  }
+
+  /**
+   * Persists tokens, roles, and the default tenant id from a successful login /
+   * respond-to-challenge response and marks the session authenticated.
+   *
+   * Persistence is partial-success tolerant (Req 2.3): each stored value is written
+   * independently in its own try/catch so that a single storage-write failure neither
+   * aborts the remaining writes nor turns a successful 200 response into a failure.
+   * The authenticated state is set regardless of individual storage outcomes.
+   */
+  private persistSession(response: LoginResponse): void {
+    this.safeStore(() =>
+      this.tokenStorage.storeTokens({
+        access_token: response.access_token,
+        id_token: response.id_token,
+        refresh_token: response.refresh_token,
+        expires_in: response.expires_in,
       }),
-      catchError((error) => this.handleError(error)),
-      finalize(() => this._isLoading.set(false)),
     );
+    this.safeStore(() => this.tokenStorage.storeRoles(response.roles));
+    if (response.default_tenant_id) {
+      this.safeStore(() => this.tokenStorage.storeDefaultTenantId(response.default_tenant_id));
+    }
+
+    this._isAuthenticated.set(true);
+    this._userRoles.set(response.roles);
+  }
+
+  /** Runs a single storage write, swallowing any failure so other writes can proceed (Req 2.3). */
+  private safeStore(write: () => void): void {
+    try {
+      write();
+    } catch {
+      // A single storage-write failure must not abort the other writes nor fail the login.
+    }
   }
 
   register(data: RegisterRequest): Observable<RegisterResponse> {
     this._isLoading.set(true);
-    return this.http.post<RegisterResponse>(`${this.apiBaseUrl}/auth/register`, data).pipe(
+    // Include `account_type` only when a non-empty value is provided (Req 5.9).
+    const body = {
+      email: data.email,
+      password: data.password,
+      full_name: data.full_name,
+      tenant_id: data.tenant_id,
+      ...(data.account_type ? { account_type: data.account_type } : {}),
+    };
+    return this.http.post<RegisterResponse>(`${this.apiBaseUrl}/auth/register`, body).pipe(
       catchError((error) => this.handleError(error)),
       finalize(() => this._isLoading.set(false)),
     );
@@ -82,15 +122,10 @@ export class AuthService {
     this._isLoading.set(true);
     return this.http.post<LoginResponse>(`${this.apiBaseUrl}/auth/respond-to-challenge`, data).pipe(
       tap((response) => {
-        this.tokenStorage.storeTokens({
-          access_token: response.access_token,
-          id_token: response.id_token,
-          refresh_token: response.refresh_token,
-          expires_in: response.expires_in,
-        });
-        this.tokenStorage.storeRoles(response.roles);
-        this._isAuthenticated.set(true);
-        this._userRoles.set(response.roles);
+        // A successful challenge response is LoginResponse-shaped, so reuse the shared,
+        // partial-success-tolerant persistence helper. It persists tokens + roles and the
+        // default_tenant_id (when present) and sets isAuthenticated true (Req 13.6, 13.7).
+        this.persistSession(response);
       }),
       catchError((error) => this.handleError(error)),
       finalize(() => this._isLoading.set(false)),
@@ -135,21 +170,33 @@ export class AuthService {
 
   refreshToken(): Observable<RefreshResponse> {
     const refreshToken = this.tokenStorage.getRefreshToken();
+
+    // Guard: with no stored refresh token, treat as an auth failure and route to login
+    // without issuing an HTTP call carrying a null token (Req 8.5).
+    if (!refreshToken) {
+      this.clearState();
+      return throwError(
+        () =>
+          ({
+            statusCode: 401,
+            message: 'Your session has expired. Please sign in again.',
+          }) as AuthError,
+      );
+    }
+
     return this.http.post<RefreshResponse>(`${this.apiBaseUrl}/auth/refresh`, { refresh_token: refreshToken }).pipe(
       tap((response) => {
+        // Update the rotating tokens; retain the existing refresh token (Req 8.2, 8.3).
         this.tokenStorage.storeTokens({
           access_token: response.access_token,
           id_token: response.id_token,
-          refresh_token: refreshToken!,
+          refresh_token: refreshToken,
           expires_in: response.expires_in,
         });
       }),
       catchError((error) => {
         if (error instanceof HttpErrorResponse && error.status === 401) {
-          this.tokenStorage.clearAll();
-          this._isAuthenticated.set(false);
-          this._userRoles.set([]);
-          this.router.navigate(['/auth/login']);
+          this.clearState();
         }
         return this.handleError(error);
       }),
@@ -158,15 +205,21 @@ export class AuthService {
 
   logout(): void {
     const accessToken = this.tokenStorage.getAccessToken();
-    this.http.post<void>(`${this.apiBaseUrl}/auth/logout`, { access_token: accessToken }).pipe(
-      finalize(() => {
-        this.clearState();
-      }),
-    ).subscribe({
-      error: () => {
-        // Logout clears state regardless of backend response
-      },
-    });
+    // `defer` builds the request lazily on subscribe, so a synchronous send failure
+    // (the POST never leaving the client) surfaces as an error notification and still
+    // flows through `finalize` — clearing local state and routing to login (Req 9.4).
+    defer(() => this.http.post<void>(`${this.apiBaseUrl}/auth/logout`, { access_token: accessToken }))
+      .pipe(
+        // Clearing runs on every terminal outcome: 204 success or any error (Req 9.2, 9.3, 9.5).
+        finalize(() => {
+          this.clearState();
+        }),
+      )
+      .subscribe({
+        error: () => {
+          // Logout clears state regardless of backend response.
+        },
+      });
   }
 
   getAccessToken(): string | null {
@@ -239,22 +292,34 @@ export class AuthService {
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {
-    let authError: AuthError;
-
     if (error.status === 0) {
-      authError = {
-        statusCode: 0,
-        message: 'Unable to connect. Check your internet connection.',
-      };
-    } else {
-      const backendMessage = error.error?.message || error.error?.detail;
-      authError = {
-        statusCode: error.status,
-        message: backendMessage || 'An unexpected error occurred. Please try again.',
-        error: error.error?.error,
-      };
+      return throwError(
+        () =>
+          ({
+            statusCode: 0,
+            message: 'Unable to connect. Check your internet connection.',
+          }) as AuthError,
+      );
     }
 
-    return throwError(() => authError);
+    // Attempt extraction from the Error_Body `error` field (Req 7.1).
+    // A body may be present but malformed/corrupted (e.g. a string, a number,
+    // or an object whose `error` is not a readable string); guard the read so a
+    // failed extraction falls through to the generic fallback rather than throwing.
+    let backendMessage: string | undefined;
+    try {
+      backendMessage = typeof error.error?.error === 'string' ? error.error.error : undefined;
+    } catch {
+      backendMessage = undefined;
+    }
+
+    return throwError(
+      () =>
+        ({
+          statusCode: error.status,
+          message: backendMessage ?? 'An unexpected error occurred. Please try again.',
+          error: backendMessage,
+        }) as AuthError,
+    );
   }
 }

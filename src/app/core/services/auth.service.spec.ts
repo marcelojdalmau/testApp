@@ -47,7 +47,6 @@ describe('AuthService', () => {
   const mockRegisterResponse: RegisterResponse = {
     user_id: 'user-001',
     email: 'test@example.com',
-    full_name: 'Test User',
     status: 'pending_confirmation',
     message: 'Please check your email for verification.',
   };
@@ -260,7 +259,6 @@ describe('AuthService', () => {
     const registerData: RegisterRequest = {
       email: 'new@example.com',
       password: 'secure123',
-      full_name: 'New User',
     };
 
     it('should POST to /auth/register with data', () => {

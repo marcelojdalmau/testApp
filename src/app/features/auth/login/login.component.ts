@@ -138,13 +138,25 @@ export class LoginComponent {
   }
 
   private mapError(error: AuthError): string {
+    const genericMessage = 'Ocurrió un error inesperado. Intentá de nuevo.';
+
     switch (error?.statusCode) {
       case 401:
+        // Req 4.2: credenciales inválidas.
         return 'Credenciales inválidas';
       case 403:
+        // Req 4.3: la cuenta no está activa.
         return 'La cuenta no está activa';
+      case 400:
+        // Req 4.4: mensaje de validación derivado del Error_Body (AuthError.message).
+        return error?.message || genericMessage;
+      case 500:
+        // Req 4.5: error genérico.
+        return genericMessage;
       default:
-        return error?.message || 'Ocurrió un error inesperado. Intentá de nuevo.';
+        // Req 4.6: la conectividad (status 0) trae message y cae en esta rama;
+        // cualquier otro estado usa el genérico.
+        return error?.message || genericMessage;
     }
   }
 }

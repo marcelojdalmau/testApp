@@ -55,7 +55,8 @@ export class SetPasswordComponent {
     this.session = state.session ?? '';
     this.email = state.email ?? '';
 
-    // Requirement 5.8: without valid session context, redirect to login.
+    // Requirement 13.1: the session + email carried from the login challenge are
+    // required; without that context redirect to login.
     if (!this.session || !this.email) {
       this.router.navigate(['/auth/login']);
     }
@@ -80,7 +81,15 @@ export class SetPasswordComponent {
       .respondToChallenge({ session: this.session, email: this.email, new_password })
       .subscribe({
         next: () => {
-          this.router.navigate(['/feed']);
+          // Requirement 13.8: navigate to the post-login destination, honouring the
+          // stored return URL (matching the login flow) and falling back to /feed.
+          const returnUrl = this.authService.getReturnUrl();
+          if (returnUrl) {
+            this.authService.clearReturnUrl();
+            this.router.navigateByUrl(returnUrl);
+          } else {
+            this.router.navigate(['/feed']);
+          }
         },
         error: (error: AuthError) => {
           this.errorMessage = error?.message || 'Ocurrió un error inesperado. Intentá de nuevo.';

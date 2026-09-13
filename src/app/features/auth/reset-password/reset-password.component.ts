@@ -11,6 +11,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AuthService } from '../../../core/services/auth.service';
 import { AuthValidators } from '../../../core/validators/auth.validators';
+import { AuthError } from '../../../core/models/auth.model';
 
 @Component({
   selector: 'app-reset-password',
@@ -73,9 +74,24 @@ export class ResetPasswordComponent {
           this.successMessage = 'Tu contraseña se actualizó correctamente.';
           this.router.navigate(['/auth/login']);
         },
-        error: () => {
-          this.errorMessage = 'El código es inválido o expiró.';
+        error: (error: AuthError) => {
+          this.errorMessage = this.mapError(error);
         },
       });
+  }
+
+  /**
+   * Traduce el `AuthError` normalizado por `AuthService` (extraído del campo
+   * `error` del Error_Body) al mensaje visible en español. Un código inválido o
+   * expirado (Requisito 12.7) y cualquier otro error (Requisito 12.8) se derivan
+   * ambos de `AuthError.message`; el fallback distingue el caso de código para
+   * mantener el mensaje accionable cuando el backend no aporta uno legible.
+   */
+  private mapError(error: AuthError): string {
+    if (error?.statusCode === 400) {
+      return error?.message || 'El código es inválido o expiró.';
+    }
+
+    return error?.message || 'Ocurrió un error inesperado. Intentá de nuevo.';
   }
 }

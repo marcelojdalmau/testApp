@@ -15,6 +15,7 @@ export interface LoginResponse {
   id_token: string;
   refresh_token: string;
   expires_in: number;
+  default_tenant_id: string;
   roles: string[];
   challenge?: 'NEW_PASSWORD_REQUIRED';
   session?: string;
@@ -24,6 +25,7 @@ export interface RegisterRequest {
   email: string;
   password: string;
   full_name: string;
+  tenant_id: string;
   account_type?: string;
 }
 

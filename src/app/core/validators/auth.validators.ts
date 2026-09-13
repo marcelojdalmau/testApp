@@ -114,4 +114,85 @@ export class AuthValidators {
       return null;
     };
   }
+
+  /**
+   * Validates that the control's value is a canonical UUID.
+   * Rejects any value that does not match the RFC 4122 8-4-4-4-12
+   * hexadecimal layout. Empty values are deferred to the required validator.
+   */
+  static uuid(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+      if (!value) {
+        return null; // Let required validator handle empty values
+      }
+
+      const strValue = String(value);
+
+      // Canonical UUID: 8-4-4-4-12 hexadecimal digits separated by hyphens (RFC 4122 layout).
+      const uuidPattern =
+        /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+
+      if (!uuidPattern.test(strValue)) {
+        return { uuid: { message: 'Please enter a valid UUID' } };
+      }
+
+      return null;
+    };
+  }
+
+  /**
+   * Validates that the control's trimmed value does not exceed the given
+   * maximum length. Used for bounding fields such as full_name (≤ 200).
+   * Empty values are deferred to the required validator.
+   *
+   * @param max - The maximum allowed length after trimming whitespace
+   */
+  static maxLength(max: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+      if (!value) {
+        return null; // Let required validator handle empty values
+      }
+
+      const trimmedLength = String(value).trim().length;
+
+      if (trimmedLength > max) {
+        return {
+          maxLength: {
+            message: `Must not exceed ${max} characters`,
+            maxLength: max,
+            actualLength: trimmedLength,
+          },
+        };
+      }
+
+      return null;
+    };
+  }
+
+  /**
+   * Validates that a non-empty value is not composed solely of whitespace.
+   * Used alongside maxLength for fields such as full_name; the plain required
+   * validator continues to cover the empty case.
+   */
+  static nonBlank(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+      if (value === null || value === undefined) {
+        return null; // Let required validator handle empty values
+      }
+
+      const strValue = String(value);
+      if (strValue.length === 0) {
+        return null; // Empty is handled by required validator
+      }
+
+      if (strValue.trim().length === 0) {
+        return { nonBlank: { message: 'This field must not be blank' } };
+      }
+
+      return null;
+    };
+  }
 }

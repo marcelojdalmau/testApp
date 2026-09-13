@@ -22,13 +22,11 @@ describe('RegisterComponent', () => {
   const mockRegisterResponse: RegisterResponse = {
     user_id: 'user-001',
     email: 'new@example.com',
-    full_name: 'Juan Pérez',
     status: 'pending_confirmation',
     message: 'Please check your email for verification.',
   };
 
   const validValues = {
-    full_name: 'Juan Pérez',
     email: 'juan@example.com',
     password: 'password123',
     confirmPassword: 'password123',
@@ -128,10 +126,6 @@ describe('RegisterComponent', () => {
       component.form.controls.confirmPassword.updateValueAndValidity();
       expect(component.form.controls.confirmPassword.hasError('matchField')).toBeFalse();
     });
-
-    it('should require full_name', () => {
-      expect(component.form.controls.full_name.hasError('required')).toBeTrue();
-    });
   });
 
   describe('submit button', () => {
@@ -165,7 +159,6 @@ describe('RegisterComponent', () => {
       component.register();
 
       expect(authService.register).toHaveBeenCalledWith({
-        full_name: 'Juan Pérez',
         email: 'juan@example.com',
         password: 'password123',
       });
