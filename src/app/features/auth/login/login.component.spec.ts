@@ -6,6 +6,7 @@ import { of, throwError } from 'rxjs';
 
 import { LoginComponent } from './login.component';
 import { AuthService } from '../../../core/services/auth.service';
+import { PostLoginNavigator } from '../../../core/services/post-login-navigator.service';
 import { AuthError, LoginResponse } from '../../../core/models/auth.model';
 import { SOCIAL_AUTH_STRATEGY, SocialAuthStrategy } from '../../../core/services/social/social-auth-strategy';
 import { SocialAuthService } from '../../../core/services/social/social-auth.service';
@@ -16,6 +17,7 @@ describe('LoginComponent', () => {
   let fixture: ComponentFixture<LoginComponent>;
   let authService: jasmine.SpyObj<AuthService> & { isLoading: WritableSignal<boolean> };
   let socialAuthService: jasmine.SpyObj<SocialAuthService>;
+  let navigatorSpy: jasmine.SpyObj<PostLoginNavigator>;
   let router: jasmine.SpyObj<Router>;
   let isLoading: WritableSignal<boolean>;
 
@@ -24,6 +26,7 @@ describe('LoginComponent', () => {
     id_token: 'id-456',
     refresh_token: 'refresh-789',
     expires_in: 3600,
+    default_tenant_id: 'tenant-123',
     roles: ['player'],
   };
 
@@ -32,6 +35,7 @@ describe('LoginComponent', () => {
     id_token: '',
     refresh_token: '',
     expires_in: 0,
+    default_tenant_id: '',
     roles: [],
     challenge: 'NEW_PASSWORD_REQUIRED',
     session: 'session-abc',
@@ -60,11 +64,19 @@ describe('LoginComponent', () => {
     ]);
     socialSpy.startSocialLogin.and.resolveTo(undefined);
 
+    // El login sin reto delega el enrutamiento posterior en PostLoginNavigator
+    // (Req 4.1, 6.1-6.5). Por defecto resuelve sin error para no navegar aquí.
+    const navSpy = jasmine.createSpyObj<PostLoginNavigator>('PostLoginNavigator', [
+      'navigateAfterLogin',
+    ]);
+    navSpy.navigateAfterLogin.and.returnValue(of(void 0));
+
     await TestBed.configureTestingModule({
       imports: [LoginComponent, NoopAnimationsModule],
       providers: [
         provideRouter([]),
         { provide: AuthService, useValue: authSpy },
+        { provide: PostLoginNavigator, useValue: navSpy },
         { provide: SocialAuthService, useValue: socialSpy },
         {
           provide: SOCIAL_AUTH_STRATEGY,
@@ -80,6 +92,7 @@ describe('LoginComponent', () => {
       isLoading: WritableSignal<boolean>;
     };
     socialAuthService = TestBed.inject(SocialAuthService) as jasmine.SpyObj<SocialAuthService>;
+    navigatorSpy = TestBed.inject(PostLoginNavigator) as jasmine.SpyObj<PostLoginNavigator>;
     // Use the real Router (so RouterLink works) but spy on navigation methods.
     const realRouter = TestBed.inject(Router);
     spyOn(realRouter, 'navigate').and.resolveTo(true);
@@ -155,32 +168,46 @@ describe('LoginComponent', () => {
 
     it('should call authService.login with the form values', () => {
       authService.login.and.returnValue(of(mockLoginResponse));
-      authService.getReturnUrl.and.returnValue(null);
 
       component.login();
 
       expect(authService.login).toHaveBeenCalledWith(validCredentials);
     });
 
-    it('should navigate to /feed on success when no return URL exists', () => {
+    // Req 4.1, 6.1-6.5: tras un login sin reto se delega el enrutamiento posterior
+    // (fetch perfil -> resolver completitud -> navegar a /feed, returnUrl o
+    // /profile/complete) en PostLoginNavigator; el componente no navega por su cuenta.
+    it('should delegate post-login routing to PostLoginNavigator on success', () => {
       authService.login.and.returnValue(of(mockLoginResponse));
-      authService.getReturnUrl.and.returnValue(null);
 
       component.login();
 
-      expect(router.navigate).toHaveBeenCalledWith(['/feed']);
+      expect(navigatorSpy.navigateAfterLogin).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not navigate to a protected route itself on non-challenge success', () => {
+      authService.login.and.returnValue(of(mockLoginResponse));
+
+      component.login();
+
+      expect(router.navigate).not.toHaveBeenCalledWith(['/feed']);
+      expect(router.navigate).not.toHaveBeenCalledWith(['/profile/complete']);
       expect(router.navigateByUrl).not.toHaveBeenCalled();
     });
 
-    it('should navigate to the stored return URL on success when one exists', () => {
+    // Req 4.3, 4.4: un fallo de obtención del perfil (AuthError) muestra el mensaje
+    // y permanece en login, sin navegar.
+    it('should show error and not navigate when navigateAfterLogin fails', () => {
+      const fetchError: AuthError = { statusCode: 503, message: 'No pudimos obtener tu perfil.' };
       authService.login.and.returnValue(of(mockLoginResponse));
-      authService.getReturnUrl.and.returnValue('/dashboard/settings');
+      navigatorSpy.navigateAfterLogin.and.returnValue(throwError(() => fetchError));
 
       component.login();
 
-      expect(authService.clearReturnUrl).toHaveBeenCalled();
-      expect(router.navigateByUrl).toHaveBeenCalledWith('/dashboard/settings');
-      expect(router.navigate).not.toHaveBeenCalled();
+      expect(navigatorSpy.navigateAfterLogin).toHaveBeenCalledTimes(1);
+      expect(component.errorMessage).toBe('No pudimos obtener tu perfil.');
+      expect(router.navigate).not.toHaveBeenCalledWith(['/feed']);
+      expect(router.navigateByUrl).not.toHaveBeenCalled();
     });
 
     it('should navigate to set-password with session state on NEW_PASSWORD_REQUIRED challenge', () => {

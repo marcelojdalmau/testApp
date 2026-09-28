@@ -24,6 +24,7 @@ describe('SocialCallbackComponent', () => {
     id_token: 'id-456',
     refresh_token: 'refresh-789',
     expires_in: 3600,
+    default_tenant_id: 'tenant-123',
     roles: ['player'],
   };
 

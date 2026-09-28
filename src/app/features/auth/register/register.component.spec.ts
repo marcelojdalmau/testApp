@@ -19,18 +19,22 @@ describe('RegisterComponent', () => {
 
   const isLoading = signal(false);
 
+  // La respuesta 201 mantiene la forma de `RegisterResponse` del backend
+  // (incluye `full_name`), aunque el formulario ya no lo recolecte.
   const mockRegisterResponse: RegisterResponse = {
     user_id: 'user-001',
     email: 'new@example.com',
+    full_name: '',
     status: 'pending_confirmation',
     message: 'Please check your email for verification.',
   };
 
+  // El formulario reformado solo tiene email, password y confirmPassword
+  // (Req 1.1, 1.2): no hay full_name, tenant_id ni account_type.
   const validValues = {
     email: 'juan@example.com',
     password: 'password123',
     confirmPassword: 'password123',
-    account_type: '',
   };
 
   function fillValidForm(): void {
@@ -89,7 +93,28 @@ describe('RegisterComponent', () => {
       expect(component.form.valid).toBeTrue();
     });
 
-    it('should mark email invalid for a malformed email format', () => {
+    // Req 1.3: correo vacío o solo espacios en blanco → error requerido.
+    it('should flag email as required when empty (Req 1.3)', () => {
+      component.form.controls.email.setValue('');
+      expect(component.form.controls.email.hasError('required')).toBeTrue();
+    });
+
+    it('should flag email as required when it contains only whitespace (Req 1.3)', () => {
+      component.form.controls.email.setValue('   ');
+      expect(component.form.controls.email.hasError('required')).toBeTrue();
+    });
+
+    // Req 1.4: correo con más de 254 caracteres → error de formato/longitud.
+    it('should flag an email longer than 254 characters (Req 1.4)', () => {
+      const longLocal = 'a'.repeat(250);
+      const longEmail = `${longLocal}@example.com`; // > 254 chars
+      expect(longEmail.length).toBeGreaterThan(254);
+      component.form.controls.email.setValue(longEmail);
+      expect(component.form.controls.email.hasError('email')).toBeTrue();
+    });
+
+    // Req 1.5: correo con formato inválido.
+    it('should mark email invalid for a malformed email format (Req 1.5)', () => {
       component.form.controls.email.setValue('not-an-email');
       expect(component.form.controls.email.hasError('email')).toBeTrue();
     });
@@ -99,32 +124,46 @@ describe('RegisterComponent', () => {
       expect(component.form.controls.email.hasError('email')).toBeFalse();
     });
 
-    it('should reject a password shorter than 8 characters', () => {
+    // Req 1.6: contraseña fuera del rango 8-72.
+    it('should reject a password shorter than 8 characters (Req 1.6)', () => {
       component.form.controls.password.setValue('short');
       expect(component.form.controls.password.hasError('password')).toBeTrue();
     });
 
-    it('should reject a password longer than 72 characters', () => {
+    it('should reject a password longer than 72 characters (Req 1.6)', () => {
       component.form.controls.password.setValue('a'.repeat(73));
       expect(component.form.controls.password.hasError('password')).toBeTrue();
     });
 
-    it('should accept a password within the 8-72 character range', () => {
-      component.form.controls.password.setValue('password123');
+    it('should accept a password at the lower boundary of 8 characters (Req 1.6)', () => {
+      component.form.controls.password.setValue('a'.repeat(8));
       expect(component.form.controls.password.hasError('password')).toBeFalse();
     });
 
-    it('should produce a matchField error when confirmPassword differs from password', () => {
+    it('should accept a password at the upper boundary of 72 characters (Req 1.6)', () => {
+      component.form.controls.password.setValue('a'.repeat(72));
+      expect(component.form.controls.password.hasError('password')).toBeFalse();
+    });
+
+    // Req 1.7: confirmación no coincide con la contraseña.
+    it('should produce a matchField error when confirmPassword differs from password (Req 1.7)', () => {
       component.form.controls.password.setValue('password123');
       component.form.controls.confirmPassword.setValue('different123');
       expect(component.form.controls.confirmPassword.hasError('matchField')).toBeTrue();
     });
 
-    it('should clear the matchField error when confirmPassword matches password', () => {
+    it('should clear the matchField error when confirmPassword matches password (Req 1.7)', () => {
       component.form.controls.password.setValue('password123');
       component.form.controls.confirmPassword.setValue('password123');
       component.form.controls.confirmPassword.updateValueAndValidity();
       expect(component.form.controls.confirmPassword.hasError('matchField')).toBeFalse();
+    });
+
+    it('should not expose removed controls (full_name, tenant_id, account_type)', () => {
+      const controls = component.form.controls as Record<string, unknown>;
+      expect(controls['full_name']).toBeUndefined();
+      expect(controls['tenant_id']).toBeUndefined();
+      expect(controls['account_type']).toBeUndefined();
     });
   });
 
@@ -133,13 +172,34 @@ describe('RegisterComponent', () => {
       return fixture.nativeElement.querySelector('button.register-btn');
     }
 
+    // Req 1.9: mientras el formulario es inválido, el envío permanece deshabilitado.
+    it('should keep the submit button disabled while the form is invalid (Req 1.9)', () => {
+      // El formulario arranca vacío (inválido).
+      expect(component.form.invalid).toBeTrue();
+      expect(submitButton().disabled).toBeTrue();
+    });
+
+    it('should enable the submit button once the form becomes valid', () => {
+      fillValidForm();
+      fixture.detectChanges();
+      expect(submitButton().disabled).toBeFalse();
+    });
+
+    it('should keep the submit button disabled when only the email is invalid (Req 1.9)', () => {
+      component.form.setValue({ ...validValues, email: '' });
+      fixture.detectChanges();
+      expect(submitButton().disabled).toBeTrue();
+    });
+
     it('should disable the submit button when isLoading is true', () => {
+      fillValidForm();
       isLoading.set(true);
       fixture.detectChanges();
       expect(submitButton().disabled).toBeTrue();
     });
 
-    it('should enable the submit button when isLoading is false', () => {
+    it('should enable the submit button when the form is valid and isLoading is false', () => {
+      fillValidForm();
       isLoading.set(false);
       fixture.detectChanges();
       expect(submitButton().disabled).toBeFalse();
@@ -152,7 +212,13 @@ describe('RegisterComponent', () => {
       expect(authService.register).not.toHaveBeenCalled();
     });
 
-    it('should call register with the mapped payload (omitting empty account_type)', () => {
+    it('should mark the form as touched when submitting an invalid form (Req 1.9)', () => {
+      component.register();
+      expect(component.form.controls.email.touched).toBeTrue();
+    });
+
+    // Req 2.5: solo se envían email y password; la confirmación no viaja al backend.
+    it('should call register with exactly { email, password }', () => {
       authService.register.and.returnValue(of(mockRegisterResponse));
       fillValidForm();
 
@@ -164,18 +230,8 @@ describe('RegisterComponent', () => {
       });
     });
 
-    it('should include account_type in the payload when provided', () => {
-      authService.register.and.returnValue(of(mockRegisterResponse));
-      component.form.setValue({ ...validValues, account_type: 'coach' });
-
-      component.register();
-
-      expect(authService.register).toHaveBeenCalledWith(
-        jasmine.objectContaining({ account_type: 'coach' }),
-      );
-    });
-
-    it('should display the success message and reset the form on success (201)', () => {
+    // Req 3.1: 201 → mensaje de éxito y formulario reseteado.
+    it('should display the success message and reset the form on success (201) (Req 3.1)', () => {
       authService.register.and.returnValue(of(mockRegisterResponse));
       fillValidForm();
 
@@ -191,6 +247,11 @@ describe('RegisterComponent', () => {
       expect(successEl?.textContent).toContain(
         'Cuenta creada. Revisá tu email para verificar tu cuenta.',
       );
+
+      // El éxito sí resetea todo el formulario.
+      expect(component.form.controls.email.value).toBe('');
+      expect(component.form.controls.password.value).toBe('');
+      expect(component.form.controls.confirmPassword.value).toBe('');
     });
   });
 
@@ -202,9 +263,17 @@ describe('RegisterComponent', () => {
       fixture.detectChanges();
     }
 
-    it('should display "El email ya está registrado." on 409', () => {
+    // Req 3.2: 409 → email ya registrado; se preserva el correo y se limpia la contraseña.
+    it('should display the email-already-registered message on 409 (Req 3.2)', () => {
       submitWithError({ statusCode: 409, message: 'conflict' });
       expect(component.errorMessage()).toBe('El email ya está registrado.');
+    });
+
+    it('should preserve the email and clear the passwords on 409 (Req 3.2)', () => {
+      submitWithError({ statusCode: 409, message: 'conflict' });
+      expect(component.form.controls.email.value).toBe('juan@example.com');
+      expect(component.form.controls.password.value).toBe('');
+      expect(component.form.controls.confirmPassword.value).toBe('');
     });
 
     it('should display the registration-not-allowed message on 403', () => {
@@ -212,9 +281,59 @@ describe('RegisterComponent', () => {
       expect(component.errorMessage()).toBe('El registro no está permitido.');
     });
 
-    it('should display the backend message on 400', () => {
+    // Req 3.3: 400 → mensaje de validación derivado del cuerpo; correo preservado.
+    it('should display the backend validation message on 400 (Req 3.3)', () => {
       submitWithError({ statusCode: 400, message: 'El campo email es inválido.' });
       expect(component.errorMessage()).toBe('El campo email es inválido.');
+    });
+
+    it('should preserve the email and clear the passwords on 400 (Req 3.3)', () => {
+      submitWithError({ statusCode: 400, message: 'El campo email es inválido.' });
+      expect(component.form.controls.email.value).toBe('juan@example.com');
+      expect(component.form.controls.password.value).toBe('');
+      expect(component.form.controls.confirmPassword.value).toBe('');
+    });
+
+    // Req 3.4: 400 con cuerpo vacío/ilegible → mensaje genérico de validación.
+    it('should display a generic validation message on 400 with an empty body (Req 3.4)', () => {
+      submitWithError({ statusCode: 400, message: '' });
+      expect(component.errorMessage()).toBe('Datos inválidos. Revisá el formulario.');
+    });
+
+    // Req 3.5: 500 → error genérico de servidor; correo preservado.
+    it('should display a generic server error message on 500 (Req 3.5)', () => {
+      submitWithError({ statusCode: 500, message: 'internal' });
+      expect(component.errorMessage()).toBe(
+        'Ocurrió un problema en el servidor. Intentá de nuevo más tarde.',
+      );
+    });
+
+    it('should preserve the email and clear the passwords on 500 (Req 3.5)', () => {
+      submitWithError({ statusCode: 500, message: 'internal' });
+      expect(component.form.controls.email.value).toBe('juan@example.com');
+      expect(component.form.controls.password.value).toBe('');
+      expect(component.form.controls.confirmPassword.value).toBe('');
+    });
+
+    // Req 3.6: status 0 → error de conectividad; correo preservado.
+    it('should display a connectivity error message on status 0 (Req 3.6)', () => {
+      submitWithError({ statusCode: 0, message: 'network' });
+      expect(component.errorMessage()).toBe(
+        'No se pudo conectar con el servidor. Verificá tu conexión e intentá de nuevo.',
+      );
+    });
+
+    it('should preserve the email and clear the passwords on status 0 (Req 3.6)', () => {
+      submitWithError({ statusCode: 0, message: 'network' });
+      expect(component.form.controls.email.value).toBe('juan@example.com');
+      expect(component.form.controls.password.value).toBe('');
+      expect(component.form.controls.confirmPassword.value).toBe('');
+    });
+
+    it('should not leave the passwords marked as touched after clearing them (Req 3.2)', () => {
+      submitWithError({ statusCode: 409, message: 'conflict' });
+      expect(component.form.controls.password.touched).toBeFalse();
+      expect(component.form.controls.confirmPassword.touched).toBeFalse();
     });
 
     it('should render the error message in the DOM', () => {

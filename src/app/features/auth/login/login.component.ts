@@ -11,6 +11,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AuthService } from '../../../core/services/auth.service';
+import { PostLoginNavigator } from '../../../core/services/post-login-navigator.service';
 import { SocialAuthService } from '../../../core/services/social/social-auth.service';
 import { AuthValidators } from '../../../core/validators/auth.validators';
 import { AuthError, LoginResponse } from '../../../core/models/auth.model';
@@ -47,6 +48,7 @@ interface SocialProviderButton {
 })
 export class LoginComponent {
   private readonly authService = inject(AuthService);
+  private readonly postLoginNavigator = inject(PostLoginNavigator);
   private readonly socialAuthService = inject(SocialAuthService);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
@@ -123,13 +125,16 @@ export class LoginComponent {
           return;
         }
 
-        const returnUrl = this.authService.getReturnUrl();
-        if (returnUrl) {
-          this.authService.clearReturnUrl();
-          this.router.navigateByUrl(returnUrl);
-        } else {
-          this.router.navigate(['/feed']);
-        }
+        // Login sin reto: delegar el enrutamiento posterior en el orquestador
+        // (obtener perfil → resolver completitud → navegar a /feed, returnUrl o
+        // /profile/complete) (Req 4.1, 6.1–6.5). Un fallo de fetch del perfil
+        // llega como AuthError: se muestra el mensaje y se permanece en login,
+        // sin navegar (Req 4.3, 4.4).
+        this.postLoginNavigator.navigateAfterLogin().subscribe({
+          error: (error: AuthError) => {
+            this.errorMessage = this.mapError(error);
+          },
+        });
       },
       error: (error: AuthError) => {
         this.errorMessage = this.mapError(error);

@@ -31,6 +31,7 @@ describe('AuthService', () => {
     id_token: 'id-456',
     refresh_token: 'refresh-789',
     expires_in: 3600,
+    default_tenant_id: 'tenant-123',
     roles: ['player', 'coach'],
   };
 
@@ -39,6 +40,7 @@ describe('AuthService', () => {
     id_token: '',
     refresh_token: '',
     expires_in: 0,
+    default_tenant_id: '',
     roles: [],
     challenge: 'NEW_PASSWORD_REQUIRED',
     session: 'session-abc',
@@ -47,6 +49,7 @@ describe('AuthService', () => {
   const mockRegisterResponse: RegisterResponse = {
     user_id: 'user-001',
     email: 'test@example.com',
+    full_name: 'Test User',
     status: 'pending_confirmation',
     message: 'Please check your email for verification.',
   };

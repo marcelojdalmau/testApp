@@ -24,9 +24,8 @@ export interface LoginResponse {
 export interface RegisterRequest {
   email: string;
   password: string;
-  full_name: string;
-  tenant_id: string;
-  account_type?: string;
+  // tenant_id se añade solo en tiempo de ejecución desde DEFAULT_TENANT_ID
+  // cuando el backend lo requiera (Req 2.6). No se recolecta en el formulario.
 }
 
 export interface RegisterResponse {

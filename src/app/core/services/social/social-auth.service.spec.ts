@@ -380,6 +380,7 @@ describe('SocialAuthService', () => {
         id_token: 'it',
         refresh_token: 'rt',
         expires_in: 3600,
+        default_tenant_id: 'tenant-123',
         roles: ['user'],
       };
 

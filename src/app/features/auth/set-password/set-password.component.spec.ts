@@ -7,12 +7,14 @@ import { of, throwError } from 'rxjs';
 
 import { SetPasswordComponent } from './set-password.component';
 import { AuthService } from '../../../core/services/auth.service';
-import { LoginResponse } from '../../../core/models/auth.model';
+import { PostLoginNavigator } from '../../../core/services/post-login-navigator.service';
+import { AuthError, LoginResponse } from '../../../core/models/auth.model';
 
 describe('SetPasswordComponent', () => {
   let fixture: ComponentFixture<SetPasswordComponent>;
   let component: SetPasswordComponent;
   let authServiceSpy: jasmine.SpyObj<AuthService> & { isLoading: ReturnType<typeof signal<boolean>> };
+  let navigatorSpy: jasmine.SpyObj<PostLoginNavigator>;
   let router: Router;
 
   const validSession = { session: 'session-abc', email: 'user@example.com' };
@@ -22,6 +24,7 @@ describe('SetPasswordComponent', () => {
     id_token: 'id-456',
     refresh_token: 'refresh-789',
     expires_in: 3600,
+    default_tenant_id: 'tenant-1',
     roles: ['player'],
   };
 
@@ -33,17 +36,24 @@ describe('SetPasswordComponent', () => {
     (authServiceSpy as unknown as { isLoading: ReturnType<typeof signal<boolean>> }).isLoading =
       isLoading;
 
+    navigatorSpy = jasmine.createSpyObj<PostLoginNavigator>('PostLoginNavigator', [
+      'navigateAfterLogin',
+    ]);
+    navigatorSpy.navigateAfterLogin.and.returnValue(of(void 0));
+
     await TestBed.configureTestingModule({
       imports: [SetPasswordComponent],
       providers: [
         provideRouter([]),
         provideNoopAnimations(),
         { provide: AuthService, useValue: authServiceSpy },
+        { provide: PostLoginNavigator, useValue: navigatorSpy },
       ],
     }).compileComponents();
 
     router = TestBed.inject(Router);
     spyOn(router, 'navigate').and.resolveTo(true);
+    spyOn(router, 'navigateByUrl').and.resolveTo(true);
 
     // Component reads session + email from history.state in its constructor.
     history.replaceState(state, '');
@@ -113,7 +123,7 @@ describe('SetPasswordComponent', () => {
     });
 
     describe('submission', () => {
-      it('should call respondToChallenge with session, email, and new_password and navigate to feed on success', () => {
+      it('should call respondToChallenge with session, email, and new_password', () => {
         authServiceSpy.respondToChallenge.and.returnValue(of(mockLoginResponse));
         component.form.setValue({ new_password: 'password1', confirmPassword: 'password1' });
 
@@ -124,10 +134,62 @@ describe('SetPasswordComponent', () => {
           email: 'user@example.com',
           new_password: 'password1',
         });
-        expect(router.navigate).toHaveBeenCalledWith(['/feed']);
       });
 
-      it('should show backend error message on failure', () => {
+      // Req 7.1: tras completar el reto se aplica la misma resolución/enrutamiento
+      // que el login sin reto, delegando en PostLoginNavigator.navigateAfterLogin().
+      it('should delegate post-login routing to PostLoginNavigator on challenge success (parity with login)', () => {
+        authServiceSpy.respondToChallenge.and.returnValue(of(mockLoginResponse));
+        component.form.setValue({ new_password: 'password1', confirmPassword: 'password1' });
+
+        component.submit();
+
+        expect(navigatorSpy.navigateAfterLogin).toHaveBeenCalledTimes(1);
+      });
+
+      // Req 7.4: el componente no navega directamente a una ruta protegida; la
+      // navegación se delega al navigator, que solo enruta tras la resolución.
+      it('should not navigate to a protected route itself on challenge success', () => {
+        authServiceSpy.respondToChallenge.and.returnValue(of(mockLoginResponse));
+        component.form.setValue({ new_password: 'password1', confirmPassword: 'password1' });
+
+        component.submit();
+
+        expect(router.navigate).not.toHaveBeenCalledWith(['/feed']);
+        expect(router.navigate).not.toHaveBeenCalledWith(['/profile/complete']);
+        expect(router.navigateByUrl).not.toHaveBeenCalled();
+      });
+
+      // Req 7.3: un fallo de obtención del perfil (AuthError) mantiene la sesión
+      // activa, muestra el mensaje y el componente no navega por su cuenta.
+      it('should show error and not navigate when navigateAfterLogin fails (session stays active)', () => {
+        const fetchError: AuthError = { statusCode: 503, message: 'No pudimos obtener tu perfil.' };
+        authServiceSpy.respondToChallenge.and.returnValue(of(mockLoginResponse));
+        navigatorSpy.navigateAfterLogin.and.returnValue(throwError(() => fetchError));
+        component.form.setValue({ new_password: 'password1', confirmPassword: 'password1' });
+
+        component.submit();
+
+        expect(navigatorSpy.navigateAfterLogin).toHaveBeenCalledTimes(1);
+        expect(component.errorMessage).toBe('No pudimos obtener tu perfil.');
+        expect(router.navigate).not.toHaveBeenCalledWith(['/feed']);
+        expect(router.navigate).not.toHaveBeenCalledWith(['/profile/complete']);
+        expect(router.navigateByUrl).not.toHaveBeenCalled();
+      });
+
+      it('should show fallback message when navigateAfterLogin error has no message', () => {
+        authServiceSpy.respondToChallenge.and.returnValue(of(mockLoginResponse));
+        navigatorSpy.navigateAfterLogin.and.returnValue(
+          throwError(() => ({ statusCode: 500 }) as AuthError),
+        );
+        component.form.setValue({ new_password: 'password1', confirmPassword: 'password1' });
+
+        component.submit();
+
+        expect(component.errorMessage).toBe('Ocurrió un error inesperado. Intentá de nuevo.');
+      });
+
+      it('should show backend error message on respondToChallenge failure', () => {
         authServiceSpy.respondToChallenge.and.returnValue(
           throwError(() => ({ statusCode: 400, message: 'Password does not meet policy' })),
         );
@@ -136,9 +198,10 @@ describe('SetPasswordComponent', () => {
         component.submit();
 
         expect(component.errorMessage).toBe('Password does not meet policy');
+        expect(navigatorSpy.navigateAfterLogin).not.toHaveBeenCalled();
       });
 
-      it('should show fallback message when error has no message', () => {
+      it('should show fallback message when respondToChallenge error has no message', () => {
         authServiceSpy.respondToChallenge.and.returnValue(throwError(() => ({ statusCode: 500 })));
         component.form.setValue({ new_password: 'password1', confirmPassword: 'password1' });
 
@@ -157,8 +220,9 @@ describe('SetPasswordComponent', () => {
         expect(button.disabled).toBeTrue();
       });
 
-      it('should enable the submit button when isLoading is false', () => {
+      it('should enable the submit button when isLoading is false and the form is valid', () => {
         authServiceSpy.isLoading.set(false);
+        component.form.setValue({ new_password: 'password1', confirmPassword: 'password1' });
         fixture.detectChanges();
 
         const button: HTMLButtonElement = fixture.nativeElement.querySelector('button[type="submit"]');

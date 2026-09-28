@@ -6,6 +6,13 @@ export const PROFILE_ROUTES: Routes = [
     loadComponent: () => import('./profile-view/profile-view.component').then(m => m.ProfileViewComponent),
   },
   {
+    // Destino de navegación para perfiles incompletos (register-reform Req 6.2).
+    // Queda bajo el shell protegido por authGuard definido en app.routes.ts.
+    // El contenido del formulario de completar perfil queda fuera de alcance.
+    path: 'complete',
+    loadComponent: () => import('./complete-profile/complete-profile.component').then(m => m.CompleteProfileComponent),
+  },
+  {
     path: 'athlete/:id',
     loadComponent: () => import('./athlete-profile/athlete-profile.component').then(m => m.AthleteProfileComponent),
   },

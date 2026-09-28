@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AuthService } from '../../../core/services/auth.service';
+import { PostLoginNavigator } from '../../../core/services/post-login-navigator.service';
 import { AuthValidators } from '../../../core/validators/auth.validators';
 import { AuthError } from '../../../core/models/auth.model';
 
@@ -33,6 +34,7 @@ import { AuthError } from '../../../core/models/auth.model';
 })
 export class SetPasswordComponent {
   private readonly authService = inject(AuthService);
+  private readonly postLoginNavigator = inject(PostLoginNavigator);
   private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
 
@@ -81,15 +83,22 @@ export class SetPasswordComponent {
       .respondToChallenge({ session: this.session, email: this.email, new_password })
       .subscribe({
         next: () => {
-          // Requirement 13.8: navigate to the post-login destination, honouring the
-          // stored return URL (matching the login flow) and falling back to /feed.
-          const returnUrl = this.authService.getReturnUrl();
-          if (returnUrl) {
-            this.authService.clearReturnUrl();
-            this.router.navigateByUrl(returnUrl);
-          } else {
-            this.router.navigate(['/feed']);
-          }
+          // Req 7.1: tras completar el reto se aplica el mismo enrutamiento
+          // posterior que el login sin reto (obtener perfil → resolver
+          // completitud → navegar). El destino se decide dentro del navigator y
+          // la navegación solo ocurre una vez resuelta la secuencia, de modo que
+          // no se accede a rutas protegidas antes de resolver el enrutamiento
+          // (Req 7.2, 7.4).
+          this.postLoginNavigator.navigateAfterLogin().subscribe({
+            // Req 7.3: un fallo de obtención del perfil (AuthError) mantiene la
+            // sesión activa y permanece en pantalla mostrando el mensaje, sin
+            // navegar. El fallo/timeout de resolución lo gestiona el navigator
+            // internamente navegando a /profile/complete con aviso.
+            error: (error: AuthError) => {
+              this.errorMessage =
+                error?.message || 'Ocurrió un error inesperado. Intentá de nuevo.';
+            },
+          });
         },
         error: (error: AuthError) => {
           this.errorMessage = error?.message || 'Ocurrió un error inesperado. Intentá de nuevo.';

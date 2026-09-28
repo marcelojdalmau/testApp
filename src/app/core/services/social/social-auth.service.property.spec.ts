@@ -78,6 +78,7 @@ describe('Feature: social-authentication, Property 2: Round-trip del contexto (s
       id_token: 'id-token',
       refresh_token: 'refresh-token',
       expires_in: 3600,
+      default_tenant_id: 'tenant-123',
       roles: ['user'],
     };
   }
@@ -274,6 +275,7 @@ describe('Feature: social-authentication, Property 7: La solicitud de intercambi
       id_token: 'id-token',
       refresh_token: 'refresh-token',
       expires_in: 3600,
+      default_tenant_id: 'tenant-123',
       roles: ['user'],
     };
   }

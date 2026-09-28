@@ -14,37 +14,14 @@
         <input matInput type="email" formControlName="email" placeholder="tu@email.com">
         <mat-icon matPrefix>email</mat-icon>
         @if (form.controls.email.touched && form.controls.email.hasError('required')) {
-          <mat-error>El email es obligatorio.</mat-error>
+          <mat-error>El correo electrónico es obligatorio</mat-error>
         }
         @if (form.controls.email.touched && form.controls.email.hasError('email')) {
-          <mat-error>Ingresá un email válido.</mat-error>
-        }
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Nombre completo</mat-label>
-        <input matInput type="text" formControlName="full_name" placeholder="Tu nombre completo">
-        <mat-icon matPrefix>person</mat-icon>
-        @if (form.controls.full_name.touched && form.controls.full_name.hasError('required')) {
-          <mat-error>El nombre completo es obligatorio.</mat-error>
-        }
-        @if (form.controls.full_name.touched && form.controls.full_name.hasError('nonBlank')) {
-          <mat-error>El nombre completo no puede estar en blanco.</mat-error>
-        }
-        @if (form.controls.full_name.touched && form.controls.full_name.hasError('maxLength')) {
-          <mat-error>El nombre completo no puede superar los 200 caracteres.</mat-error>
-        }
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Identificador de institución</mat-label>
-        <input matInput type="text" formControlName="tenant_id" placeholder="00000000-0000-0000-0000-000000000000">
-        <mat-icon matPrefix>domain</mat-icon>
-        @if (form.controls.tenant_id.touched && form.controls.tenant_id.hasError('required')) {
-          <mat-error>El identificador de institución es obligatorio.</mat-error>
-        }
-        @if (form.controls.tenant_id.touched && form.controls.tenant_id.hasError('uuid')) {
-          <mat-error>Ingresá un identificador válido (UUID).</mat-error>
+          @if (form.controls.email.value.length > 254) {
+            <mat-error>El correo electrónico no debe superar los 254 caracteres</mat-error>
+          } @else {
+            <mat-error>El formato del correo electrónico no es válido</mat-error>
+          }
         }
       </mat-form-field>
 
@@ -59,7 +36,7 @@
           <mat-error>La contraseña es obligatoria.</mat-error>
         }
         @if (form.controls.password.touched && form.controls.password.hasError('password')) {
-          <mat-error>La contraseña debe tener entre 8 y 72 caracteres.</mat-error>
+          <mat-error>La contraseña debe tener entre 8 y 72 caracteres</mat-error>
         }
       </mat-form-field>
 
@@ -71,7 +48,7 @@
           <mat-error>Confirmá la contraseña.</mat-error>
         }
         @if (form.controls.confirmPassword.touched && form.controls.confirmPassword.hasError('matchField')) {
-          <mat-error>Las contraseñas no coinciden.</mat-error>
+          <mat-error>Las contraseñas no coinciden</mat-error>
         }
       </mat-form-field>
 
@@ -83,7 +60,7 @@
         <p class="success-msg">{{ successMessage() }}</p>
       }
 
-      <button mat-flat-button color="primary" type="submit" class="register-btn" [disabled]="isLoading()">
+      <button mat-flat-button color="primary" type="submit" class="register-btn" [disabled]="form.invalid || isLoading()">
         @if (isLoading()) {
           <mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner>
         } @else {

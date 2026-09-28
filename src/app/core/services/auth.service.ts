@@ -1,11 +1,12 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, throwError, finalize, defer } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable, throwError, finalize, defer, TimeoutError } from 'rxjs';
+import { catchError, tap, timeout } from 'rxjs/operators';
 
 import { TokenStorageService } from './token-storage.service';
-import { API_BASE_URL } from '../config/api.config';
+import { mapHttpErrorToAuthError } from './http-error.util';
+import { API_BASE_URL, DEFAULT_TENANT_ID } from '../config/api.config';
 import {
   LoginRequest,
   LoginResponse,
@@ -24,6 +25,7 @@ export class AuthService {
   private readonly router = inject(Router);
   private readonly tokenStorage = inject(TokenStorageService);
   private readonly apiBaseUrl = inject(API_BASE_URL);
+  private readonly defaultTenantId = inject(DEFAULT_TENANT_ID);
 
   private readonly _isAuthenticated = signal<boolean>(this.tokenStorage.getAccessToken() !== null);
   private readonly _userRoles = signal<string[]>(this.tokenStorage.getRoles());
@@ -88,15 +90,19 @@ export class AuthService {
 
   register(data: RegisterRequest): Observable<RegisterResponse> {
     this._isLoading.set(true);
-    // Include `account_type` only when a non-empty value is provided (Req 5.9).
+    // The body carries exactly `email` and `password`, plus `tenant_id` only when
+    // DEFAULT_TENANT_ID resolves to a non-empty value (Req 2.1, 2.2, 2.3, 2.6).
+    // `full_name` and `account_type` are no longer sent.
+    const tenantId = this.defaultTenantId;
     const body = {
       email: data.email,
       password: data.password,
-      full_name: data.full_name,
-      tenant_id: data.tenant_id,
-      ...(data.account_type ? { account_type: data.account_type } : {}),
+      ...(tenantId ? { tenant_id: tenantId } : {}),
     };
     return this.http.post<RegisterResponse>(`${this.apiBaseUrl}/auth/register`, body).pipe(
+      // A 10s connectivity timeout maps to the same status-0 AuthError produced for
+      // `status === 0`, via the shared helper (Req 3.6).
+      timeout(10_000),
       catchError((error) => this.handleError(error)),
       finalize(() => this._isLoading.set(false)),
     );
@@ -291,35 +297,18 @@ export class AuthService {
     this.router.navigate(['/auth/login']);
   }
 
-  private handleError(error: HttpErrorResponse): Observable<never> {
-    if (error.status === 0) {
-      return throwError(
-        () =>
-          ({
-            statusCode: 0,
-            message: 'Unable to connect. Check your internet connection.',
-          }) as AuthError,
-      );
-    }
-
-    // Attempt extraction from the Error_Body `error` field (Req 7.1).
-    // A body may be present but malformed/corrupted (e.g. a string, a number,
-    // or an object whose `error` is not a readable string); guard the read so a
-    // failed extraction falls through to the generic fallback rather than throwing.
-    let backendMessage: string | undefined;
-    try {
-      backendMessage = typeof error.error?.error === 'string' ? error.error.error : undefined;
-    } catch {
-      backendMessage = undefined;
-    }
-
-    return throwError(
-      () =>
-        ({
-          statusCode: error.status,
-          message: backendMessage ?? 'An unexpected error occurred. Please try again.',
-          error: backendMessage,
-        }) as AuthError,
-    );
+  private handleError(error: unknown): Observable<never> {
+    // A RxJS timeout (from the 10s connectivity guard on register()) is normalised to a
+    // status-0 HttpErrorResponse so the shared helper maps it to the same connectivity
+    // AuthError as an actual `status === 0` failure (Req 3.6).
+    const normalized =
+      error instanceof TimeoutError
+        ? new HttpErrorResponse({ status: 0, statusText: 'Request timed out' })
+        : (error as HttpErrorResponse);
+    // Delegate the HTTP → AuthError mapping to the shared helper so this service and
+    // others (e.g. ProfileService) stay in lockstep. Behaviour is unchanged: status 0
+    // → connectivity error; safe Error_Body extraction; other statuses → backend
+    // message or generic fallback.
+    return throwError(() => mapHttpErrorToAuthError(normalized));
   }
 }

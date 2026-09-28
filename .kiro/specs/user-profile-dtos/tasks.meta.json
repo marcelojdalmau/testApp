@@ -1,0 +1,329 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Create the DTO module with shared types and the root interface": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559229229
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559238539
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559280006
+      }
+    ],
+    "2.1 Add `ProfileCommonBlock`": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559229396
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559283617
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559354999
+      }
+    ],
+    "2.2 Add `ProfileNaturalPersonBlock`": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559229491
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559359077
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559406441
+      }
+    ],
+    "3.1 Add `ProfileHealthProfessionalBlock`": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559229579
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559410499
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559451385
+      }
+    ],
+    "3.2 Add the health-professional nested array interfaces": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559229702
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559455003
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559498427
+      }
+    ],
+    "4.1 Add `ProfileAthleteBlock` and `ProfileSportEntry`": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559229788
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559502822
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559545502
+      }
+    ],
+    "4.2 Add the sport nested array interfaces": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559229869
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559549094
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559598574
+      }
+    ],
+    "5.1 Add `ProfileAnatomicalBlock` and `ProfileInjuryEntry`": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559229949
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559602803
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559639364
+      }
+    ],
+    "5.2 Add `ProfileClubBlock`, `ProfileDisciplineEntry`, and `ProfileFacilityEntry`": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559230030
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559643319
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559694835
+      }
+    ],
+    "5.3 Add `ProfileManagerBlock`, `ProfileRepresentedPlayerEntry`, `ProfileTutorBlock`, `ProfileClubWorkerBlock`, and `ProfilePriorJobEntry`": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559230105
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559699241
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559765547
+      }
+    ],
+    "6. Checkpoint - Ensure the module compiles": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559230186
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559769921
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559843602
+      }
+    ],
+    "7.1 Create the type-test file with minimal-instance assignability checks": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559230267
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559847935
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559929351
+      }
+    ],
+    "7.2 Add required-field enforcement checks": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559230348
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559933070
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559997837
+      }
+    ],
+    "7.3 Add additive-field preservation check": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559230430
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790560001850
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790560054559
+      }
+    ],
+    "7.4 Add shared-attachment typing check": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559230507
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790560059945
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790560119392
+      }
+    ],
+    "7.5 Add no-collision import check": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559230591
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790560125269
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790560207866
+      }
+    ],
+    "8. Final checkpoint - Ensure everything type-checks": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559230671
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790560212142
+      },
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790560290069
+      }
+    ],
+    "2. Author the common and natural-person blocks": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559406629
+      }
+    ],
+    "3. Author the health-professional block and its nested array interfaces": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559498595
+      }
+    ],
+    "4. Author the athlete block and its nested array interfaces": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559598692
+      }
+    ],
+    "5. Author the remaining persona blocks and their nested array interfaces": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790559765715
+      }
+    ],
+    "7. Author compile-time type-assertion checks": [
+      {
+        "executionId": "176a6051-bd88-4b1a-8cbf-03b52c3e5263",
+        "chatSessionId": "sess_9277cca2-6ba6-4cfb-9a6c-37536dd0bc9a",
+        "timestamp": 1790560208020
+      }
+    ]
+  }
+}

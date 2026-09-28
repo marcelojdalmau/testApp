@@ -73,20 +73,14 @@ export class RegisterComponent {
     { provider: 'apple', label: 'Apple' },
   ];
 
+  // Formulario reducido a correo + contraseña + confirmación (Req 1.1, 1.2).
+  // Los validadores existentes cubren las reglas de Req 1.3–1.7: `email` valida
+  // formato y longitud ≤254; `password` valida el rango 8–72; `matchField`
+  // valida la coincidencia con la confirmación.
   readonly form = this.fb.nonNullable.group({
     email: ['', [AuthValidators.required(), AuthValidators.email()]],
-    full_name: [
-      '',
-      [
-        AuthValidators.required(), // empty full_name blocked (Req 5.5)
-        AuthValidators.nonBlank(), // whitespace-only non-empty blocked (Req 5.6)
-        AuthValidators.maxLength(200), // >200 characters blocked (Req 5.6)
-      ],
-    ],
-    tenant_id: ['', [AuthValidators.required(), AuthValidators.uuid()]],
     password: ['', [AuthValidators.required(), AuthValidators.password()]],
     confirmPassword: ['', [AuthValidators.required(), AuthValidators.matchField('password')]],
-    account_type: [''],
   });
 
   register(): void {
@@ -98,26 +92,38 @@ export class RegisterComponent {
       return;
     }
 
-    const { email, password, full_name, tenant_id, account_type } = this.form.getRawValue();
-    const payload: RegisterRequest = {
-      email,
-      password,
-      full_name,
-      tenant_id,
-      ...(account_type ? { account_type } : {}),
-    };
+    // Solo se envían `email` y `password`; la confirmación no viaja al backend (Req 2.5).
+    const { email, password } = this.form.getRawValue();
+    const payload: RegisterRequest = { email, password };
 
     this.authService.register(payload).subscribe({
+      // 201: mensaje de confirmación de cuenta creada (Req 3.1). Al ser éxito,
+      // sí se puede resetear el formulario por completo.
       next: () => {
         this.successMessage.set(
           'Cuenta creada. Revisá tu email para verificar tu cuenta.',
         );
         this.form.reset();
       },
+      // Ramas de error (Req 3.2, 3.3, 3.5): NO se resetea el formulario; se
+      // preservan los valores ingresados (notablemente el correo) y se limpia
+      // únicamente la contraseña y su confirmación.
       error: (error: AuthError) => {
         this.errorMessage.set(this.mapError(error));
+        this.clearPasswordFields();
       },
     });
+  }
+
+  /**
+   * Limpia únicamente los campos de contraseña y confirmación, conservando el
+   * resto de los valores del formulario tras una rama de error (Req 3.2, 3.3,
+   * 3.5). Se marcan como intactos para no disparar mensajes de validación por
+   * el mero hecho de vaciarlos.
+   */
+  private clearPasswordFields(): void {
+    this.form.controls.password.reset('');
+    this.form.controls.confirmPassword.reset('');
   }
 
   /**
@@ -154,16 +160,27 @@ export class RegisterComponent {
     });
   }
 
+  /**
+   * Mapea el `AuthError` del registro a un mensaje en español (Req 3.2–3.6):
+   * - 409: el correo ya está registrado (Req 3.2).
+   * - 400: mensaje de validación derivado del `Error_Body`, con fallback
+   *   genérico cuando el cuerpo está vacío o es ilegible (Req 3.3, 3.4).
+   * - 500: error genérico de servidor (Req 3.5).
+   * - 0: error de conectividad (Req 3.6).
+   * El caso 404 "institución" se eliminó por dejar de aplicar tras la reforma.
+   */
   private mapError(error: AuthError): string {
     switch (error?.statusCode) {
       case 409:
         return 'El email ya está registrado.';
-      case 404:
-        return 'No se encontró la institución.';
       case 403:
         return 'El registro no está permitido.';
       case 400:
         return error.message || 'Datos inválidos. Revisá el formulario.';
+      case 500:
+        return 'Ocurrió un problema en el servidor. Intentá de nuevo más tarde.';
+      case 0:
+        return 'No se pudo conectar con el servidor. Verificá tu conexión e intentá de nuevo.';
       default:
         return error?.message || 'Ocurrió un error inesperado. Intentá de nuevo.';
     }
